@@ -6,6 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "lint": "ng lint",
+    "lint:fix": "ng lint --fix=true",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cc": "jest --coverage",
