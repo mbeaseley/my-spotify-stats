@@ -28,9 +28,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/assets/styles/styles.scss"
             ],
-            "scripts": []
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/styles",
+                "src/assets/img"
+              ]
+            }
           },
           "configurations": {
             "production": {
@@ -85,8 +90,7 @@
           "options": {
             "tsConfig": [
               "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
+              "tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
