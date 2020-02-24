@@ -1,0 +1,36 @@
+@import '_variables';
+
+.nav {
+  width: 100%;
+  background-color: $grey4;
+  border-bottom: 1px solid $white;
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+    padding: $space-s $space;
+  }
+
+  &__logo {
+    @extend %heading;
+    font-size: $font-size;
+    display: flex;
+    align-items: center;
+    color: $white;
+    text-decoration: none;
+    margin-right: $space-m;
+  }
+
+  &__navbar-item {
+    @extend %heading;
+    font-size: $font-size;
+    color: $grey1;
+    text-decoration: none;
+    padding: 0 $space-sm;
+
+    &--end {
+      position: absolute;
+      right: 0;
+    }
+  }
+}

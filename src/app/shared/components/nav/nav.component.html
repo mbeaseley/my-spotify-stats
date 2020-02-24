@@ -1,0 +1,17 @@
+<div class="nav">
+  <div class="nav__navbar">
+    <a class="nav__logo" href="/">
+      <img src="/assets/img/spotifytool.png" width="30" height="30" alt="">
+      <span>My Spotify Stats</span>
+    </a>
+    <button *ngIf="visible" class="nav__collapse" type="button">
+      <span>ICON</span>
+    </button>
+    <div class="nav__navbar-items">
+      <a class="nav__navbar-item" href="/top-tracks">Top Tracks</a>
+      <a class="nav__navbar-item" href="/top-artists">Top Artists</a>
+      <a class="nav__navbar-item" href="/recently-played">Recently Played</a>
+      <a class="nav__navbar-item nav__navbar-item--end" href="/">Logout</a>
+    </div>
+  </div>
+</div>
