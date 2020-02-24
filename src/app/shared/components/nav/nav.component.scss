@@ -1,5 +1,15 @@
 @import '_variables';
 
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 .nav {
   width: 100%;
   background-color: $grey4;
@@ -21,6 +31,61 @@
     margin-right: $space-m;
   }
 
+  &__collapse {
+    position: absolute;
+    right: 0;
+    padding: 0 $space;
+    background-color: unset;
+    border-color: unset;
+    border-style: unset;
+    border-image: unset;
+    cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
+
+    & > img {
+      width: 25px;
+    }
+  }
+
+  &__navbar-items {
+    @media (max-width: $small-breakpoint) {
+      position: absolute;
+      top: 58px;
+      left: 0;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      background-color: $grey4;
+      border-bottom: 1px solid $white;
+      text-align: center;
+
+      &--hide {
+        height: 0;
+        transition: height .5s;
+
+        & > a {
+          transition: visibility 0s;
+          visibility: hidden;
+        }
+      }
+
+      &--show {
+        display: flex;
+        height: 160px;
+        transition: height .5s;
+
+        & > a {
+          transition: visibility 0s;
+          transition-delay: 0.4s;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
   &__navbar-item {
     @extend %heading;
     position: relative;
@@ -29,10 +94,18 @@
     text-decoration: none;
     padding: 0 $space-sm;
 
+    @media (max-width: $small-breakpoint) {
+      padding: $space-s $space;
+    }
+
     &--end {
       position: absolute;
       right: 0;
       cursor: pointer;
+
+      @media (max-width: $small-breakpoint) {
+        position: relative;
+      }
     }
 
     &.active {

@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -8,6 +7,7 @@ import { RouterModule } from '@angular/router';
 })
 export class NavComponent implements OnInit {
   visible: boolean;
+  showMenu: boolean;
 
   constructor() { }
 
@@ -15,7 +15,18 @@ export class NavComponent implements OnInit {
     console.log('LOG OUT');
   }
 
-  ngOnInit(): void {
+  onMenuShow(): void {
+    this.showMenu = !this.showMenu ? true : false;
+    console.log('showMenu', this.showMenu);
+  }
 
+  @HostListener('window:resize', [])
+  onResize(): void {
+    this.visible = window?.innerWidth < 767 ? true : false;
+    this.showMenu = window?.innerWidth < 767 ? false : true;
+  }
+
+  ngOnInit(): void {
+    this.onResize();
   }
 }

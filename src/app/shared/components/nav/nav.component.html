@@ -4,10 +4,10 @@
       <img src="/assets/img/spotifytool.png" width="30" height="30" alt="">
       <span>My Spotify Stats</span>
     </a>
-    <button *ngIf="visible" class="nav__collapse" type="button">
-      <span>ICON</span>
+    <button *ngIf="visible" class="nav__collapse" type="button" (click)="onMenuShow()">
+      <img src="/assets/img/menu.svg">
     </button>
-    <div class="nav__navbar-items">
+    <div class="nav__navbar-items" [ngClass]="(showMenu) ? 'nav__navbar-items--show': 'nav__navbar-items--hide'">
       <a class="nav__navbar-item" routerLink="top-tracks" routerLinkActive="active">Top Tracks</a>
       <a class="nav__navbar-item" routerLink="top-artists" routerLinkActive="active">Top Artists</a>
       <a class="nav__navbar-item" routerLink="recently-played" routerLinkActive="active">Recently Played</a>
