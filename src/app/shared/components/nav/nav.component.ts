@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -9,6 +10,10 @@ export class NavComponent implements OnInit {
   visible: boolean;
 
   constructor() { }
+
+  onLogOut(): void {
+    console.log('LOG OUT');
+  }
 
   ngOnInit(): void {
 

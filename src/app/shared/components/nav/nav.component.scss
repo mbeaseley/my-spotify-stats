@@ -8,7 +8,7 @@
   &__navbar {
     display: flex;
     align-items: center;
-    padding: $space-s $space;
+    padding: $space-sm $space;
   }
 
   &__logo {
@@ -23,6 +23,7 @@
 
   &__navbar-item {
     @extend %heading;
+    position: relative;
     font-size: $font-size;
     color: $grey1;
     text-decoration: none;
@@ -31,6 +32,29 @@
     &--end {
       position: absolute;
       right: 0;
+      cursor: pointer;
+    }
+
+    &.active {
+      color: $white;
+
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        height: 2px;
+        width: 50%;
+        background: $green;
+      }
+    }
+
+    &:focus,
+    &:focus-within {
+      outline: none;
+    }
+
+    &:hover {
+      color: $white;
     }
   }
 }
