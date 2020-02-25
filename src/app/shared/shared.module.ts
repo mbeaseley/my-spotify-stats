@@ -4,11 +4,15 @@ import { RouterModule } from '@angular/router';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
+import { JoinArrayPipe } from './pipes/join-array.pipe';
+import { LocaleDatePipe } from './pipes/locale-date.pipe';
 
 @NgModule({
   declarations: [
     FooterComponent,
-    NavComponent
+    NavComponent,
+    JoinArrayPipe,
+    LocaleDatePipe
   ],
   imports: [
     CommonModule,
@@ -16,7 +20,9 @@ import { NavComponent } from './components/nav/nav.component';
   ],
   exports: [
     FooterComponent,
-    NavComponent
+    NavComponent,
+    JoinArrayPipe,
+    LocaleDatePipe
   ],
   entryComponents: [
     FooterComponent,

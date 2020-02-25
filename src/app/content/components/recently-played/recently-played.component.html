@@ -1,3 +1,14 @@
 <div class="recently-played">
-  
+  <table class="recently-played__table">
+    <tr class="recently-played__table-header">
+      <th>Track</th>
+      <th>Artist(s)</th>
+      <th>Played At</th>
+    </tr>
+    <tr *ngFor="let track of tracks" class="recently-played__table-row" (click)="onClick(track.uri)">
+      <td>{{track.trackName}}</td>
+      <td>{{track.artists | joinArray}}</td>
+      <td>{{track.played | localeDate:'DD/MM/YYYY, h:mm A'}}</td>
+    </tr>
+  </table>
 </div>
