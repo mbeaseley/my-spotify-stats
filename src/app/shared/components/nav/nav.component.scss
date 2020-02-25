@@ -11,6 +11,8 @@
 }
 
 .nav {
+  position: fixed;
+  top: 0;
   width: 100%;
   background-color: $grey4;
   border-bottom: 1px solid $white;
@@ -33,8 +35,9 @@
 
   &__collapse {
     position: absolute;
+    top: 0;
     right: 0;
-    padding: 0 $space;
+    padding: 12px $space;
     background-color: unset;
     border-color: unset;
     border-style: unset;

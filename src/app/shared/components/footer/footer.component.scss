@@ -1,9 +1,8 @@
 @import '_variables';
 
 .footer {
-  position: fixed;
+  position: relative;
   width: 100%;
-  bottom: 0;
   left: 0;
   right: 0;
   padding: $space-s 0 $space-s 0;

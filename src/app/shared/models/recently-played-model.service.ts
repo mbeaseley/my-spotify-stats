@@ -10,7 +10,7 @@ import * as dayjs from 'dayjs';
 })
 export class RecentlyPlayedModelService {
   private spotifyUrl = 'https://api.spotify.com/';
-  
+
   constructor(private storageService: StorageService, private http: HttpClient) { }
 
   fromPayload(res: any): RecentlyPlayedTrack[] {
@@ -36,7 +36,7 @@ export class RecentlyPlayedModelService {
   }
 
   getRecentlyPlayedSongs(): Promise<any> {
-    return this.http.get(`${this.spotifyUrl}v1/me/player/recently-played?type=track`, {
+    return this.http.get(`${this.spotifyUrl}v1/me/player/recently-played?type=track&limit=50`, {
       headers: {
         Authorization: `Bearer ` +  this.storageService.getLocalStorageItem()
       }

@@ -3,7 +3,11 @@
 .recently-played {
   min-height: 94vh;
   max-width: 1000px;
-  margin: $space-l auto;
+  margin: 66px auto 24px;
+
+  @media (max-width: $small-breakpoint) {
+    margin: 66px 12px 24px;
+  }
 
   &__table {
     width: 100%;

@@ -8,7 +8,7 @@
     <tr *ngFor="let track of tracks" class="recently-played__table-row" (click)="onClick(track.uri)">
       <td>{{track.trackName}}</td>
       <td>{{track.artists | joinArray}}</td>
-      <td>{{track.played | localeDate:'DD/MM/YYYY, h:mm A'}}</td>
+      <td>{{track.played | localeDate:'DD/MM/YYYY, hh:mm A'}}</td>
     </tr>
   </table>
 </div>
