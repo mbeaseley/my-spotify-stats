@@ -14,6 +14,7 @@ export class StorageService {
    * @param token - token key
    */
   setLocalStorageItem(itemName: string, token: string): void {
+    console.log(token);
     this.isAccessSet = true;
     localStorage.setItem(itemName, token);
   }

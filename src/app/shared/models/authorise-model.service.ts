@@ -16,7 +16,8 @@ export class AuthoriseModelService {
     'user-library-modify',
     'user-follow-read',
     'user-follow-modify',
-    'user-top-read'
+    'user-top-read',
+    'user-read-recently-played'
   ];
   private authEndpoint = 'https://accounts.spotify.com/authorize';
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RecentlyPlayedService } from 'Shared/services/recently-played.service';
 
 @Component({
   selector: 'app-recently-played',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecentlyPlayedComponent implements OnInit {
 
-  constructor() { }
+  constructor(private recentlyPlayedService: RecentlyPlayedService) { }
 
   ngOnInit(): void {
+    this.recentlyPlayedService.getRecentlyPlayedSong().then(console.log);
   }
 
 }

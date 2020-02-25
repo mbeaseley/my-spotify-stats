@@ -118,6 +118,10 @@
         height: 2px;
         width: 50%;
         background: $green;
+
+        @media (max-width: $small-breakpoint) {
+          content: unset;
+        }
       }
     }
 

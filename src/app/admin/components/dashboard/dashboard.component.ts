@@ -22,9 +22,9 @@ export class DashboardComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
-    const accessToken = this.getAccessTokenFromUrl(location.hash);
-    this.storageService.setLocalStorageItem('access-token', accessToken);
     if (document.location.href.indexOf('#') > -1) {
+      const accessToken = this.getAccessTokenFromUrl(location.hash);
+      this.storageService.setLocalStorageItem('access-token', accessToken)
       document.location.href = '/dashboard';
     }
   }
