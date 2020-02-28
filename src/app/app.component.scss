@@ -1,0 +1,10 @@
+@import '_variables';
+
+.app {
+  app-footer {
+    & > div {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
