@@ -10,6 +10,14 @@
     "module": "esnext",
     "moduleResolution": "node",
     "importHelpers": true,
+    "paths": {
+      "Shared/*": ["src/app/shared/*"],
+      "Admin/*": ["src/app/admin/*"],
+      "Content/*": ["src/app/content/*"],
+      "Assets/*": ["src/assets/*"],
+      "Environments/*": ["src/environments/*"],
+      "Base/*": ["src/*"]
+    },
     "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
