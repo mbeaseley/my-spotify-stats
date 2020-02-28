@@ -17,7 +17,7 @@ export class RecentlyPlayedComponent implements OnInit {
    * @param spotifyUri  - uri link
    */
   onClick(spotifyUri: string): void {
-    window.open(spotifyUri, '_blank')
+    window.open(spotifyUri, '_blank');
   }
 
   /**
