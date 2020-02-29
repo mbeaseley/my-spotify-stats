@@ -1,1 +1,32 @@
-<p>top-artists works!</p>
+<div class="top-artists">
+  <h1>Top Artists (last)</h1>
+  <div class="top-artists__tabs">
+    <button class="top-artists__tab-item top-artists__tab-item--active">Last 4 Weeks</button>
+    <button class="top-artists__tab-item">Last 6 Months</button>
+    <button class="top-artists__tab-item">Last 4 All Time</button>
+  </div>
+  <div class="top-artists__leaderboard">
+    <a *ngFor="let artist of artists" class="top-artists__leaderboard-item">
+      <img [src]="artist.artistImage">
+      <p>{{artist.order}}.{{artist.artistName}}</p>
+    </a>
+  </div>
+  <!-- <table class="top-artists__leaderboard">
+    <div *ngFor="let artist of artists; let i = index">
+      <tr *ngIf="i % 3 == 0" class="top-artists__leaderboard-row">
+        <td *ngIf="i < artists.length" class="top-artists__leaderboard-item">
+          <img [src]="artists[i].artistImage">
+          <p>{{artists[i].order}}.{{artists[i].artistName}}</p>
+        </td>
+        <td *ngIf="i + 1 < artists.length" class="top-artists__leaderboard-item">
+          <img [src]="artists[i+1].artistImage">
+          <p>{{artists[i+1].order}}.{{artists[i+1].artistName}}</p>
+        </td>
+        <td *ngIf="i + 2 < artists.length" class="top-artists__leaderboard-item">
+          <img [src]="artists[i+2].artistImage">
+          <p>{{artists[i+2].order}}.{{artists[i+2].artistName}}</p>
+        </td>
+      </tr>
+    </div>
+  </table> -->
+</div>

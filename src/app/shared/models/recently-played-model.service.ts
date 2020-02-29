@@ -13,7 +13,7 @@ export class RecentlyPlayedModelService {
 
   constructor(private storageService: StorageService, private http: HttpClient) { }
 
-  fromPayload(res: any): RecentlyPlayedTrack[] {
+  private fromPayload(res: any): RecentlyPlayedTrack[] {
     const recentlyPlayedTracks = res.items.map(item => {
       const track = new RecentlyPlayedTrack();
       track.id = item.track.id;
