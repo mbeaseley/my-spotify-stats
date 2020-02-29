@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { AuthoriseService } from '../../services/authorise.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { AuthoriseService } from '../../services/authorise.service';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  @Input() show: boolean;
+
   visible: boolean;
   showMenu: boolean;
 
