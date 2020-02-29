@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     if (document.location.href.indexOf('#') > -1) {
       const accessToken = this.getAccessTokenFromUrl(location.hash);
-      this.storageService.setLocalStorageItem('access-token', accessToken)
+      this.storageService.setLocalStorageItem('access-token', accessToken);
       document.location.href = '/dashboard';
     }
   }

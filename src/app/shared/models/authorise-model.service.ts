@@ -30,7 +30,7 @@ export class AuthoriseModelService {
    /**
     * returns string for url call
     */
-  signIn(): string {
+  logIn(): string {
     return this.authEndpoint + '?client_id=' + this.clientId + '&redirect_uri='
       + encodeURIComponent(this.redirectUri) + '&scope='
       + encodeURIComponent(this.scopes.join('%20'))

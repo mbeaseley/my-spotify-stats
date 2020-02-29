@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
    * on click
    */
   onClick(): void {
-    window.location.href = this.auth.signIn();
+    window.location.href = this.auth.logIn();
   }
 
   /**
