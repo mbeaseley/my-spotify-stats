@@ -19,9 +19,9 @@ export class PlaylistModelService {
       playlist.name = item.name;
       playlist.description = item.description;
       playlist.owner = new User();
-      playlist.owner = item.owner.id;
-      playlist.owner = item.owner.name;
-      playlist.owner = item.owner.uri;
+      playlist.owner.id = item.owner.id;
+      playlist.owner.name = item.owner.display_name;
+      playlist.owner.uri = item.owner.uri;
       playlist.uri = item.uri;
       return playlist;
     });

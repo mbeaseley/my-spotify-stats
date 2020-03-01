@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from 'Shared/services/storage.service';
+import { StorageService } from '../../../shared/services/storage.service';
+import { UserService } from 'src/app/shared/services/user.service';
+import { User } from 'src/app/shared/classes/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +9,9 @@ import { StorageService } from 'Shared/services/storage.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  user: User = new User();
 
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService, private userService: UserService) { }
 
   /**
    * gets tokens from url
@@ -22,6 +25,7 @@ export class DashboardComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
+    this.userService.getUser().then(user => this.user = user);
     if (document.location.href.indexOf('#') > -1) {
       const accessToken = this.getAccessTokenFromUrl(location.hash);
       this.storageService.setLocalStorageItem('access-token', accessToken);

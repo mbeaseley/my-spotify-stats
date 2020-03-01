@@ -9,6 +9,9 @@ export class PlaylistService {
   constructor(private playlistModelService: PlaylistModelService) { }
 
   getUserPlaylist(): Promise<any> {
-    return this.playlistModelService.getUserPlaylist();
+    return this.playlistModelService.getUserPlaylist().then(playlists => {
+      console.log(playlists);
+      return playlists;
+    });;
   }
 }
