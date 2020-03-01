@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { SharedModule } from 'Shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 import { RecentlyPlayedComponent } from './components/recently-played/recently-played.component';
 import { TopTracksComponent } from './components/top-tracks/top-tracks.component';
 import { TopArtistsComponent } from './components/top-artists/top-artists.component';

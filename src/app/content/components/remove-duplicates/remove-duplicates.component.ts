@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PlaylistService } from 'src/app/shared/services/playlist.service';
+import { Playlist } from 'src/app/shared/classes/playlist';
 
 @Component({
   selector: 'app-remove-duplicates',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./remove-duplicates.component.scss']
 })
 export class RemoveDuplicatesComponent implements OnInit {
+  playlists: Playlist[] = [];
 
-  constructor() { }
+  constructor(private playlistService: PlaylistService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): Promise<void> {
+    return this.playlistService.getUserPlaylist().then(playlists => this.playlists = playlists);
   }
 
 }
