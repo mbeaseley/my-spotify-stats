@@ -1,9 +1,9 @@
 <div class="top-artists">
-  <h1>Top Artists (last)</h1>
+  <h1>Top Artists ({{tabSelected}})</h1>
   <div class="top-artists__tabs">
-    <button class="top-artists__tab-item top-artists__tab-item--active">Last 4 Weeks</button>
-    <button class="top-artists__tab-item">Last 6 Months</button>
-    <button class="top-artists__tab-item">Last 4 All Time</button>
+    <button id="top-artists-short" class="top-artists__tab-item top-artists__tab-item--active" (click)="onClick('short_term', 'top-artists-short')">Last 4 Weeks</button>
+    <button id="top-artists-mid" class="top-artists__tab-item" (click)="onClick('medium_term', 'top-artists-mid')">Last 6 Months</button>
+    <button id="top-artists-long" class="top-artists__tab-item" (click)="onClick('long_term', 'top-artists-long')">Last 4 All Time</button>
   </div>
   <div class="top-artists__leaderboard">
     <a *ngFor="let artist of artists" class="top-artists__leaderboard-item">

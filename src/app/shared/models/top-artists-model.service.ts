@@ -12,7 +12,6 @@ export class TopArtistsModelService {
   constructor(private storageService: StorageService, private http: HttpClient) { }
 
   private fromPayload(response: any): Artist[] {
-    console.log(response)
     const topArtists = response.items.map((item: any, index: number) => {
       const artist = new Artist();
       artist.id = item.id;
@@ -27,7 +26,7 @@ export class TopArtistsModelService {
   }
 
   getRecentlyPlayedSongs(type: string, timeRange: string): Promise<any> {
-    return this.http.get(`${this.spotifyUrl}${type}?time_range=short_term&limit=15`, {
+    return this.http.get(`${this.spotifyUrl}${type}?time_range=${timeRange}&limit=15`, {
       headers: {
         Authorization: `Bearer ` +  this.storageService.getLocalStorageItem()
       }
