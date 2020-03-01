@@ -1,0 +1,36 @@
+@import '_variables';
+
+@keyframes slideup {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.error-handle {
+  position: absolute;
+  left: 0;
+  right: 0;
+  text-align: center;
+  background: $grey4;
+  border-bottom: 4px solid $red;
+  animation-name: slideup;
+  animation-duration: 1s;
+  animation-delay: 5s;
+  animation-fill-mode: forwards;
+
+
+  &__title {
+    @extend %heading;
+    font-weight: $font-weight--bold;
+    padding: $space 0 $space-sm;
+  }
+
+  &__message {
+    @extend %base;
+    font-weight: $font-weight--medium;
+    padding-bottom: $space;
+  }
+}

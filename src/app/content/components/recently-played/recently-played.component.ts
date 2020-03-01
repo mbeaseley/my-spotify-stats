@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { RecentlyPlayedService } from 'Shared/services/recently-played.service';
-import { Track } from 'Shared/classes/track';
+import { RecentlyPlayedService } from '../../../shared/services/recently-played.service';
+import { Track } from '../../../shared/classes/track';
+import { ErrorService } from 'src/app/shared/services/error.service';
+import { Error } from '../../../shared/classes/error';
 
 @Component({
   selector: 'app-recently-played',
@@ -10,7 +12,9 @@ import { Track } from 'Shared/classes/track';
 export class RecentlyPlayedComponent implements OnInit {
   tracks: Track[];
 
-  constructor(private recentlyPlayedService: RecentlyPlayedService) { }
+  constructor(
+    private recentlyPlayedService: RecentlyPlayedService,
+    private errorService: ErrorService) {}
 
   /**
    * on click - open spotify uri link
@@ -25,7 +29,10 @@ export class RecentlyPlayedComponent implements OnInit {
    */
   ngOnInit(): Promise<void> {
     return this.recentlyPlayedService.getRecentlyPlayedSong()
-      .then(tracks => this.tracks = tracks);
+      .then(tracks => this.tracks = tracks).catch(() => {
+        const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
+        this.errorService.callError('', error);
+      });
   }
 
 }

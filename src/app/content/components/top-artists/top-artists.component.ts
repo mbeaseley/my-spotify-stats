@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TopListsService } from 'src/app/shared/services/top-lists.service';
 import { Artist } from 'src/app/shared/classes/artist';
+import { ErrorService } from 'src/app/shared/services/error.service';
+import { Error } from '../../../shared/classes/error';
 
 @Component({
   selector: 'app-top-artists',
@@ -11,7 +13,9 @@ export class TopArtistsComponent implements OnInit {
   tabSelected: string;
   artists: Artist[] = [];
 
-  constructor(private topListsService: TopListsService) { }
+  constructor(
+    private topListsService: TopListsService,
+    private errorService: ErrorService) {}
 
   /**
    * changes selection of tab and data
@@ -26,7 +30,12 @@ export class TopArtistsComponent implements OnInit {
     const element = document.querySelector(`#${id}`);
     element.classList.add('top-artists__tab-item--active');
     this.tabSelected = element.innerHTML;
-    return this.topListsService.topLists('artists', term).then(artists => this.artists = artists);
+    return this.topListsService.topLists('artists', term)
+      .then(artists => this.artists = artists)
+      .catch(() => {
+      const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
+      this.errorService.callError('', error);
+    });
   }
 
   /**
@@ -42,7 +51,13 @@ export class TopArtistsComponent implements OnInit {
    */
   ngOnInit(): Promise<void> {
     this.tabSelected = 'Last 4 Weeks'
-    return this.topListsService.topLists('artists', 'short_term').then(artists => this.artists = artists);
+    return this.topListsService.topLists('artists', 'short_term')
+      .then(artists => this.artists = artists)
+      .catch(() => {
+        const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
+        this.errorService.callError('', error);
+      }
+    );
   }
 
 }
