@@ -10,7 +10,6 @@ import { Artist } from 'src/app/shared/classes/artist';
 export class TopArtistsComponent implements OnInit {
   tabSelected: string;
   artists: Artist[] = [];
-  el: HTMLElement;
 
   constructor(private topArtistsService: TopArtistsService) { }
 
@@ -28,6 +27,14 @@ export class TopArtistsComponent implements OnInit {
     element.classList.add('top-artists__tab-item--active');
     this.tabSelected = element.innerHTML;
     return this.topArtistsService.topArtists('artists', term).then(artists => this.artists = artists);
+  }
+
+  /**
+   * on click - open spotify uri link
+   * @param spotifyUri
+   */
+  onArtistClick(spotifyUri: string): void {
+    window.open(spotifyUri, '_blank');
   }
 
   /**
