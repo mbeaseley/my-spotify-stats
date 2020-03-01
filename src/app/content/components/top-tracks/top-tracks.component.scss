@@ -52,14 +52,15 @@
 
   &__leaderboard-row {
     border-spacing: 0;
+    cursor: pointer;
 
     &:hover {
       background: $grey3;
-      color: $white;
     }
 
     & > td {
       text-align: left;
+      padding-left: 8px;
 
       &:last-of-type {
         color: $grey1;
