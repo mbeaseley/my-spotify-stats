@@ -6,9 +6,9 @@ import { TopListsModelService } from '../models/top-lists-model.service';
 })
 export class TopListsService {
 
-  constructor(private topArtistsModel: TopListsModelService) { }
+  constructor(private TopListsModelService: TopListsModelService) { }
 
   topLists(type: string, timeRange: string): any {
-    return this.topArtistsModel.getTopLists(type, timeRange);
+    return this.TopListsModelService.getLists(type, timeRange);
   }
 }

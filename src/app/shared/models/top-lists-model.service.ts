@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { StorageService } from '../services/storage.service';
 import { HttpClient } from '@angular/common/http';
 import { Artist } from '../classes/artist';
+import { Track } from '../classes/track';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,24 @@ export class TopListsModelService {
    * payload response format
    * @param response 
    */
-  private fromPayload(response: any): Artist[] {
-    const topArtists = response.items.map((item: any, index: number) => {
+  private fromPayload(response: any, isTrack: boolean): Artist[] | Track[] {
+    const topList = response.items.map((item: any, index: number) => {
+      if (isTrack) {
+        const track = new Track();
+        track.id = item.id;
+        track.trackName = item.name;
+        track.trackImage = item.album.images[0].url;
+        track.artists = item.artists.map(artist => {
+          const artistObj = new Artist();
+          artistObj.id = artist.id;
+          artistObj.artistName = artist.name;
+          artistObj.externalLink = artist.external_urls.spotify;
+          return artistObj;
+        });
+        track.uri = item.uri;
+        return track;
+      }
+
       const artist = new Artist();
       artist.id = item.id;
       artist.artistName = item.name;
@@ -26,7 +43,7 @@ export class TopListsModelService {
       return artist;
     });
 
-    return topArtists;
+    return topList;
   }
 
   /**
@@ -34,11 +51,13 @@ export class TopListsModelService {
    * @param type 
    * @param timeRange 
    */
-  getTopLists(type: string, timeRange: string): Promise<any> {
+  getLists(type: string, timeRange: string): Promise<any> {
     return this.http.get(`${this.spotifyUrl}${type}?time_range=${timeRange}&limit=15`, {
       headers: {
         Authorization: `Bearer ` +  this.storageService.getLocalStorageItem()
       }
-    }).toPromise().then(res => this.fromPayload(res));
+    }).toPromise().then(res => {
+      return this.fromPayload(res, type === 'tracks' ? true : false);
+    });
   }
 }

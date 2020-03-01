@@ -2,16 +2,17 @@ import * as clone from 'clone';
 import * as dayjs from 'dayjs';
 import { Artist } from './artist';
 
-export class RecentlyPlayedTrack {
+export class Track {
   id: string;
   trackName: string;
+  trackImage: string;
   artists: Artist[];
   played: dayjs.Dayjs;
   uri: string;
 
   constructor() {}
 
-  clone(): RecentlyPlayedTrack {
+  clone(): Track {
     return clone(this);
   }
 }

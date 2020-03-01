@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecentlyPlayedService } from 'Shared/services/recently-played.service';
-import { RecentlyPlayedTrack } from 'Shared/classes/recently-played-track';
+import { Track } from 'Shared/classes/track';
 
 @Component({
   selector: 'app-recently-played',
@@ -8,7 +8,7 @@ import { RecentlyPlayedTrack } from 'Shared/classes/recently-played-track';
   styleUrls: ['./recently-played.component.scss']
 })
 export class RecentlyPlayedComponent implements OnInit {
-  tracks: RecentlyPlayedTrack[];
+  tracks: Track[];
 
   constructor(private recentlyPlayedService: RecentlyPlayedService) { }
 
