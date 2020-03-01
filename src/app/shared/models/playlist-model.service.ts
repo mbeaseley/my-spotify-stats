@@ -22,6 +22,7 @@ export class PlaylistModelService {
       playlist.owner.id = item.owner.id;
       playlist.owner.name = item.owner.display_name;
       playlist.owner.uri = item.owner.uri;
+      playlist.collaborative = item.collaborative;
       playlist.uri = item.uri;
       return playlist;
     });

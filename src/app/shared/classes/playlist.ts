@@ -6,6 +6,7 @@ export class Playlist {
   description: string;
   public: boolean;
   owner: User;
+  collaborative: boolean;
   uri: string;
 
   constructor() {}
