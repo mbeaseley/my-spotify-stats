@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { StorageService } from 'Shared/services/storage.service';
-import { Track } from 'Shared/classes/track';
-import { Artist } from 'Shared/classes/artist';
+import { StorageService } from '../services/storage.service';
+import { Track } from '../classes/track';
+import { Artist } from '../classes/artist';
 import * as dayjs from 'dayjs';
 
 @Injectable({

@@ -1,7 +1,26 @@
 <div class="dashboard">
   <div class="dashboard__content-box">
-    <a routerLink="/top-tracks">Top Tracks</a>
-    <a routerLink="/top-artists">Top Artists</a>
-    <a routerLink="/recently-played">Recently Played</a>
+    <h1>Dashboard</h1>
+    <div class="dashboard__grid">
+      <a class="dashboard__grid-item" routerLink="/top-tracks">
+        <div class="dashboard__grid-item-header">Top Tracks</div>
+        <div class="dashboard__grid-item-description">
+          View your most listened tracks and switch between 3 different time periods. Your data is updated approximately everyday.
+        </div>
+      </a>
+      <a class="dashboard__grid-item" routerLink="/top-artists">
+        <div class="dashboard__grid-item-header">Top Artists</div>
+        <div class="dashboard__grid-item-description">
+          View your most listened Artists and switch between 3 different time periods. Your data is updated approximately everyday.
+        </div>
+      </a>
+      <a class="dashboard__grid-item" routerLink="/recently-played">
+        <div class="dashboard__grid-item-header">Top Artists</div>
+        <div class="dashboard__grid-item-description">
+          Check out your recently played tracks with timestamps.
+        </div>
+      </a>
+    </div>
+    
   </div>
 </div>
