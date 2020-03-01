@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TopArtistsService } from 'src/app/shared/services/top-artists.service';
+import { TopListsService } from 'src/app/shared/services/top-lists.service';
 import { Artist } from 'src/app/shared/classes/artist';
 
 @Component({
@@ -11,7 +11,7 @@ export class TopArtistsComponent implements OnInit {
   tabSelected: string;
   artists: Artist[] = [];
 
-  constructor(private topArtistsService: TopArtistsService) { }
+  constructor(private topListsService: TopListsService) { }
 
   /**
    * changes selection of tab and data
@@ -26,7 +26,7 @@ export class TopArtistsComponent implements OnInit {
     const element = document.querySelector(`#${id}`);
     element.classList.add('top-artists__tab-item--active');
     this.tabSelected = element.innerHTML;
-    return this.topArtistsService.topArtists('artists', term).then(artists => this.artists = artists);
+    return this.topListsService.topLists('artists', term).then(artists => this.artists = artists);
   }
 
   /**
@@ -42,7 +42,7 @@ export class TopArtistsComponent implements OnInit {
    */
   ngOnInit(): Promise<void> {
     this.tabSelected = 'Last 4 Weeks'
-    return this.topArtistsService.topArtists('artists', 'short_term').then(artists => this.artists = artists);
+    return this.topListsService.topLists('artists', 'short_term').then(artists => this.artists = artists);
   }
 
 }
