@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlaylistService } from 'src/app/shared/services/playlist.service';
 import { Playlist } from 'src/app/shared/classes/playlist';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-remove-duplicates',
@@ -9,11 +10,25 @@ import { Playlist } from 'src/app/shared/classes/playlist';
 })
 export class RemoveDuplicatesComponent implements OnInit {
   playlists: Playlist[] = [];
+  playlistTracks: any[] = [];
+  form: FormGroup;
 
-  constructor(private playlistService: PlaylistService) { }
+  constructor(private playlistService: PlaylistService) {
+    this.form = new FormGroup({
+      playlist: new FormControl('', {
+        validators: [Validators.required]
+      })
+    })
+  }
+
+  onPlaylistSelected(): Promise<void> {
+    const playlist = this.playlists.find(playlist => playlist.name === 'test');
+    return this.playlistService.getPlaylistTracks(playlist.id).then(tracks => this.playlistTracks = tracks);
+  }
 
   ngOnInit(): Promise<void> {
-    return this.playlistService.getUserPlaylist().then(playlists => this.playlists = playlists);
+    return this.playlistService.getUserPlaylist()
+      .then(playlists => this.playlists = playlists);
   }
 
 }
