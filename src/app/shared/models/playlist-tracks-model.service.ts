@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { StorageService } from '../services/storage.service';
 import { PlaylistTrack } from '../classes/playlist-track';
 import { User } from '../classes/user';
+import { Artist } from 'Shared/classes/artist';
+import { Track } from 'Shared/classes/track';
 
 @Injectable({
   providedIn: 'root'
@@ -13,12 +15,25 @@ export class PlaylistTracksModelService {
   constructor(private storageService: StorageService, private http: HttpClient) {}
 
   private fromPayload(response: any): PlaylistTrack[] {
-    console.log(response);
     const playlistTracks = response.items.map(item => {
-      const track = new PlaylistTrack();
-      track.addedAt = item.added_at;
-      track.addedBy = new User();
-      return track;
+      const tk = new PlaylistTrack();
+      tk.addedAt = item.added_at;
+      tk.addedBy = new User();
+      tk.addedBy.id = item.added_by.id;
+      tk.addedBy.uri = item.added_by.uri;
+      tk.track = new Track();
+      tk.track.id = item.track.id;
+      tk.track.trackName = item.track.name;
+      // Map artist objects
+      tk.track.artists = item.track.artists.map(artist => {
+        const artistObj = new Artist();
+        artistObj.id = artist.id;
+        artistObj.artistName = artist.name;
+        artistObj.externalLink = artist.external_urls.spotify;
+        return artistObj;
+      });
+      tk.track.uri = item.track.uri;
+      return tk;
     });
 
     return playlistTracks;

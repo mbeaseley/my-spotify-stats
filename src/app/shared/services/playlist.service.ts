@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { PlaylistModelService } from '../models/playlist-model.service';
 import { PlaylistTracksModelService } from '../models/playlist-tracks-model.service';
+import { PlaylistTrack } from 'Shared/classes/playlist-track';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +18,9 @@ export class PlaylistService {
 
   getPlaylistTracks(playlistId: string): Promise<any> {
     return this.playlistTracksModel.getPlaylistTracks(playlistId);
+  }
+
+  removeIdenticalTracks(playlistTracks: PlaylistTrack[]): PlaylistTrack[] {
+    console.log(playlistTracks);
   }
 }
