@@ -12,6 +12,7 @@ import { Error } from '../../../shared/classes/error';
 export class TopArtistsComponent implements OnInit {
   tabSelected: string;
   artists: Artist[] = [];
+  loading: boolean = false;
 
   constructor(
     private topListsService: TopListsService,
@@ -30,8 +31,13 @@ export class TopArtistsComponent implements OnInit {
     const element = document.querySelector(`#${id}`);
     element.classList.add('top-artists__tab-item--active');
     this.tabSelected = element.innerHTML;
+
+    this.loading = true;
     return this.topListsService.topLists('artists', term)
-      .then(artists => this.artists = artists)
+      .then((artists: Artist[]) => {
+        this.artists = artists;
+        this.loading = false;
+      })
       .catch(() => {
       const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
       this.errorService.callError('', error);
@@ -50,9 +56,13 @@ export class TopArtistsComponent implements OnInit {
    * On init
    */
   ngOnInit(): Promise<void> {
-    this.tabSelected = 'Last 4 Weeks'
+    this.tabSelected = 'Last 4 Weeks';
+    this.loading = true;
     return this.topListsService.topLists('artists', 'short_term')
-      .then(artists => this.artists = artists)
+      .then((artists: Artist[]) => {
+        this.artists = artists;
+        this.loading = false;
+      })
       .catch(() => {
         const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
         this.errorService.callError('', error);

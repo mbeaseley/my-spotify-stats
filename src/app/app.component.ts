@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   showNav: boolean;
   errorMessage: ErrorHandler;
+  loading: boolean = true;
 
   constructor(private router: Router) {}
 

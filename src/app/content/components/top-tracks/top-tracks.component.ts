@@ -13,10 +13,11 @@ import { Router } from '@angular/router';
 export class TopTracksComponent implements OnInit {
   tabSelected: string;
   tracks: Track[] = [];
+  loading: boolean = false;
 
   constructor(
-    private topListsService: TopListsService, 
-    private errorService: ErrorService, 
+    private topListsService: TopListsService,
+    private errorService: ErrorService,
     private router: Router) { }
 
   onClick(term: string, id: string): void {
@@ -27,12 +28,17 @@ export class TopTracksComponent implements OnInit {
     const element = document.querySelector(`#${id}`);
     element.classList.add('top-tracks__tab-item--active');
     this.tabSelected = element.innerHTML;
+
+    this.loading = true;
     return this.topListsService.topLists('tracks', term)
-      .then(tracks => this.tracks = tracks)
+    .then((tracks: Track[]) => {
+        this.tracks = tracks;
+        this.loading = false;
+      })
       .catch(() => {
       const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
       this.errorService.callError('', error);
-    });;
+    });
   }
 
   /**
@@ -44,9 +50,13 @@ export class TopTracksComponent implements OnInit {
   }
 
   ngOnInit(): Promise<void> {
-    this.tabSelected = 'Last 4 Weeks'
+    this.tabSelected = 'Last 4 Weeks';
+    this.loading = true;
     return this.topListsService.topLists('tracks', 'short_term')
-      .then(tracks => this.tracks = tracks)
+      .then((tracks: Track[]) => {
+        this.tracks = tracks;
+        this.loading = false;
+      })
       .catch(() => {
         const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
         this.errorService.callError('', error);

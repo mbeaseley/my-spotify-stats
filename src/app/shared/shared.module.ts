@@ -7,6 +7,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { JoinArrayPipe } from './pipes/join-array.pipe';
 import { LocaleDatePipe } from './pipes/locale-date.pipe';
 import { ErrorHandleComponent } from './components/error-handle/error-handle.component';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ErrorHandleComponent } from './components/error-handle/error-handle.com
     NavComponent,
     JoinArrayPipe,
     LocaleDatePipe,
-    ErrorHandleComponent
+    ErrorHandleComponent,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -25,12 +27,14 @@ import { ErrorHandleComponent } from './components/error-handle/error-handle.com
     NavComponent,
     ErrorHandleComponent,
     JoinArrayPipe,
-    LocaleDatePipe
+    LocaleDatePipe,
+    LoadingSpinnerComponent
   ],
   entryComponents: [
     FooterComponent,
     NavComponent,
-    ErrorHandleComponent
+    ErrorHandleComponent,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

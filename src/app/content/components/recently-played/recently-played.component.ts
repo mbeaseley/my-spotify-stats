@@ -11,6 +11,7 @@ import { Error } from '../../../shared/classes/error';
 })
 export class RecentlyPlayedComponent implements OnInit {
   tracks: Track[];
+  loading: boolean = false;
 
   constructor(
     private recentlyPlayedService: RecentlyPlayedService,
@@ -28,8 +29,13 @@ export class RecentlyPlayedComponent implements OnInit {
    * On Init
    */
   ngOnInit(): Promise<void> {
+    this.loading = true;
     return this.recentlyPlayedService.getRecentlyPlayedSong()
-      .then(tracks => this.tracks = tracks).catch(() => {
+      .then(tracks => {
+        this.tracks = tracks;
+        this.loading = false;
+      })
+      .catch(() => {
         const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
         this.errorService.callError('', error);
       });
