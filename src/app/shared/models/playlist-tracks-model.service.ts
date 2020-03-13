@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { StorageService } from '../services/storage.service';
 import { PlaylistTrack } from '../classes/playlist-track';
 import { User } from '../classes/user';
@@ -47,5 +47,25 @@ export class PlaylistTracksModelService {
     }).toPromise().then(res => {
       return this.fromPayload(res);
     });
+  }
+
+  private params(playlistTrack: PlaylistTrack, playlistTrackIndex?: number): any {
+    return [
+      {
+        uri: playlistTrack.track.id,
+        positions: [playlistTrackIndex]
+      }
+    ];
+  }
+
+  deletePlaylistTrack(playlistId: string, playlistTrack: PlaylistTrack, playlistTrackIndex?: number): Promise<any> {
+    return this.http.delete(`${this.spotifyUrl}${playlistId}/tracks`, {
+      headers: {
+        Authorization: `Bearer ` +  this.storageService.getLocalStorageItem(),
+        Accept: 'application/json',
+        ContentTypes: 'application/json'
+      },
+      params: {tracks: JSON.stringify(this.params(playlistTrack, playlistTrackIndex))}
+    }).toPromise();
   }
 }

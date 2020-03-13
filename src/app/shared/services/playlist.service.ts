@@ -20,7 +20,32 @@ export class PlaylistService {
     return this.playlistTracksModel.getPlaylistTracks(playlistId);
   }
 
-  removeIdenticalTracks(playlistTracks: PlaylistTrack[]): PlaylistTrack[] {
-    console.log(playlistTracks);
+  deleteTrackFromPlaylist(playlistId: string, playlistTrack: PlaylistTrack, playlistTrackIndex: number): Promise<any> {
+    return this.playlistTracksModel.deletePlaylistTrack(playlistId, playlistTrack, playlistTrackIndex);
+  }
+
+  removeIdenticalTracks(playlistId: string, playlistTracks: PlaylistTrack[]): PlaylistTrack[] {
+    let tracks = playlistTracks.map(track => track.track.id);
+    tracks = Array.from(new Set(tracks));
+
+    let removeTracks = tracks.map(tk => {
+      const plistTracks = playlistTracks.slice();
+      return plistTracks.filter(t => tk === t.track.id);
+    });
+
+    removeTracks = removeTracks.filter(tk => tk.length !== 1);
+    removeTracks.forEach(tks => {
+      const tracksIndex = tks.slice();
+      console.log('length', tracksIndex);
+      tks.forEach((track, i) => {
+        console.log('Size', tracksIndex);
+        if (tracksIndex.length > 1) {
+          tracksIndex.splice(i, 1);
+          return this.deleteTrackFromPlaylist(playlistId, track, i).then(console.log);
+        }
+      });
+    });
+
+    return null;
   }
 }
