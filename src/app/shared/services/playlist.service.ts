@@ -36,9 +36,7 @@ export class PlaylistService {
     removeTracks = removeTracks.filter(tk => tk.length !== 1);
     removeTracks.forEach(tks => {
       const tracksIndex = tks.slice();
-      console.log('length', tracksIndex);
       tks.forEach((track, i) => {
-        console.log('Size', tracksIndex);
         if (tracksIndex.length > 1) {
           tracksIndex.splice(i, 1);
           return this.deleteTrackFromPlaylist(playlistId, track, i).then(console.log);

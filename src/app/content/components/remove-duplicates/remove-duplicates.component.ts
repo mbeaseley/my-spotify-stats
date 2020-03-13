@@ -23,7 +23,6 @@ export class RemoveDuplicatesComponent implements OnInit {
 
   onPlaylistSelected(): Promise<void> {
     const playlist = this.playlists.find(plist => plist.name === 'test');
-    console.log(playlist.id);
     return this.playlistService.getPlaylistTracks(playlist.id).then(tracks => {
       this.playlistTracks = tracks;
       return this.playlistService.removeIdenticalTracks(playlist.id, this.playlistTracks);
