@@ -1,1 +1,15 @@
-<p>top-artists works!</p>
+<div class="top-artists">
+  <h1>Top Artists ({{tabSelected}})</h1>
+  <div class="top-artists__tabs">
+    <button id="top-artists-short" class="top-artists__tab-item top-artists__tab-item--active" (click)="onClick('short_term', 'top-artists-short')">Last 4 Weeks</button>
+    <button id="top-artists-mid" class="top-artists__tab-item" (click)="onClick('medium_term', 'top-artists-mid')">Last 6 Months</button>
+    <button id="top-artists-long" class="top-artists__tab-item" (click)="onClick('long_term', 'top-artists-long')">All Time</button>
+  </div>
+  <div class="top-artists__leaderboard">
+    <a *ngFor="let artist of artists" class="top-artists__leaderboard-item" (click)="onArtistClick(artist.externalLink)">
+      <img [src]="artist.artistImage">
+      <p>{{artist.order}}.{{artist.artistName}}</p>
+    </a>
+  </div>
+</div>
+<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner>

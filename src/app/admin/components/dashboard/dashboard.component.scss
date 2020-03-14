@@ -6,26 +6,54 @@
   margin: 80px auto 40px;
 
   &__content-box {
-    background-color: $grey4;
-    border: 1px solid $white;
-    min-height: 200px;
+    margin: $space;
 
-    & > a  {
-      display: inline-block;
-      border-radius: 999rem;
-      padding: 10px 30px;
-      background-color: $green;
-      border: none;
-      color: $white;
-      font-size: 14px;
-      outline: none;
-      margin: 10px;
-      text-decoration: none;
-      cursor: pointer;
+    & > h1 {
+      font-size: 36px;
 
-      &:hover {
-        background-color: $light-green;
+      @media (max-width: $small-breakpoint) {
+        font-size: 32px;
       }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: $space-sm;
+
+    @media (max-width: $small-breakpoint) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__grid-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: $green;
+    color: $white;
+    padding: $space-m;
+    height: 200px;
+    text-decoration: none;
+
+    &:hover {
+      background: $light-green;
+    }
+
+    & > &-header {
+      @extend %heading;
+      font-size: 32px;
+      font-weight: 700;
+
+      @media (max-width: $small-breakpoint) {
+        font-size: 28px;
+      }
+    }
+
+    & > &-description {
+      @extend %base;
+      min-height: 72px;
     }
   }
 }

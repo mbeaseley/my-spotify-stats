@@ -1,8 +1,10 @@
 @import '_variables';
 
 .recently-played {
-  min-height: 94vh;
-  max-width: 1140px;
+  display: flex;
+  justify-content: center;
+  min-height: 88vh;
+  max-width: 1000px;
   margin: 66px auto 24px;
 
   @media (max-width: $small-breakpoint) {
@@ -10,9 +12,10 @@
   }
 
   &__table {
-    width: 100%;
+    margin: 0 $space;
     border-spacing: 0;
     line-height: 1.35;
+    width: 100%;
   }
 
   &__table-header {

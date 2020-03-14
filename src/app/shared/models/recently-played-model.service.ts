@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { StorageService } from 'Shared/services/storage.service';
-import { RecentlyPlayedTrack } from 'Shared/classes/recently-played-track';
-import { Artist } from 'Shared/classes/artist';
+import { StorageService } from '../services/storage.service';
+import { Track } from '../classes/track';
+import { Artist } from '../classes/artist';
 import * as dayjs from 'dayjs';
 
 @Injectable({
@@ -13,23 +13,23 @@ export class RecentlyPlayedModelService {
 
   constructor(private storageService: StorageService, private http: HttpClient) { }
 
-  fromPayload(res: any): RecentlyPlayedTrack[] {
+  private fromPayload(res: any): Track[] {
     const recentlyPlayedTracks = res.items.map(item => {
-      const track = new RecentlyPlayedTrack();
-      track.id = item.track.id;
-      track.trackName = item.track.name;
+      const tk = new Track();
+      tk.id = item.track.id;
+      tk.trackName = item.track.name;
       // Map artist objects
-      track.artists = item.track.artists.map(artist => {
+      tk.artists = item.track.artists.map(artist => {
         const artistObj = new Artist();
         artistObj.id = artist.id;
         artistObj.artistName = artist.name;
         artistObj.externalLink = artist.external_urls.spotify;
         return artistObj;
       });
-      track.played = dayjs(item.played_at);
-      track.uri = item.track.uri;
+      tk.played = dayjs(item.played_at);
+      tk.uri = item.track.uri;
 
-      return track;
+      return tk;
     });
 
     return recentlyPlayedTracks;

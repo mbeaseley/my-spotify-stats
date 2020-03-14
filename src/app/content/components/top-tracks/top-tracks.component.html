@@ -1,1 +1,17 @@
-<p>top-tracks works!</p>
+<div class="top-tracks">
+  <h1>Top Tracks ({{tabSelected}})</h1>
+  <div class="top-tracks__tabs">
+    <button id="top-tracks-short" class="top-tracks__tab-item top-tracks__tab-item--active" (click)="onClick('short_term', 'top-tracks-short')">Last 4 Weeks</button>
+    <button id="top-tracks-mid" class="top-tracks__tab-item" (click)="onClick('medium_term', 'top-tracks-mid')">Last 6 Months</button>
+    <button id="top-tracks-long" class="top-tracks__tab-item" (click)="onClick('long_term', 'top-tracks-long')">All Time</button>
+  </div>
+  <table class="top-tracks__leaderboard">
+    <tr *ngFor="let track of tracks; let i = index" class="top-tracks__leaderboard-row" (click)="onTrackClick(track.uri)">
+      <td>{{i+1}}</td>
+      <td><img [src]="track.trackImage"></td>
+      <td>{{track.trackName}}</td>
+      <td>{{track.artists | joinArray}}</td>
+    </tr>
+  </table>
+</div>
+<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner>

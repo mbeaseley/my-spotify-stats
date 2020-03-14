@@ -1,0 +1,4 @@
+<div *ngIf="title || message" class="error-handle">
+  <div *ngIf="title" class="error-handle__title">{{title}}</div>
+  <div *ngIf="message" class="error-handle__message">{{message}}</div>
+</div>
