@@ -1,5 +1,6 @@
 import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'Environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {
-      this.showNav = (window.location.pathname !== '/');
+      this.showNav = (window.location.pathname !== environment.route);
     });
   }
 }

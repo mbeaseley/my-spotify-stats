@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthoriseService } from 'Shared/services/authorise.service';
+import { environment } from 'Environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -7,6 +8,7 @@ import { AuthoriseService } from 'Shared/services/authorise.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  logo: string = `${environment.route}assets/img/spotifytool.png`;
 
   constructor(private auth: AuthoriseService) { }
 

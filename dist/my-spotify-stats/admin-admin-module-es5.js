@@ -340,7 +340,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var Shared_services_authorise_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    var Environments_environment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! Environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var Shared_services_authorise_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! Shared/services/authorise.service */
     "./src/app/shared/services/authorise.service.ts");
 
@@ -351,6 +357,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         _classCallCheck(this, LoginComponent);
 
         this.auth = auth;
+        this.logo = "".concat(Environments_environment__WEBPACK_IMPORTED_MODULE_1__["environment"].route, "assets/img/spotifytool.png");
       }
       /**
        * on click
@@ -375,15 +382,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }();
 
     LoginComponent.ɵfac = function LoginComponent_Factory(t) {
-      return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](Shared_services_authorise_service__WEBPACK_IMPORTED_MODULE_1__["AuthoriseService"]));
+      return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](Shared_services_authorise_service__WEBPACK_IMPORTED_MODULE_2__["AuthoriseService"]));
     };
 
     LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({
       type: LoginComponent,
       selectors: [["app-login"]],
       decls: 7,
-      vars: 0,
-      consts: [[1, "login"], [1, "login__container"], ["src", "/my-spotify-stats/assets/img/spotifytool.png", 1, "login__logo"], [1, "login__cta", 3, "click"]],
+      vars: 1,
+      consts: [[1, "login"], [1, "login__container"], [1, "login__logo", 3, "src"], [1, "login__cta", 3, "click"]],
       template: function LoginComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
@@ -412,6 +419,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         }
+
+        if (rf & 2) {
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+
+          _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("src", ctx.logo, _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+        }
       },
       styles: [".login[_ngcontent-%COMP%] {\n  background-color: #000;\n  width: 100vw;\n  height: 97vh;\n}\n.login__container[_ngcontent-%COMP%] {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  max-width: 500px;\n  padding: 20px;\n  border: 1px solid #fff;\n  color: #fff;\n  text-align: center;\n}\n.login__logo[_ngcontent-%COMP%] {\n  max-width: 200px;\n  max-height: 200px;\n  padding: 10px;\n}\n.login__cta[_ngcontent-%COMP%] {\n  display: inline-block;\n  border-radius: 999rem;\n  padding: 10px 30px;\n  background-color: #1db954;\n  border: none;\n  color: #fff;\n  font-size: 14px;\n  outline: none;\n  margin: 10px;\n  text-decoration: none;\n  cursor: pointer;\n}\n.login__cta[_ngcontent-%COMP%]:hover {\n  background-color: #38e775;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9taWNoYWVsYmVhc2VsZXkvRG9jdW1lbnRzL3dvcmtzcGFjZS9wZXJzb25hbC9teS1zcG90aWZ5LXN0YXRzL3NyYy9hcHAvYWRtaW4vY29tcG9uZW50cy9sb2dpbi9sb2dpbi5jb21wb25lbnQuc2NzcyIsIi9Vc2Vycy9taWNoYWVsYmVhc2VsZXkvRG9jdW1lbnRzL3dvcmtzcGFjZS9wZXJzb25hbC9teS1zcG90aWZ5LXN0YXRzL3NyYy9hc3NldHMvc3R5bGVzL3ZhcmlhYmxlcy9fY29sb3JzLnNjc3MiLCJzcmMvYXBwL2FkbWluL2NvbXBvbmVudHMvbG9naW4vbG9naW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBRUE7RUFDRSxzQkNHTTtFREZOLFlBQUE7RUFDQSxZQUFBO0FFREY7QUZHRTtFQUNFLGVBQUE7RUFDQSxRQUFBO0VBQ0EsU0FBQTtFQUNBLHdDQUFBO1VBQUEsZ0NBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtFQUNBLFdDZEk7RURlSixrQkFBQTtBRURKO0FGSUU7RUFDRSxnQkFBQTtFQUNBLGlCQUFBO0VBQ0EsYUFBQTtBRUZKO0FGS0U7RUFDRSxxQkFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSx5QkNwQkk7RURxQkosWUFBQTtFQUNBLFdDOUJJO0VEK0JKLGVBQUE7RUFDQSxhQUFBO0VBQ0EsWUFBQTtFQUNBLHFCQUFBO0VBQ0EsZUFBQTtBRUhKO0FGS0k7RUFDRSx5QkM3QlE7QUMwQmQiLCJmaWxlIjoic3JjL2FwcC9hZG1pbi9jb21wb25lbnRzL2xvZ2luL2xvZ2luLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQGltcG9ydCAnX3ZhcmlhYmxlcyc7XG5cbi5sb2dpbiB7XG4gIGJhY2tncm91bmQtY29sb3I6ICRibGFjaztcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDk3dmg7XG5cbiAgJl9fY29udGFpbmVyIHtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIG1heC13aWR0aDogNTAwcHg7XG4gICAgcGFkZGluZzogMjBweDtcbiAgICBib3JkZXI6IDFweCBzb2xpZCAkd2hpdGU7XG4gICAgY29sb3I6ICR3aGl0ZTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIH1cblxuICAmX19sb2dvIHtcbiAgICBtYXgtd2lkdGg6IDIwMHB4OyBcbiAgICBtYXgtaGVpZ2h0OiAyMDBweDtcbiAgICBwYWRkaW5nOiAxMHB4O1xuICB9XG5cbiAgJl9fY3RhIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gICAgYm9yZGVyLXJhZGl1czogOTk5cmVtO1xuICAgIHBhZGRpbmc6IDEwcHggMzBweDtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAkZ3JlZW47XG4gICAgYm9yZGVyOiBub25lO1xuICAgIGNvbG9yOiAkd2hpdGU7XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIG91dGxpbmU6IG5vbmU7XG4gICAgbWFyZ2luOiAxMHB4O1xuICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG5cbiAgICAmOmhvdmVyIHtcbiAgICAgIGJhY2tncm91bmQtY29sb3I6ICRsaWdodC1ncmVlbjtcbiAgICB9XG4gIH1cbn0iLCIvLyBCbGFjay93aGl0ZSBzY2FsZVxuJHdoaXRlOiAjZmZmO1xuJGdyZXkxOiAjYjRiNGI0O1xuJGdyZXkyOiAjNDI0MjQyO1xuJGdyZXkzOiAjNjM2MzYzO1xuJGdyZXk0OiAjMWIxYjFiO1xuJGJsYWNrOiAjMDAwO1xuXG4vLyBjb2xvcnNcbiRncmVlbjogIzFkYjk1NDtcbiRsaWdodC1ncmVlbjogIzM4ZTc3NTtcblxuJHJlZDogI2NjMDAwMDsiLCIubG9naW4ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMDAwO1xuICB3aWR0aDogMTAwdnc7XG4gIGhlaWdodDogOTd2aDtcbn1cbi5sb2dpbl9fY29udGFpbmVyIHtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDUwJTtcbiAgbGVmdDogNTAlO1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbiAgbWF4LXdpZHRoOiA1MDBweDtcbiAgcGFkZGluZzogMjBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgI2ZmZjtcbiAgY29sb3I6ICNmZmY7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbi5sb2dpbl9fbG9nbyB7XG4gIG1heC13aWR0aDogMjAwcHg7XG4gIG1heC1oZWlnaHQ6IDIwMHB4O1xuICBwYWRkaW5nOiAxMHB4O1xufVxuLmxvZ2luX19jdGEge1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIGJvcmRlci1yYWRpdXM6IDk5OXJlbTtcbiAgcGFkZGluZzogMTBweCAzMHB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMWRiOTU0O1xuICBib3JkZXI6IG5vbmU7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250LXNpemU6IDE0cHg7XG4gIG91dGxpbmU6IG5vbmU7XG4gIG1hcmdpbjogMTBweDtcbiAgdGV4dC1kZWNvcmF0aW9uOiBub25lO1xuICBjdXJzb3I6IHBvaW50ZXI7XG59XG4ubG9naW5fX2N0YTpob3ZlciB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzOGU3NzU7XG59Il19 */"]
     });
@@ -427,7 +440,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }]
       }], function () {
         return [{
-          type: Shared_services_authorise_service__WEBPACK_IMPORTED_MODULE_1__["AuthoriseService"]
+          type: Shared_services_authorise_service__WEBPACK_IMPORTED_MODULE_2__["AuthoriseService"]
         }];
       }, null);
     })();

@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import { AuthoriseService } from '../../services/authorise.service';
+import { environment } from 'Environments/environment';
 
 @Component({
   selector: 'app-nav',
@@ -11,6 +12,8 @@ export class NavComponent implements OnInit {
 
   visible: boolean;
   showMenu: boolean;
+  logo: string = `${environment.route}assets/img/spotifytool.png`;
+  menu: string = `${environment.route}assets/img/menu.svg`;
 
   constructor(private auth: AuthoriseService) { }
 
