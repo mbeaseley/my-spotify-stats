@@ -1,11 +1,11 @@
 <div *ngIf="show" class="nav">
   <div class="nav__navbar">
     <a class="nav__logo" routerLink="dashboard">
-      <img src="/assets/img/spotifytool.png" width="30" height="30" alt="">
+      <img src="/my-spotify-stats/assets/img/spotifytool.png" width="30" height="30" alt="">
       <span>My Spotify Stats</span>
     </a>
     <button *ngIf="visible" class="nav__collapse" type="button" (click)="onMenuShow()">
-      <img src="/assets/img/menu.svg">
+      <img src="/my-spotify-stats/assets/img/menu.svg">
     </button>
     <div class="nav__navbar-items" [ngClass]="(showMenu) ? 'nav__navbar-items--show': 'nav__navbar-items--hide'">
       <a class="nav__navbar-item" routerLink="top-tracks" routerLinkActive="active">Top Tracks</a>
