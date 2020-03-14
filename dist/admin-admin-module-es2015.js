@@ -157,7 +157,7 @@ class LoginComponent {
     }
 }
 LoginComponent.ɵfac = function LoginComponent_Factory(t) { return new (t || LoginComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](Shared_services_authorise_service__WEBPACK_IMPORTED_MODULE_1__["AuthoriseService"])); };
-LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 7, vars: 0, consts: [[1, "login"], [1, "login__container"], ["src", "/assets/img/spotifytool.png", 1, "login__logo"], [1, "login__cta", 3, "click"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
+LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: LoginComponent, selectors: [["app-login"]], decls: 7, vars: 0, consts: [[1, "login"], [1, "login__container"], ["src", "/my-spotify-stats/assets/img/spotifytool.png", 1, "login__logo"], [1, "login__cta", 3, "click"]], template: function LoginComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "img", 2);

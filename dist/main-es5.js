@@ -533,7 +533,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       },
       decls: 16,
       vars: 2,
-      consts: [[1, "nav"], [1, "nav__navbar"], ["routerLink", "dashboard", 1, "nav__logo"], ["src", "/assets/img/spotifytool.png", "width", "30", "height", "30", "alt", ""], ["class", "nav__collapse", "type", "button", 3, "click", 4, "ngIf"], [1, "nav__navbar-items", 3, "ngClass"], ["routerLink", "top-tracks", "routerLinkActive", "active", 1, "nav__navbar-item"], ["routerLink", "top-artists", "routerLinkActive", "active", 1, "nav__navbar-item"], ["routerLink", "recently-played", "routerLinkActive", "active", 1, "nav__navbar-item"], [1, "nav__navbar-item", "nav__navbar-item--end", 3, "click"], ["type", "button", 1, "nav__collapse", 3, "click"], ["src", "/assets/img/menu.svg"]],
+      consts: [[1, "nav"], [1, "nav__navbar"], ["routerLink", "dashboard", 1, "nav__logo"], ["src", "/my-spotify-stats/assets/img/spotifytool.png", "width", "30", "height", "30", "alt", ""], ["class", "nav__collapse", "type", "button", 3, "click", 4, "ngIf"], [1, "nav__navbar-items", 3, "ngClass"], ["routerLink", "top-tracks", "routerLinkActive", "active", 1, "nav__navbar-item"], ["routerLink", "top-artists", "routerLinkActive", "active", 1, "nav__navbar-item"], ["routerLink", "recently-played", "routerLinkActive", "active", 1, "nav__navbar-item"], [1, "nav__navbar-item", "nav__navbar-item--end", 3, "click"], ["type", "button", 1, "nav__collapse", 3, "click"], ["src", "/my-spotify-stats/assets/img/menu.svg"]],
       template: function NavComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);

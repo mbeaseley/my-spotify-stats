@@ -315,7 +315,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       selectors: [["app-login"]],
       decls: 7,
       vars: 0,
-      consts: [[1, "login"], [1, "login__container"], ["src", "/assets/img/spotifytool.png", 1, "login__logo"], [1, "login__cta", 3, "click"]],
+      consts: [[1, "login"], [1, "login__container"], ["src", "/my-spotify-stats/assets/img/spotifytool.png", 1, "login__logo"], [1, "login__cta", 3, "click"]],
       template: function LoginComponent_Template(rf, ctx) {
         if (rf & 1) {
           _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
