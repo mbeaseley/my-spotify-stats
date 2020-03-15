@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'Environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,8 +24,8 @@ export class AuthoriseModelService {
 
 
   constructor() {
-    this.clientId = 'c4e731729dd1416cb79d243310c9e4e5';
-    this.redirectUri = `${location.href}dashboard`;
+    this.clientId = environment.clientID;
+    this.redirectUri = `${location.href}callback`;
    }
 
    /**

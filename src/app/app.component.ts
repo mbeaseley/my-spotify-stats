@@ -1,6 +1,7 @@
 import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'Environments/environment';
+import { StorageService } from 'Shared/services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -12,11 +13,11 @@ export class AppComponent implements OnInit {
   errorMessage: ErrorHandler;
   loading: boolean = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private storageService: StorageService) {}
 
   ngOnInit(): void {
     this.router.events.subscribe(() => {
-      this.showNav = (window.location.pathname !== environment.route);
+      this.showNav = !!this.storageService.getLocalStorageItem()?.length;
     });
   }
 }

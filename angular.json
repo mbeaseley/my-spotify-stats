@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "deployUrl": "",
             "outputPath": "dist/my-spotify-stats",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -25,7 +26,11 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets", {
+                "glob": "**/*",
+                "input": "app/resources",
+                "output": "/my-spotify-stats/resources"
+              }
             ],
             "styles": [
               "src/assets/styles/styles.scss"
@@ -39,6 +44,14 @@
           },
           "configurations": {
             "production": {
+              "deployUrl": "/my-spotify-stats/",
+              "assets": [  
+                {  
+                  "glob": "**/*",  
+                  "input": "app/resources",  
+                  "output": "/resources"  
+                }  
+              ],  
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  route: '/'
+  route: '/',
+  clientID: 'c4e731729dd1416cb79d243310c9e4e5'
 };
 
 /*
