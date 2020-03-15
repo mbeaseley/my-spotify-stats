@@ -1,9 +1,0 @@
-@import '_variables.scss';
-
-body {
-  @extend %base;
-  background-color: $black;
-  color: $white;
-  margin: 0;
-  touch-action: manipulation;
-}
