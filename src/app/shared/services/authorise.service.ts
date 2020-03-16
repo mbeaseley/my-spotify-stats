@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AuthoriseModelService } from '../models/authorise-model.service';
 import { StorageService } from './storage.service';
+import { environment } from 'Environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthoriseService {
    */
   logOut(): void {
     this.storageService.removeLocalStorageItem('access-token');
-    window.location.href = '/';
+    window.location.href = environment.route;
   }
 
   /**

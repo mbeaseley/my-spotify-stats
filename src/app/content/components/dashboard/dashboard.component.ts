@@ -50,7 +50,7 @@ export class DashboardComponent implements OnInit {
     if (document.location.href.indexOf('#') > -1) {
       const accessTokenInUrl = this.getAccessTokenFromUrl(location.hash);
       this.storageService.setLocalStorageItem('access-token', accessTokenInUrl);
-      document.location.href = '';
+      document.location.href = environment.route;
     }
   }
 

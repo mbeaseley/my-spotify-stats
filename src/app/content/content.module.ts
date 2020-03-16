@@ -9,11 +9,10 @@ import { TopTracksComponent } from './components/top-tracks/top-tracks.component
 import { TopArtistsComponent } from './components/top-artists/top-artists.component';
 import { RemoveDuplicatesComponent } from './components/remove-duplicates/remove-duplicates.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HasLoggedInGuard } from './routing/has-logged-in.guard';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'callback', component: DashboardComponent, canActivate: [HasLoggedInGuard] },
+  { path: 'callback', redirectTo: '' },
   { path: 'top-tracks', component: TopTracksComponent },
   { path: 'top-artists', component: TopArtistsComponent },
   { path: 'recently-played', component: RecentlyPlayedComponent },

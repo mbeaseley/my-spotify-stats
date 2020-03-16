@@ -25,7 +25,7 @@ export class AuthoriseModelService {
 
   constructor() {
     this.clientId = environment.clientID;
-    this.redirectUri = `${location.href}callback`;
+    this.redirectUri = `${location.href}`;
    }
 
    /**
