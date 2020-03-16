@@ -40,8 +40,12 @@ export class DashboardComponent implements OnInit {
    * On init
    */
   ngOnInit(): void {
-    const accessToken = this.storageService.getLocalStorageItem()
+    // Handle github reload issue
+    if (performance.navigation.type === 1) {
+      document.location.href = environment.route;
+    }
 
+    const accessToken = this.storageService.getLocalStorageItem();
     if (accessToken?.length) {
       this.userService.getUser().then(user => this.user = user);
       this.login = true;

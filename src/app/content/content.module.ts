@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'top-artists', component: TopArtistsComponent, pathMatch: 'full' },
   { path: 'recently-played', component: RecentlyPlayedComponent, pathMatch: 'full' },
   { path: 'remove-duplicates', component: RemoveDuplicatesComponent, pathMatch: 'full' },
+  { path: '**', component: DashboardComponent }
 ];
 
 @NgModule({
