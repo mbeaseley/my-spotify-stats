@@ -2,7 +2,7 @@
   <!-- Login Container -->
   <div *ngIf="!login" class="dashboard__login">
     <div class="dashboard__login-container">
-      <img class="dashboard__login-logo" [src]="logo">
+      <img class="dashboard__login-logo" [lazyLoad]="logo">
       <p>Log in with your Spotify account to gain access to many useful tools for your music needs.</p>
       <a class="dashboard__login-cta" (click)="onClick()">Login</a>
     </div>

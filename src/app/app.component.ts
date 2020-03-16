@@ -1,6 +1,5 @@
 import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'Environments/environment';
 import { StorageService } from 'Shared/services/storage.service';
 
 @Component({

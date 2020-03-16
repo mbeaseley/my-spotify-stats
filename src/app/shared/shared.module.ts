@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -20,7 +21,10 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    LazyLoadImageModule.forRoot({
+      preset: scrollPreset
+    })
   ],
   exports: [
     FooterComponent,
