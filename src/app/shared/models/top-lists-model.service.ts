@@ -14,7 +14,7 @@ export class TopListsModelService {
 
   /**
    * payload response format
-   * @param response 
+   * @param response
    */
   private fromPayload(response: any, isTrack: boolean): Artist[] | Track[] {
     const topList = response.items.map((item: any, index: number) => {
@@ -23,11 +23,11 @@ export class TopListsModelService {
         track.id = item.id;
         track.trackName = item.name;
         track.trackImage = item.album.images[0].url;
-        track.artists = item.artists.map(artist => {
+        track.artists = item.artists.map(a => {
           const artistObj = new Artist();
-          artistObj.id = artist.id;
-          artistObj.artistName = artist.name;
-          artistObj.externalLink = artist.external_urls.spotify;
+          artistObj.id = a.id;
+          artistObj.artistName = a.name;
+          artistObj.externalLink = a.external_urls.spotify;
           return artistObj;
         });
         track.uri = item.uri;
@@ -48,11 +48,11 @@ export class TopListsModelService {
 
   /**
    * get top lists either artists or tracks
-   * @param type 
-   * @param timeRange 
+   * @param type
+   * @param timeRange
    */
   getLists(type: string, timeRange: string): Promise<any> {
-    return this.http.get(`${this.spotifyUrl}${type}?time_range=${timeRange}&limit=15`, {
+    return this.http.get(`${this.spotifyUrl}${type}?time_range=${timeRange}&limit=50`, {
       headers: {
         Authorization: `Bearer ` +  this.storageService.getLocalStorageItem()
       }

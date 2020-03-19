@@ -7,7 +7,7 @@
   </div>
   <div class="top-artists__leaderboard">
     <a *ngFor="let artist of artists" class="top-artists__leaderboard-item" (click)="onArtistClick(artist.externalLink)">
-      <img [src]="artist.artistImage">
+      <img [lazyLoad]="artist.artistImage">
       <p>{{artist.order}}.{{artist.artistName}}</p>
     </a>
   </div>

@@ -27,6 +27,6 @@ export class StorageService {
   }
 
   removeLocalStorageItem(tokenName?: string): void {
-    localStorage.removeItem(tokenName);
+    localStorage.removeItem(tokenName || 'access-token');
   }
 }

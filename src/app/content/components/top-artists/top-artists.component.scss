@@ -60,7 +60,10 @@
   &__leaderboard-item {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     width: 100%;
+    min-height: 250px;
+    background-color: $grey4;
     cursor: pointer;
 
     &:hover {

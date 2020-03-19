@@ -1,0 +1,24 @@
+@import '_variables';
+
+ .profile {
+  display: grid;
+  justify-content: center; 
+
+  &__image {
+    border-radius: 140px;
+    margin-bottom: $space-sm;
+  }
+
+  &__table {
+    @extend %base;
+    margin: $space-xs 0;
+
+    span {
+      display: inline-block;
+      text-align: right;
+      font-weight: $font-weight--bold;
+      width: 108px;
+      margin-right: $space-sm;
+    }
+  }
+}

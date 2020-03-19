@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -8,6 +9,7 @@ import { JoinArrayPipe } from './pipes/join-array.pipe';
 import { LocaleDatePipe } from './pipes/locale-date.pipe';
 import { ErrorHandleComponent } from './components/error-handle/error-handle.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -16,11 +18,15 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     JoinArrayPipe,
     LocaleDatePipe,
     ErrorHandleComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    LazyLoadImageModule.forRoot({
+      preset: scrollPreset
+    })
   ],
   exports: [
     FooterComponent,
@@ -28,13 +34,15 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
     ErrorHandleComponent,
     JoinArrayPipe,
     LocaleDatePipe,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ProfileComponent
   ],
   entryComponents: [
     FooterComponent,
     NavComponent,
     ErrorHandleComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    ProfileComponent
   ]
 })
 export class SharedModule { }

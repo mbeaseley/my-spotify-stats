@@ -12,10 +12,24 @@ export class ErrorService {
 
   constructor(private router: Router) { }
 
+  /**
+   * get error value
+   */
+  getError(): Error {
+    return this.updateError.getValue();
+  }
+
+  /**
+   * Update error object
+   * @param error
+   */
   updateErrorObject(error: Error): void {
     this.updateError.next(error);
   }
 
+  /**
+   * Set error and go to route
+   */
   callError(route: string, error: Error): void {
     this.updateErrorObject(error);
     this.router.navigate([route]);
