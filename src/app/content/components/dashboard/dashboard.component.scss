@@ -61,14 +61,24 @@
     }
   }
 
-  &__menu-grid {
+  &__container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: $space-sm;
+    grid-gap: $space-ml;
+    grid-template-columns: 1fr 1fr;
 
     @media (max-width: $small-breakpoint) {
       grid-template-columns: 1fr;
     }
+  }
+
+  // &__profile {
+  //   background-color: $grey4;
+  // }
+
+  &__menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: $space-sm;
   }
 
   &__menu-grid-item {

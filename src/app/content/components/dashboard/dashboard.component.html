@@ -10,27 +10,33 @@
 
   <div *ngIf="login" class="dashboard__menu">
     <div class="dashboard__menu-content-box">
-      <h1>Welcome, {{user.name}}</h1>
-      <div class="dashboard__menu-grid">
-        <a class="dashboard__menu-grid-item" routerLink="/top-tracks">
-          <div class="dashboard__menu-grid-item-header">Top Tracks</div>
-          <div class="dashboard__menu-grid-item-description">
-            View your most listened tracks and switch between 3 different time periods. Your data is updated approximately everyday.
-          </div>
-        </a>
-        <a class="dashboard__menu-grid-item" routerLink="/top-artists">
-          <div class="dashboard__menu-grid-item-header">Top Artists</div>
-          <div class="dashboard__menu-grid-item-description">
-            View your most listened Artists and switch between 3 different time periods. Your data is updated approximately everyday.
-          </div>
-        </a>
-        <a class="dashboard__menu-grid-item" routerLink="/recently-played">
-          <div class="dashboard__menu-grid-item-header">Recently Played</div>
-          <div class="dashboard__menu-grid-item-description">
-            Check out your recently played tracks with timestamps.
-          </div>
-        </a>
+      <h1>Welcome, {{user?.name}}</h1>
+      <div class="dashboard__container">
+        <div class="dashboard__profile">
+          <app-profile [user]="user"></app-profile>
+        </div>
+        <div class="dashboard__menu-grid">
+          <a class="dashboard__menu-grid-item" routerLink="/top-tracks">
+            <div class="dashboard__menu-grid-item-header">Top Tracks</div>
+            <div class="dashboard__menu-grid-item-description">
+              View your most listened tracks and switch between 3 different time periods. Your data is updated approximately everyday.
+            </div>
+          </a>
+          <a class="dashboard__menu-grid-item" routerLink="/top-artists">
+            <div class="dashboard__menu-grid-item-header">Top Artists</div>
+            <div class="dashboard__menu-grid-item-description">
+              View your most listened Artists and switch between 3 different time periods. Your data is updated approximately everyday.
+            </div>
+          </a>
+          <a class="dashboard__menu-grid-item" routerLink="/recently-played">
+            <div class="dashboard__menu-grid-item-header">Recently Played</div>
+            <div class="dashboard__menu-grid-item-description">
+              Check out your recently played tracks with timestamps.
+            </div>
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner>

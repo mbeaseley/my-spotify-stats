@@ -4,6 +4,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { User } from 'src/app/shared/classes/user';
 import { AuthoriseService } from 'Shared/services/authorise.service';
 import { environment } from 'Environments/environment';
+import { ErrorService } from 'Shared/services/error.service';
+import { Error } from '../../../shared/classes/error';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,20 +13,23 @@ import { environment } from 'Environments/environment';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  user: User = new User();
+  user: User;
   login: boolean = false;
+  loading: boolean = false;
 
   logo: string = `${environment.route}assets/img/spotifytool.png`;
 
   constructor(
     private auth: AuthoriseService,
     private storageService: StorageService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private errorService: ErrorService) { }
 
   /**
    * on click
    */
   onClick(): void {
+    this.loading = true;
     window.location.href = this.auth.logIn();
   }
 
@@ -39,7 +44,8 @@ export class DashboardComponent implements OnInit {
   /**
    * On init
    */
-  ngOnInit(): void {
+  ngOnInit(): any {
+    this.login = false;
     // Handle github reload issue
     if (performance.navigation.type === 1) {
       document.location.href = environment.route;
@@ -47,8 +53,20 @@ export class DashboardComponent implements OnInit {
 
     const accessToken = this.storageService.getLocalStorageItem();
     if (accessToken?.length) {
-      this.userService.getUser().then(user => this.user = user);
+      this.loading = true;
       this.login = true;
+      return this.userService.getUser().then(user => {
+        this.user = user;
+        this.loading = false;
+      }).catch(() => {
+        this.storageService.removeLocalStorageItem();
+        setTimeout(() => {
+          this.loading = false;
+          this.login = false;
+          const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
+          this.errorService.callError('', error);
+        }, 100);
+      });
     }
 
     if (document.location.href.indexOf('#') > -1) {

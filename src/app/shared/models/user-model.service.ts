@@ -18,9 +18,9 @@ export class UserModelService {
     user.email = response.email;
     user.image = response.images[0].url;
     user.country = response.country;
-    user.followers = response.total;
+    user.followers = response.followers.total;
     user.uri = response.uri;
-    
+
     return user;
   }
 

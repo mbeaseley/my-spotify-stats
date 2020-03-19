@@ -9,7 +9,7 @@ import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
