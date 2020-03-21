@@ -2,6 +2,6 @@
   <img class="profile__image" [lazyLoad]="userImage">
   <div class="profile__table" *ngFor="let item of objectKeys(user)">
     <span>{{item.toUpperCase()}}:</span>
-    {{user[item]}}
+    {{user[item].nativeName || user[item]}}
   </div>
 </a>
