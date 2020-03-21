@@ -8,7 +8,7 @@
   <table class="top-tracks__leaderboard">
     <tr *ngFor="let track of tracks; let i = index" class="top-tracks__leaderboard-row" (click)="onTrackClick(track.uri)">
       <td>{{i+1}}</td>
-      <td><img [lazyLoad]="track.trackImage"></td>
+      <td><img [lazyLoad]="track.trackImage" [alt]="track.trackName"></td>
       <td>{{track.trackName}}</td>
       <td>{{track.artists | joinArray}}</td>
     </tr>

@@ -1,11 +1,11 @@
 <div *ngIf="show" class="nav">
   <div class="nav__navbar">
     <a class="nav__logo" routerLink="">
-      <img [lazyLoad]="logo" width="30" height="30" alt="">
+      <img [lazyLoad]="logo" width="30" height="30" alt="ccdesign logo">
       <span>My Spotify Stats</span>
     </a>
     <button *ngIf="visible" class="nav__collapse" type="button" (click)="onMenuShow()">
-      <img [lazyLoad]="menu">
+      <img [lazyLoad]="menu" alt="menu">
     </button>
     <div class="nav__navbar-items" [ngClass]="(showMenu) ? 'nav__navbar-items--show': 'nav__navbar-items--hide'">
       <a class="nav__navbar-item" routerLink="top-tracks" routerLinkActive="active">Top Tracks</a>
