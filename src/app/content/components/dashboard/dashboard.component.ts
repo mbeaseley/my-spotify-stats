@@ -51,6 +51,11 @@ export class DashboardComponent implements OnInit {
       document.location.href = environment.route;
     }
 
+    const activeSession = this.storageService.getSessionStorageItem('is-active');
+    if (!activeSession) {
+      return this.storageService.setSessionStorageItem('is-active', 'true');
+    }
+
     const accessToken = this.storageService.getLocalStorageItem();
     if (accessToken?.length) {
       this.loading = true;
@@ -63,8 +68,10 @@ export class DashboardComponent implements OnInit {
         setTimeout(() => {
           this.loading = false;
           this.login = false;
-          const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
-          this.errorService.callError('', error);
+          if (activeSession) {
+            const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
+            this.errorService.callError('', error);
+          }
         }, 100);
       });
     }
