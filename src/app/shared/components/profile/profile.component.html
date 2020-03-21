@@ -1,5 +1,5 @@
 <a *ngIf="user?.name" class="profile" (click)="onClick(userUri)">
-  <img class="profile__image" [lazyLoad]="userImage">
+  <img class="profile__image" [lazyLoad]="userImage" [alt]="user.name">
   <div class="profile__table" *ngFor="let item of objectKeys(user)">
     <span>{{item.toUpperCase()}}:</span>
     {{user[item].nativeName || user[item]}}
