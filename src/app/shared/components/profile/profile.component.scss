@@ -1,17 +1,28 @@
 @import '_variables';
 
  .profile {
-  display: grid;
-  justify-content: center; 
+  display: block;
+  background: $grey4;
+  margin-bottom: $space-sm;
+  padding-bottom: $space;
+  border: 1px solid $white;
+  cursor: pointer;
+
+  &:hover {
+    background: $grey5;
+  }
 
   &__image {
+    display: block;
+    margin: 0 auto $space;
+    padding-top: $space-m;
     border-radius: 140px;
-    margin-bottom: $space-sm;
   }
 
   &__table {
     @extend %base;
-    margin: $space-xs 0;
+    margin: $space-xs auto;
+    width: 305px;
 
     span {
       display: inline-block;

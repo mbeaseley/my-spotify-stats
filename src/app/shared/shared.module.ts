@@ -10,6 +10,7 @@ import { LocaleDatePipe } from './pipes/locale-date.pipe';
 import { ErrorHandleComponent } from './components/error-handle/error-handle.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { UsefulFactComponent } from './components/useful-fact/useful-fact.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     LocaleDatePipe,
     ErrorHandleComponent,
     LoadingSpinnerComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsefulFactComponent
   ],
   imports: [
     CommonModule,
@@ -35,14 +37,16 @@ import { ProfileComponent } from './components/profile/profile.component';
     JoinArrayPipe,
     LocaleDatePipe,
     LoadingSpinnerComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsefulFactComponent
   ],
   entryComponents: [
     FooterComponent,
     NavComponent,
     ErrorHandleComponent,
     LoadingSpinnerComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsefulFactComponent
   ]
 })
 export class SharedModule { }

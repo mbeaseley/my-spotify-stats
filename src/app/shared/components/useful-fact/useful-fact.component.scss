@@ -1,0 +1,71 @@
+@import '_variables';
+
+.useful-fact {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32%;
+  background-image: linear-gradient($pink, $black);
+  border: 1px solid $white;
+
+  & > .unactive,
+  & > .active {
+    &.useful-fact {
+      &__top-card {
+        transform: rotateX(-180deg);
+      }
+
+      &__back-card {
+        transform: rotateX(0deg);
+      }
+    }
+  }
+
+  & > .unactive {
+    &.useful-fact {
+      &__top-card {
+        transform: rotateX(0deg);
+      }
+
+      &__back-card {
+        transform: rotateX(-180deg);
+      }
+    }
+  }
+
+  &__top-card {
+    @extend %heading;
+    position: absolute;
+    font-weight: $font-weight--bold;
+    font-size: 32px;
+    line-height: 1.12;
+    backface-visibility: hidden;
+    transform: rotateX(0deg);
+    transition: .5s;
+
+    span {
+      font-size: 42px;
+      color: $neon-green;
+    }
+  }
+
+  &__back-card {
+    @extend %heading;
+    position: absolute;
+    font-weight: $font-weight--bold;
+    font-size: 32px;
+    line-height: 1.12;
+    background-color: $black;
+    backface-visibility: hidden;
+    transform: rotateX(180deg);
+    transition: .5s;
+    color: $white;
+    text-align: center;
+
+    span {
+      font-size: 42px;
+      color: $neon-green;
+    }
+  }
+}
