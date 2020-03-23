@@ -10,7 +10,8 @@ import { LocaleDatePipe } from './pipes/locale-date.pipe';
 import { ErrorHandleComponent } from './components/error-handle/error-handle.component';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { UsefulFactComponent } from './components/useful-fact/useful-fact.component';
+import { StatFactComponent } from './components/stat-fact/stat-fact.component';
+import { NoSansitizePipe } from './pipes/no-sansitize.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { UsefulFactComponent } from './components/useful-fact/useful-fact.compon
     ErrorHandleComponent,
     LoadingSpinnerComponent,
     ProfileComponent,
-    UsefulFactComponent
+    StatFactComponent,
+    NoSansitizePipe
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { UsefulFactComponent } from './components/useful-fact/useful-fact.compon
     LocaleDatePipe,
     LoadingSpinnerComponent,
     ProfileComponent,
-    UsefulFactComponent
+    StatFactComponent,
+    NoSansitizePipe
   ],
   entryComponents: [
     FooterComponent,
@@ -46,7 +49,7 @@ import { UsefulFactComponent } from './components/useful-fact/useful-fact.compon
     ErrorHandleComponent,
     LoadingSpinnerComponent,
     ProfileComponent,
-    UsefulFactComponent
+    StatFactComponent
   ]
 })
 export class SharedModule { }

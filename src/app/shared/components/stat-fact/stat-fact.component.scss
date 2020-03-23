@@ -1,17 +1,29 @@
 @import '_variables';
 
-.useful-fact {
+.highlight {
+  font-size: 42px;
+  color: $neon-green;
+}
+
+.stat-fact {
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 32%;
+  width: 100%;
   background-image: linear-gradient($pink, $black);
   border: 1px solid $white;
+  cursor: pointer;
+  user-select: none;
+
+  @media (max-width: $small-breakpoint) {
+    height: 200px;
+  }
 
   & > .unactive,
   & > .active {
-    &.useful-fact {
+    &.stat-fact {
       &__top-card {
         transform: rotateX(-180deg);
       }
@@ -23,7 +35,7 @@
   }
 
   & > .unactive {
-    &.useful-fact {
+    &.stat-fact {
       &__top-card {
         transform: rotateX(0deg);
       }
@@ -34,7 +46,8 @@
     }
   }
 
-  &__top-card {
+  &__top-card,
+  &__back-card {
     @extend %heading;
     position: absolute;
     font-weight: $font-weight--bold;
@@ -44,28 +57,30 @@
     transform: rotateX(0deg);
     transition: .5s;
 
-    span {
+    @media (max-width: $small-breakpoint) {
+      font-size: 28px;
+    }
+
+    & > span,
+    .highlight {
       font-size: 42px;
       color: $neon-green;
     }
   }
 
+  &__top-card {
+    transform: rotateX(0deg);
+  }
+
   &__back-card {
-    @extend %heading;
-    position: absolute;
-    font-weight: $font-weight--bold;
-    font-size: 32px;
-    line-height: 1.12;
-    background-color: $black;
-    backface-visibility: hidden;
     transform: rotateX(180deg);
-    transition: .5s;
     color: $white;
     text-align: center;
+    width: 100%;
 
-    span {
+    & > span {
       font-size: 42px;
-      color: $neon-green;
+      color: $neon-green !important;
     }
   }
 }
