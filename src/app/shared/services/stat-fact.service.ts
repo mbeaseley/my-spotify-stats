@@ -1,20 +1,27 @@
 import { Injectable } from '@angular/core';
 import { RecentlyPlayedService } from './recently-played.service';
 import { Track } from 'Shared/classes/track';
+import * as dayjs from 'dayjs';
+import * as relativeTime from 'dayjs/plugin/relativeTime';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatFactService {
 
-  constructor(private recentlyPlayedService: RecentlyPlayedService) { }
+  constructor(private recentlyPlayedService: RecentlyPlayedService) {
+    dayjs.extend(relativeTime);
+  }
 
   /**
    * Gets random fact string phrase
    */
   getRandomFact(): Promise<string> {
     return this.recentlyPlayedService.getRecentlyPlayedSong().then(tracks => {
-      return this.getRandomArtistFact(tracks);
+      const randNumber = Math.floor(Math.random() * 2) + 1;
+      return (randNumber === 1)
+        ? this.getRandomTimeBasedFact(tracks)
+          : this.getRandomArtistFact(tracks);
     });
   }
 
@@ -44,5 +51,21 @@ export class StatFactService {
     });
 
     return `Your most popular recent artist is <br><span>${which}</span> with <span>${mostFreq}</span> times.`;
+  }
+
+  /**
+   * Gets random fact string based on recently played times
+   * @param tracks
+   */
+  private getRandomTimeBasedFact(tracks: Track[]): string {
+    const lastPlayedTrack = tracks[0].clone();
+
+    const endOfPlayed = lastPlayedTrack.played.add(lastPlayedTrack.trackDuration, 'ms');
+
+    if (dayjs().isAfter(endOfPlayed)) {
+      return `Last used spotify <br><span>${dayjs().from(endOfPlayed, true)}</span> ago.`;
+    }
+
+    return this.getRandomArtistFact(tracks);
   }
 }
