@@ -1,19 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PlaylistService } from 'src/app/shared/services/playlist.service';
 import { Playlist } from 'src/app/shared/classes/playlist';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { AttributeService } from 'Shared/utils/attribute.service';
 
 @Component({
   selector: 'app-remove-duplicates',
   templateUrl: './remove-duplicates.component.html',
-  styleUrls: ['./remove-duplicates.component.scss']
+  styleUrls: ['./remove-duplicates.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RemoveDuplicatesComponent implements OnInit {
   playlists: Playlist[] = [];
   playlistTracks: any[] = [];
   form: FormGroup;
 
-  constructor(private playlistService: PlaylistService) {
+  constructor(private playlistService: PlaylistService, private attributeService: AttributeService) {
     this.form = new FormGroup({
       playlist: new FormControl('', {
         validators: [Validators.required]
@@ -30,6 +32,8 @@ export class RemoveDuplicatesComponent implements OnInit {
   }
 
   ngOnInit(): Promise<void> {
+    this.attributeService.updatePageState('remove-duplicates');
+
     return this.playlistService.getUserPlaylist()
       .then(playlists => this.playlists = playlists);
   }

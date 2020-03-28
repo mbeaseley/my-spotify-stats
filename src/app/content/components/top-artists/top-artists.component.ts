@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TopListsService } from 'src/app/shared/services/top-lists.service';
 import { Artist } from 'src/app/shared/classes/artist';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
+import { AttributeService } from 'Shared/utils/attribute.service';
 
 @Component({
   selector: 'app-top-artists',
   templateUrl: './top-artists.component.html',
-  styleUrls: ['./top-artists.component.scss']
+  styleUrls: ['./top-artists.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TopArtistsComponent implements OnInit {
   tabSelected: string;
@@ -16,7 +18,8 @@ export class TopArtistsComponent implements OnInit {
 
   constructor(
     private topListsService: TopListsService,
-    private errorService: ErrorService) {}
+    private errorService: ErrorService,
+    private attributeService: AttributeService) {}
 
   /**
    * changes selection of tab and data
@@ -56,6 +59,8 @@ export class TopArtistsComponent implements OnInit {
    * On init
    */
   ngOnInit(): Promise<void> {
+    this.attributeService.updatePageState('top-artists');
+
     this.tabSelected = 'Last 4 Weeks';
     this.loading = true;
     return this.topListsService.topLists('artists', 'short_term')

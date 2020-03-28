@@ -50,6 +50,8 @@ export class StatFactService {
       }
     });
 
+    console.log(which, artistObj, mostFreq)
+
     return `Your most popular recent artist is <br><span>${which}</span> with <span>${mostFreq}</span> times.`;
   }
 
