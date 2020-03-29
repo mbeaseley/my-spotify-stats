@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TopListsService } from 'src/app/shared/services/top-lists.service';
 import { Track } from 'src/app/shared/classes/track';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
-import { Router } from '@angular/router';
+import { AttributeService } from 'Shared/utils/attribute.service';
 
 @Component({
   selector: 'app-top-tracks',
   templateUrl: './top-tracks.component.html',
-  styleUrls: ['./top-tracks.component.scss']
+  styleUrls: ['./top-tracks.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TopTracksComponent implements OnInit {
   tabSelected: string;
@@ -18,7 +19,7 @@ export class TopTracksComponent implements OnInit {
   constructor(
     private topListsService: TopListsService,
     private errorService: ErrorService,
-    private router: Router) { }
+    private attributeService: AttributeService) { }
 
   onClick(term: string, id: string): void {
     // remove current active tab
@@ -50,9 +51,8 @@ export class TopTracksComponent implements OnInit {
   }
 
   ngOnInit(): Promise<void> {
-    if (performance.navigation.type === 1) {
-      console.log(performance.navigation);
-    }
+    this.attributeService.updatePageState('top-tracks');
+
     this.tabSelected = 'Last 4 Weeks';
     this.loading = true;
     return this.topListsService.topLists('tracks', 'short_term')

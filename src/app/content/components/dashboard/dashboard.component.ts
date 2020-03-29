@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { StorageService } from '../../../shared/services/storage.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { User } from 'src/app/shared/classes/user';
@@ -6,11 +6,13 @@ import { AuthoriseService } from 'Shared/services/authorise.service';
 import { environment } from 'Environments/environment';
 import { ErrorService } from 'Shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
+import { AttributeService } from 'Shared/utils/attribute.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DashboardComponent implements OnInit {
   user: User;
@@ -19,11 +21,14 @@ export class DashboardComponent implements OnInit {
 
   logo: string = `${environment.route}assets/img/spotifytool.png`;
 
+  @Output() stateChanged: EventEmitter<string> = new EventEmitter();
+
   constructor(
     private auth: AuthoriseService,
     private storageService: StorageService,
     private userService: UserService,
-    private errorService: ErrorService) { }
+    private errorService: ErrorService,
+    private attributeService: AttributeService) { }
 
   /**
    * on click
@@ -45,9 +50,11 @@ export class DashboardComponent implements OnInit {
    * On init
    */
   ngOnInit(): any {
+    this.attributeService.updatePageState('login');
     this.login = false;
     // Handle github reload issue
-    if (performance.navigation.type === 1) {
+    const perfEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    if (perfEntry.type === 'reload') {
       document.location.href = environment.route;
     }
 
@@ -63,6 +70,7 @@ export class DashboardComponent implements OnInit {
       return this.userService.getUser().then(user => {
         this.user = user;
         this.loading = false;
+        this.attributeService.updatePageState('dashboard');
       }).catch(() => {
         this.storageService.removeLocalStorageItem();
         setTimeout(() => {

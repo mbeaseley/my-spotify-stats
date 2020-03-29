@@ -18,6 +18,7 @@ export class RecentlyPlayedModelService {
       const tk = new Track();
       tk.id = item.track.id;
       tk.trackName = item.track.name;
+      tk.trackDuration = item.track.duration_ms;
       // Map artist objects
       tk.artists = item.track.artists.map(artist => {
         const artistObj = new Artist();

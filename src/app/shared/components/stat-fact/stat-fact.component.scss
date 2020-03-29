@@ -1,0 +1,89 @@
+@import '_variables';
+
+.highlight {
+  font-size: 42px;
+  color: $neon-green;
+}
+
+.stat-fact {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 32%;
+  width: 100%;
+  background-image: linear-gradient($pink, $black);
+  border: 1px solid $white;
+  cursor: pointer;
+  user-select: none;
+
+  @media (max-width: $small-breakpoint) {
+    height: 200px;
+  }
+
+  & > .unactive,
+  & > .active {
+    &.stat-fact {
+      &__top-card {
+        transform: rotateX(-180deg);
+      }
+
+      &__back-card {
+        transform: rotateX(0deg);
+      }
+    }
+  }
+
+  & > .unactive {
+    &.stat-fact {
+      &__top-card {
+        transform: rotateX(0deg);
+      }
+
+      &__back-card {
+        transform: rotateX(-180deg);
+      }
+    }
+  }
+
+  &__top-card,
+  &__back-card {
+    @extend %heading;
+    position: absolute;
+    left: 0;
+    right: 0;
+    font-weight: $font-weight--bold;
+    font-size: 32px;
+    line-height: 1.12;
+    backface-visibility: hidden;
+    transform: rotateX(0deg);
+    transition: .5s;
+
+    @media (max-width: $small-breakpoint) {
+      font-size: 28px;
+    }
+
+    & > span,
+    .highlight {
+      font-size: 42px;
+      color: $neon-green;
+    }
+  }
+
+  &__top-card {
+    margin: 0 $space-xl;
+    transform: rotateX(0deg);
+  }
+
+  &__back-card {
+    margin: 0 $space-xxl;
+    transform: rotateX(180deg);
+    color: $white;
+    text-align: center;
+
+    & > span {
+      font-size: 42px;
+      color: $neon-green !important;
+    }
+  }
+}

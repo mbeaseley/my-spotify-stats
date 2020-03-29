@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { RecentlyPlayedService } from '../../../shared/services/recently-played.service';
 import { Track } from '../../../shared/classes/track';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
+import { AttributeService } from 'Shared/utils/attribute.service';
 
 @Component({
   selector: 'app-recently-played',
   templateUrl: './recently-played.component.html',
-  styleUrls: ['./recently-played.component.scss']
+  styleUrls: ['./recently-played.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class RecentlyPlayedComponent implements OnInit {
   tracks: Track[];
@@ -15,7 +17,8 @@ export class RecentlyPlayedComponent implements OnInit {
 
   constructor(
     private recentlyPlayedService: RecentlyPlayedService,
-    private errorService: ErrorService) {}
+    private errorService: ErrorService,
+    private attributeService: AttributeService) {}
 
   /**
    * on click - open spotify uri link
@@ -29,6 +32,8 @@ export class RecentlyPlayedComponent implements OnInit {
    * On Init
    */
   ngOnInit(): Promise<void> {
+    this.attributeService.updatePageState('recently-played');
+
     this.loading = true;
     return this.recentlyPlayedService.getRecentlyPlayedSong()
       .then(tracks => {

@@ -1,0 +1,10 @@
+<div class="stat-fact no-selectable" (click)="onClick()">
+  <div class="stat-fact__top-card" [ngClass]="{'active': factShow, 'unactive': !factShow}">
+    Click for <br><span>Random Stat Fact</span>
+  </div>
+  <div 
+  class="stat-fact__back-card" 
+  [ngClass]="{'active': factShow, 'unactive': !factShow}"
+  [innerHTML]="statFact | noSansitize">
+  </div>
+</div>

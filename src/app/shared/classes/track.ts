@@ -5,6 +5,7 @@ import { Artist } from './artist';
 export class Track {
   id: string;
   trackName: string;
+  trackDuration: number;
   trackImage: string;
   artists: Artist[];
   played: dayjs.Dayjs;
