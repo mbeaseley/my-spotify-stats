@@ -53,9 +53,6 @@ export class TopTracksComponent implements OnInit {
   ngOnInit(): Promise<void> {
     this.attributeService.updatePageState('top-tracks');
 
-    if (performance.navigation.type === 1) {
-      console.log(performance.navigation);
-    }
     this.tabSelected = 'Last 4 Weeks';
     this.loading = true;
     return this.topListsService.topLists('tracks', 'short_term')

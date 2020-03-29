@@ -53,7 +53,8 @@ export class DashboardComponent implements OnInit {
     this.attributeService.updatePageState('login');
     this.login = false;
     // Handle github reload issue
-    if (performance.navigation.type === 1) {
+    const perfEntry = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    if (perfEntry.type === 'reload') {
       document.location.href = environment.route;
     }
 
