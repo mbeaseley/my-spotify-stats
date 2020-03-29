@@ -17,18 +17,13 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 ## Releasing
 
 Steps for release:
-1. Run ```
-npm run build:prod
-```
-2. Run ```
-git add -f dist
-```
-3. Run ```
-git commit -m'[ MESSAGE ]'
-```
-4. Run ```
-git subtree push --prefix dist/my-spotify-stats origin gh-pages
-```
+1. Run ```npm run build:prod```
+
+2. Run ```git add -f dist```
+
+3. Run ```git commit -m'[MESSAGE]'```
+
+4. Run ```git subtree push --prefix dist/my-spotify-stats origin gh-pages```
 
 ## Further help
 
