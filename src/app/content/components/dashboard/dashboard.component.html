@@ -1,10 +1,15 @@
 <div class="dashboard">
   <!-- Login Container -->
   <div *ngIf="!login" class="dashboard__login">
-    <div class="dashboard__login-container">
-      <img class="dashboard__login-logo" [lazyLoad]="logo" alt="ccdesign logo">
-      <p>Log in with your Spotify account to gain access to many useful tools for your music needs.</p>
-      <a class="dashboard__login-cta" (click)="onClick()">Login</a>
+    <div class="dashboard__login-group">
+      <div class="dashboard__login-container">
+        <img class="dashboard__login-logo" [lazyLoad]="logo" alt="ccdesign logo">
+        <p>Log in with your Spotify account to gain access to many useful tools for your music needs.</p>
+        <a class="dashboard__login-cta" (click)="onClick()">Login</a>
+      </div>
+      <div class="dashboard__login-tooltip">
+        <p>You may need to clear cache on your browser to successful login into tool. You can open an Incognito window.</p>
+      </div>
     </div>
   </div>
 
