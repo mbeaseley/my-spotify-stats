@@ -11,7 +11,7 @@
 
     function onloadRouteCheck() {
       routes.forEach(route => {
-        if (window.location.pathname === route) {
+        if (window.location.pathname === route.matchRoute) {
           window.location.href = `https://mbeaseley.github.io${route.choosenRoute}`;
         }
       });
