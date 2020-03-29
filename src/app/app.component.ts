@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.attributeService.updatePageState('login');
     this.router.events.subscribe(() => {
-      this.showNav = !!this.storageService.getLocalStorageItem()?.length;
+      setTimeout(() => {
+        this.showNav = !!this.storageService.getLocalStorageItem()?.length;
+      }, 200);
     });
   }
 }
