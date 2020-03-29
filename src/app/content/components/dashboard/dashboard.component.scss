@@ -1,5 +1,9 @@
 @import '_variables';
 
+body[ui-state="login"] .dashboard__login {
+  height: 90vh;
+}
+
 .dashboard {
   &__login {
     background-color: $black;
@@ -7,14 +11,17 @@
     height: 97vh;
   }
 
-  &__login-container {
+  &__login-group {
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 500px;
-    padding: 20px;
-    border: 1px solid $white;
+  }
+
+  &__login-container {
+    padding: $space;
+    border: 2px solid $white;
     color: $white;
     text-align: center;
   }
@@ -22,24 +29,35 @@
   &__login-logo {
     max-width: 200px; 
     max-height: 200px;
-    padding: 10px;
+    padding: $space-sm;
   }
 
   &__login-cta {
     display: inline-block;
     border-radius: 999rem;
-    padding: 10px 30px;
+    padding: $space-sm 30px;
     background-color: $green;
     border: none;
     color: $white;
     font-size: 14px;
     outline: none;
-    margin: 10px;
+    margin: $space-sm;
     text-decoration: none;
     cursor: pointer;
 
     &:hover {
       background-color: $light-green;
+    }
+  }
+
+  &__login-tooltip {
+    margin-top: $space-sm;
+    padding: 0 $space;
+    background-color: $grey2;
+    border: 2px solid $white;
+
+    @media (max-width: $small-breakpoint) {
+      display: none;
     }
   }
 
