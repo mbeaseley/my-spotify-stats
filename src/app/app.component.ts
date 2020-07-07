@@ -25,6 +25,13 @@ export class AppComponent implements OnInit {
    */
   checkAccessTokenDate(): boolean {
     let tokenDate: any = this.storageService.getLocalStorageItem('access-token-date');
+
+    // Check if token exists
+    if (!tokenDate?.length) {
+      return false;
+    }
+
+    // checks if token is after current date/time
     tokenDate = dayjs(tokenDate).add(10, 'minute');
     if (dayjs().isAfter(tokenDate)) {
       this.storageService.removeLocalStorageItem('access-token-date');
