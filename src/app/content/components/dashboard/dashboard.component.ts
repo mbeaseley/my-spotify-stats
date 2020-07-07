@@ -7,6 +7,7 @@ import { environment } from 'Environments/environment';
 import { ErrorService } from 'Shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
 import { AttributeService } from 'Shared/services/attribute.service';
+import * as dayjs from 'dayjs';
 
 @Component({
   selector: 'app-dashboard',
@@ -94,6 +95,7 @@ export class DashboardComponent implements OnInit {
     if (document.location.href.indexOf('#') > -1) {
       const accessTokenInUrl = this.getAccessTokenFromUrl(location.hash);
       this.storageService.setLocalStorageItem('access-token', accessTokenInUrl);
+      this.storageService.setLocalStorageItem('access-token-date', dayjs().format());
       document.location.href = environment.route;
     }
   }
