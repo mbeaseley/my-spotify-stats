@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -23,14 +23,12 @@ import { NoSansitizePipe } from './pipes/no-sansitize.pipe';
     LoadingSpinnerComponent,
     ProfileComponent,
     StatFactComponent,
-    NoSansitizePipe
+    NoSansitizePipe,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    LazyLoadImageModule.forRoot({
-      preset: scrollPreset
-    })
+    LazyLoadImageModule.forRoot(ScrollHooks),
   ],
   exports: [
     FooterComponent,
@@ -41,7 +39,7 @@ import { NoSansitizePipe } from './pipes/no-sansitize.pipe';
     LoadingSpinnerComponent,
     ProfileComponent,
     StatFactComponent,
-    NoSansitizePipe
+    NoSansitizePipe,
   ],
   entryComponents: [
     FooterComponent,
@@ -49,7 +47,7 @@ import { NoSansitizePipe } from './pipes/no-sansitize.pipe';
     ErrorHandleComponent,
     LoadingSpinnerComponent,
     ProfileComponent,
-    StatFactComponent
-  ]
+    StatFactComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
