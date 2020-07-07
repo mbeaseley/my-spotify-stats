@@ -3,13 +3,13 @@ import { RecentlyPlayedService } from '../../../shared/services/recently-played.
 import { Track } from '../../../shared/classes/track';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
-import { AttributeService } from 'Shared/utils/attribute.service';
+import { AttributeService } from 'Shared/services/attribute.service';
 
 @Component({
   selector: 'app-recently-played',
   templateUrl: './recently-played.component.html',
   styleUrls: ['./recently-played.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class RecentlyPlayedComponent implements OnInit {
   tracks: Track[];
@@ -18,7 +18,8 @@ export class RecentlyPlayedComponent implements OnInit {
   constructor(
     private recentlyPlayedService: RecentlyPlayedService,
     private errorService: ErrorService,
-    private attributeService: AttributeService) {}
+    private attributeService: AttributeService,
+  ) {}
 
   /**
    * on click - open spotify uri link
@@ -35,8 +36,9 @@ export class RecentlyPlayedComponent implements OnInit {
     this.attributeService.updatePageState('recently-played');
 
     this.loading = true;
-    return this.recentlyPlayedService.getRecentlyPlayedSong()
-      .then(tracks => {
+    return this.recentlyPlayedService
+      .getRecentlyPlayedSong()
+      .then((tracks) => {
         this.tracks = tracks;
         this.loading = false;
       })
@@ -45,5 +47,4 @@ export class RecentlyPlayedComponent implements OnInit {
         this.errorService.callError('', error);
       });
   }
-
 }

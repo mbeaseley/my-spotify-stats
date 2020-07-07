@@ -6,13 +6,13 @@ import { AuthoriseService } from 'Shared/services/authorise.service';
 import { environment } from 'Environments/environment';
 import { ErrorService } from 'Shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
-import { AttributeService } from 'Shared/utils/attribute.service';
+import { AttributeService } from 'Shared/services/attribute.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class DashboardComponent implements OnInit {
   user: User;
@@ -28,7 +28,8 @@ export class DashboardComponent implements OnInit {
     private storageService: StorageService,
     private userService: UserService,
     private errorService: ErrorService,
-    private attributeService: AttributeService) { }
+    private attributeService: AttributeService,
+  ) {}
 
   /**
    * on click
@@ -67,21 +68,27 @@ export class DashboardComponent implements OnInit {
     if (accessToken?.length) {
       this.loading = true;
       this.login = true;
-      return this.userService.getUser().then(user => {
-        this.user = user;
-        this.loading = false;
-        this.attributeService.updatePageState('dashboard');
-      }).catch(() => {
-        this.storageService.removeLocalStorageItem();
-        setTimeout(() => {
+      return this.userService
+        .getUser()
+        .then((user) => {
+          this.user = user;
           this.loading = false;
-          this.login = false;
-          if (activeSession) {
-            const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
-            this.errorService.callError('', error);
-          }
-        }, 100);
-      });
+          this.attributeService.updatePageState('dashboard');
+        })
+        .catch(() => {
+          this.storageService.removeLocalStorageItem();
+          setTimeout(() => {
+            this.loading = false;
+            this.login = false;
+            if (activeSession) {
+              const error = new Error(
+                'Access Token Error',
+                'Access token expired, new token is needed.',
+              );
+              this.errorService.callError('', error);
+            }
+          }, 100);
+        });
     }
 
     if (document.location.href.indexOf('#') > -1) {
@@ -90,5 +97,4 @@ export class DashboardComponent implements OnInit {
       document.location.href = environment.route;
     }
   }
-
 }

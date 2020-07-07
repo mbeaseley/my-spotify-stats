@@ -1,12 +1,12 @@
 import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from 'Shared/services/storage.service';
-import { AttributeService } from 'Shared/utils/attribute.service';
+import { AttributeService } from 'Shared/services/attribute.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   showNav: boolean;
@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private storageService: StorageService,
-    private attributeService: AttributeService
+    private attributeService: AttributeService,
   ) {}
 
   ngOnInit(): void {
