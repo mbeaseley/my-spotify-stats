@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LazyLoadImageModule, scrollPreset } from 'ng-lazyload-image';
+import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
 
 import { SharedModule } from '../shared/shared.module';
 import { RecentlyPlayedComponent } from './components/recently-played/recently-played.component';
@@ -16,9 +16,17 @@ const routes: Routes = [
   { path: 'callback', redirectTo: '' },
   { path: 'top-tracks', component: TopTracksComponent, pathMatch: 'full' },
   { path: 'top-artists', component: TopArtistsComponent, pathMatch: 'full' },
-  { path: 'recently-played', component: RecentlyPlayedComponent, pathMatch: 'full' },
-  { path: 'remove-duplicates', component: RemoveDuplicatesComponent, pathMatch: 'full' },
-  { path: '**', component: DashboardComponent }
+  {
+    path: 'recently-played',
+    component: RecentlyPlayedComponent,
+    pathMatch: 'full',
+  },
+  {
+    path: 'remove-duplicates',
+    component: RemoveDuplicatesComponent,
+    pathMatch: 'full',
+  },
+  { path: '**', component: DashboardComponent },
 ];
 
 @NgModule({
@@ -27,7 +35,7 @@ const routes: Routes = [
     TopTracksComponent,
     TopArtistsComponent,
     RemoveDuplicatesComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,
@@ -35,9 +43,7 @@ const routes: Routes = [
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    LazyLoadImageModule.forRoot({
-      preset: scrollPreset
-    })
+    LazyLoadImageModule.forRoot(ScrollHooks),
   ],
   exports: [RouterModule],
   entryComponents: [
@@ -45,7 +51,7 @@ const routes: Routes = [
     RecentlyPlayedComponent,
     TopTracksComponent,
     TopArtistsComponent,
-    RemoveDuplicatesComponent
-  ]
+    RemoveDuplicatesComponent,
+  ],
 })
-export class ContentModule { }
+export class ContentModule {}

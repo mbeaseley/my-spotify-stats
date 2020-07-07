@@ -3,13 +3,13 @@ import { TopListsService } from 'src/app/shared/services/top-lists.service';
 import { Track } from 'src/app/shared/classes/track';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
-import { AttributeService } from 'Shared/utils/attribute.service';
+import { AttributeService } from 'Shared/services/attribute.service';
 
 @Component({
   selector: 'app-top-tracks',
   templateUrl: './top-tracks.component.html',
   styleUrls: ['./top-tracks.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class TopTracksComponent implements OnInit {
   tabSelected: string;
@@ -19,7 +19,8 @@ export class TopTracksComponent implements OnInit {
   constructor(
     private topListsService: TopListsService,
     private errorService: ErrorService,
-    private attributeService: AttributeService) { }
+    private attributeService: AttributeService,
+  ) {}
 
   onClick(term: string, id: string): void {
     // remove current active tab
@@ -31,15 +32,16 @@ export class TopTracksComponent implements OnInit {
     this.tabSelected = element.innerHTML;
 
     this.loading = true;
-    return this.topListsService.topLists('tracks', term)
-    .then((tracks: Track[]) => {
+    return this.topListsService
+      .topLists('tracks', term)
+      .then((tracks: Track[]) => {
         this.tracks = tracks;
         this.loading = false;
       })
       .catch(() => {
-      const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
-      this.errorService.callError('', error);
-    });
+        const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
+        this.errorService.callError('', error);
+      });
   }
 
   /**
@@ -55,7 +57,8 @@ export class TopTracksComponent implements OnInit {
 
     this.tabSelected = 'Last 4 Weeks';
     this.loading = true;
-    return this.topListsService.topLists('tracks', 'short_term')
+    return this.topListsService
+      .topLists('tracks', 'short_term')
       .then((tracks: Track[]) => {
         this.tracks = tracks;
         this.loading = false;
@@ -65,5 +68,4 @@ export class TopTracksComponent implements OnInit {
         this.errorService.callError('', error);
       });
   }
-
 }

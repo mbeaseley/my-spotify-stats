@@ -1,15 +1,15 @@
+const { pathsToModuleNameMapper } = require("ts-jest/utils");
+const { compilerOptions } = require("./tsconfig.spec");
+
 module.exports = {
   preset: "jest-preset-angular",
-  snapshotSerializers: [
-    "jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js",
-    "jest-preset-angular/build/AngularSnapshotSerializer.js",
-    "jest-preset-angular/build/HTMLCommentSerializer.js"
-  ],
-  moduleNameMapper: {
-    "\\.(jpg|jpeg|png)$": "<rootDir>/__mocks__/image.js",
-    "^@lib/(.*)$": "<rootDir>/src/lib/$1"
-  },
-  setupFilesAfterEnv: [
-    "<rootDir>/src/setupJest.ts"
-  ]
-}
+  roots: ["<rootDir>/src/"],
+  testMatch: ["**/+(*.)+(spec).+(ts)"],
+  setupFilesAfterEnv: ["<rootDir>/src/test.ts"],
+  collectCoverage: true,
+  coverageReporters: ["html"],
+  coverageDirectory: "coverage/my-app",
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths || {}, {
+    prefix: "<rootDir>/",
+  }),
+};

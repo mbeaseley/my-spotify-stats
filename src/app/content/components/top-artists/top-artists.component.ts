@@ -3,13 +3,13 @@ import { TopListsService } from 'src/app/shared/services/top-lists.service';
 import { Artist } from 'src/app/shared/classes/artist';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Error } from '../../../shared/classes/error';
-import { AttributeService } from 'Shared/utils/attribute.service';
+import { AttributeService } from 'Shared/services/attribute.service';
 
 @Component({
   selector: 'app-top-artists',
   templateUrl: './top-artists.component.html',
   styleUrls: ['./top-artists.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class TopArtistsComponent implements OnInit {
   tabSelected: string;
@@ -19,7 +19,8 @@ export class TopArtistsComponent implements OnInit {
   constructor(
     private topListsService: TopListsService,
     private errorService: ErrorService,
-    private attributeService: AttributeService) {}
+    private attributeService: AttributeService,
+  ) {}
 
   /**
    * changes selection of tab and data
@@ -36,15 +37,16 @@ export class TopArtistsComponent implements OnInit {
     this.tabSelected = element.innerHTML;
 
     this.loading = true;
-    return this.topListsService.topLists('artists', term)
+    return this.topListsService
+      .topLists('artists', term)
       .then((artists: Artist[]) => {
         this.artists = artists;
         this.loading = false;
       })
       .catch(() => {
-      const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
-      this.errorService.callError('', error);
-    });
+        const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
+        this.errorService.callError('', error);
+      });
   }
 
   /**
@@ -63,7 +65,8 @@ export class TopArtistsComponent implements OnInit {
 
     this.tabSelected = 'Last 4 Weeks';
     this.loading = true;
-    return this.topListsService.topLists('artists', 'short_term')
+    return this.topListsService
+      .topLists('artists', 'short_term')
       .then((artists: Artist[]) => {
         this.artists = artists;
         this.loading = false;
@@ -71,8 +74,6 @@ export class TopArtistsComponent implements OnInit {
       .catch(() => {
         const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
         this.errorService.callError('', error);
-      }
-    );
+      });
   }
-
 }
