@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
+import { LazyLoadImageModule, ScrollHooks, LAZYLOAD_IMAGE_HOOKS } from 'ng-lazyload-image';
 
 import { FooterComponent } from './components/footer/footer.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -25,11 +25,8 @@ import { NoSansitizePipe } from './pipes/no-sansitize.pipe';
     StatFactComponent,
     NoSansitizePipe,
   ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    LazyLoadImageModule.forRoot(ScrollHooks),
-  ],
+  imports: [CommonModule, RouterModule, LazyLoadImageModule],
+  providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   exports: [
     FooterComponent,
     NavComponent,
