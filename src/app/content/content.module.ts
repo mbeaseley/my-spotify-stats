@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LazyLoadImageModule, ScrollHooks } from 'ng-lazyload-image';
+import { LazyLoadImageModule, ScrollHooks, LAZYLOAD_IMAGE_HOOKS } from 'ng-lazyload-image';
 
 import { SharedModule } from '../shared/shared.module';
 import { RecentlyPlayedComponent } from './components/recently-played/recently-played.component';
@@ -43,8 +43,9 @@ const routes: Routes = [
     SharedModule,
     FormsModule,
     ReactiveFormsModule,
-    LazyLoadImageModule.forRoot(ScrollHooks),
+    LazyLoadImageModule,
   ],
+  providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   exports: [RouterModule],
   entryComponents: [
     DashboardComponent,
