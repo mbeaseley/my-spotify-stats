@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
   isAccessSet = false;
 
-  constructor() { }
+  constructor() {}
 
   /**
    * set local storage item
@@ -32,6 +32,16 @@ export class StorageService {
    */
   removeLocalStorageItem(tokenName?: string): void {
     localStorage.removeItem(tokenName || 'access-token');
+  }
+
+  /**
+   * Check if access token related items exist in local storage
+   */
+  checkAccessToken(): boolean {
+    return (
+      !!this.getLocalStorageItem()?.length &&
+      !!this.getLocalStorageItem('access-token-date')?.length
+    );
   }
 
   /**

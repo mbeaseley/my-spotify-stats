@@ -65,8 +65,8 @@ export class DashboardComponent implements OnInit {
       return this.storageService.setSessionStorageItem('is-active', 'true');
     }
 
-    const accessToken = this.storageService.getLocalStorageItem();
-    if (accessToken?.length) {
+    const accessToken = this.storageService.checkAccessToken();
+    if (accessToken) {
       this.loading = true;
       this.login = true;
       return this.userService
@@ -78,6 +78,7 @@ export class DashboardComponent implements OnInit {
         })
         .catch(() => {
           this.storageService.removeLocalStorageItem();
+          this.storageService.removeLocalStorageItem('access-token-date');
           setTimeout(() => {
             this.loading = false;
             this.login = false;
