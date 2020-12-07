@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StorageService {
   isAccessSet = false;
 
-  constructor() { }
+  constructor() {}
 
   /**
    * set local storage item

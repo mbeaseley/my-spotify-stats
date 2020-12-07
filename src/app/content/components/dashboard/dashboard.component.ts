@@ -78,6 +78,7 @@ export class DashboardComponent implements OnInit {
         })
         .catch(() => {
           this.storageService.removeLocalStorageItem();
+          this.storageService.removeLocalStorageItem('access-token-date');
           setTimeout(() => {
             this.loading = false;
             this.login = false;
