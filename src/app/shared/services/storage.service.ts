@@ -35,6 +35,16 @@ export class StorageService {
   }
 
   /**
+   * Check if access token related items exist in local storage
+   */
+  checkAccessToken(): boolean {
+    return (
+      !!this.getLocalStorageItem()?.length &&
+      !!this.getLocalStorageItem('access-token-date')?.length
+    );
+  }
+
+  /**
    * set session storage item
    * @param itemName - item key
    * @param token - token key
