@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
+/dist
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -8,11 +9,9 @@
 
 # dependencies
 /node_modules
-/dist
 
 # profiling files
 chrome-profiler-events*.json
-speed-measure-plugin*.json
 
 # IDEs and editors
 /.idea
@@ -32,6 +31,7 @@ speed-measure-plugin*.json
 .history/*
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -40,6 +40,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+localhost-key.pem
+localhost.pem
 
 # System Files
 .DS_Store
