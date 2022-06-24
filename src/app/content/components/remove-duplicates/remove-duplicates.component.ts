@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PlaylistService } from 'src/app/shared/services/playlist.service';
 import { Playlist } from 'src/app/shared/classes/playlist';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { AttributeService } from 'Shared/services/attribute.service';
 
 @Component({
@@ -13,14 +13,14 @@ import { AttributeService } from 'Shared/services/attribute.service';
 export class RemoveDuplicatesComponent implements OnInit {
   playlists: Playlist[] = [];
   playlistTracks: any[] = [];
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(
     private playlistService: PlaylistService,
     private attributeService: AttributeService,
   ) {
-    this.form = new FormGroup({
-      playlist: new FormControl('', {
+    this.form = new UntypedFormGroup({
+      playlist: new UntypedFormControl('', {
         validators: [Validators.required],
       }),
     });

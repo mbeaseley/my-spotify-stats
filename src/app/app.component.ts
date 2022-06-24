@@ -20,37 +20,37 @@ export class AppComponent implements OnInit {
     private attributeService: AttributeService,
   ) {}
 
-  /**
-   * Checks if token is useable still
-   */
-  checkAccessTokenDate(): boolean {
-    let tokenDate: any = this.storageService.getLocalStorageItem('access-token-date');
+  // /**
+  //  * Checks if token is useable still
+  //  */
+  // checkAccessTokenDate(): boolean {
+  //   let tokenDate: any = this.storageService.getLocalStorageItem('access-token-date');
 
-    // Check if token exists
-    if (!tokenDate?.length) {
-      return false;
-    }
+  //   // Check if token exists
+  //   if (!tokenDate?.length) {
+  //     return false;
+  //   }
 
-    // checks if token is after current date/time
-    tokenDate = dayjs(tokenDate).add(10, 'minute');
-    if (dayjs().isAfter(tokenDate)) {
-      this.storageService.removeLocalStorageItem('access-token-date');
-      return false;
-    }
-    return true;
-  }
+  //   // checks if token is after current date/time
+  //   tokenDate = dayjs(tokenDate).add(10, 'minute');
+  //   if (dayjs().isAfter(tokenDate)) {
+  //     this.storageService.removeLocalStorageItem('access-token-date');
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   /**
    * on init
    */
   ngOnInit(): void {
-    this.checkAccessTokenDate();
-    this.attributeService.updatePageState('login');
-    this.router.events.subscribe(() => {
-      setTimeout(() => {
-        this.showNav =
-          this.checkAccessTokenDate() && !!this.storageService.getLocalStorageItem()?.length;
-      }, 200);
-    });
+    // this.checkAccessTokenDate();
+    // this.attributeService.updatePageState('login');
+    // this.router.events.subscribe(() => {
+    //   setTimeout(() => {
+    //     this.showNav =
+    //       this.checkAccessTokenDate() && !!this.storageService.getLocalStorageItem()?.length;
+    //   }, 200);
+    // });
   }
 }

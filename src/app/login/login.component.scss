@@ -1,0 +1,44 @@
+@import '_variables';
+
+.login {
+  &__group {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+  }
+
+  &__container {
+    @include ui-body-font-9;
+    padding: $space;
+    color: $white;
+    text-align: center;
+    height: 443px;
+    box-sizing: border-box;
+  }
+
+  &__logo {
+    width: 100%;
+    max-width: 224px;
+    padding: $space-sm;
+  }
+
+  &__cta {
+    @include ui-body-font-10;
+    display: inline-block;
+    border-radius: 999rem;
+    padding: $space-sm $space-ml;
+    background-color: $green;
+    border: none;
+    color: $white;
+    outline: none;
+    margin: $space-sm;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $light-green;
+    }
+  }
+}

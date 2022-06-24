@@ -3,11 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Country } from 'Shared/classes/country';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CountryModelService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   private fromPayload(response: any): Country {
     const country = new Country();
@@ -18,8 +17,11 @@ export class CountryModelService {
   }
 
   convertCountryInitials(initial: string): Promise<any> {
-    return this.http.get(`https://restcountries.eu/rest/v2/alpha?codes=${initial}`).toPromise().then(res => {
-      return this.fromPayload(res[0]);
-    });
+    return this.http
+      .get(`https://restcountries.com/v2/alpha?codes=${initial}`)
+      .toPromise()
+      .then((res) => {
+        return this.fromPayload(res[0]);
+      });
   }
 }

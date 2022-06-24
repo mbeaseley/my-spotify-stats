@@ -1,5 +1,17 @@
 <div class="top-artists">
-  <h1>Top Artists ({{tabSelected}})</h1>
+  <div class="top-artists__header">
+    <div class="top-artists__heading">Top Artists</div>
+
+    <div class="top-artists__terms">
+      <button (click)="onGettingArtists('long_term')">All time</button>
+      <button (click)="onGettingArtists('medium_term')">Last 6 Months</button>
+      <button (click)="onGettingArtists('short_term')">Last 4 Weeks</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- <h1>Top Artists ({{tabSelected}})</h1>
   <div class="top-artists__tabs">
     <button id="top-artists-short" class="top-artists__tab-item top-artists__tab-item--active" (click)="onClick('short_term', 'top-artists-short')">Last 4 Weeks</button>
     <button id="top-artists-mid" class="top-artists__tab-item" (click)="onClick('medium_term', 'top-artists-mid')">Last 6 Months</button>
@@ -12,4 +24,4 @@
     </a>
   </div>
 </div>
-<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner>
+<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner> -->

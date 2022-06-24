@@ -1,48 +1,46 @@
 <div class="dashboard">
-  <!-- Login Container -->
-  <div *ngIf="!login" class="dashboard__login">
-    <div class="dashboard__login-group">
-      <div class="dashboard__login-container">
-        <img class="dashboard__login-logo" [lazyLoad]="logo" alt="ccdesign logo">
-        <p>Log in with your Spotify account to gain access to many useful tools for your music needs.</p>
-        <a class="dashboard__login-cta" (click)="onClick()">Login</a>
-      </div>
-      <div class="dashboard__login-tooltip">
-        <p>You may need to clear cache on your browser to successful login into tool. You can open an Incognito window.</p>
+  <div class="dashboard__nav">
+    <div class="nav__side-nav">
+      <img
+        class="nav__logo"
+        src="https://localhost:4200/assets/img/white-cc.png"
+        alt="ccdesign logo"
+      />
+
+      <ul class="nav__link">
+        <li class="nav__link-item">
+          <a routerLink="" routerLinkActive="active">
+            <img src="assets/img/person.svg" alt="Profile page" />
+            <span>Profile</span>
+          </a>
+        </li>
+        <li class="nav__link-item">
+          <a routerLink="top-artists" routerLinkActive="active">
+            <img src="assets/img/mic.svg" alt="Top Artists page" />
+            <span>Top Artists</span>
+          </a>
+        </li>
+        <li class="nav__link-item">
+          <a routerLink="top-tracks" routerLinkActive="active">
+            <img src="assets/img/track.svg" alt="Top tracks page" />
+            <span>Top tracks</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav__github">
+        <a href="https://github.com/mbeaseley">
+          <img class="nav__logo" src="assets/img/github.svg" alt="ccdesign logo" />
+        </a>
       </div>
     </div>
+    <a class="nav__logout" (click)="onLogout()">Logout</a>
   </div>
 
-  <div *ngIf="login" class="dashboard__menu">
-    <div class="dashboard__menu-content-box">
-      <h1>Welcome, {{user?.name}}</h1>
-      <div class="dashboard__container">
-        <div class="dashboard__profile">
-          <app-profile [user]="user"></app-profile>
-          <app-stat-fact></app-stat-fact>
-        </div>
-        <div class="dashboard__menu-grid">
-          <a class="dashboard__menu-grid-item" routerLink="/top-tracks">
-            <div class="dashboard__menu-grid-item-header">Top Tracks</div>
-            <div class="dashboard__menu-grid-item-description">
-              View your most listened tracks and switch between 3 different time periods. Your data is updated approximately everyday.
-            </div>
-          </a>
-          <a class="dashboard__menu-grid-item" routerLink="/top-artists">
-            <div class="dashboard__menu-grid-item-header">Top Artists</div>
-            <div class="dashboard__menu-grid-item-description">
-              View your most listened Artists and switch between 3 different time periods. Your data is updated approximately everyday.
-            </div>
-          </a>
-          <a class="dashboard__menu-grid-item" routerLink="/recently-played">
-            <div class="dashboard__menu-grid-item-header">Recently Played</div>
-            <div class="dashboard__menu-grid-item-description">
-              Check out your recently played tracks with timestamps.
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+  <!-- dashboard main content/routes -->
+  <div class="dashboard__main">
+    <router-outlet></router-outlet>
   </div>
 </div>
-<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner>
+
+<app-loading-equaliser [show]="loading"></app-loading-equaliser>

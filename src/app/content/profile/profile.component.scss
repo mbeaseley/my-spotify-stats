@@ -1,0 +1,97 @@
+@import '_variables';
+
+.profile {
+  &__banner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    margin: $space $space-l;
+    border-radius: 100%;
+    max-width: 250px;
+  }
+
+  &__sub-header,
+  &__sub-header-info {
+    @include ui-body-font-10(light);
+    color: $grey1;
+  }
+
+  &__sub-header {
+    text-transform: uppercase;
+  }
+
+  &__name {
+    @include ui-body-font-1(bold);
+  }
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $space-m 0;
+
+    &-main {
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: baseline;
+    }
+  }
+
+  &__top-artists,
+  &__top-tracks {
+    width: 100%;
+    padding: 0 $space-xxl;
+  }
+
+  .top-list {
+    &__show-more {
+      @include ui-body-font-9;
+      border: 2px solid $white;
+      border-radius: 999rem;
+      padding: $space-s $space-m;
+      color: $white;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $white;
+        color: $black;
+      }
+    }
+
+    &__header {
+      @include ui-body-font-8(bold);
+    }
+
+    &__name {
+      @include ui-body-font-9;
+    }
+
+    &__row {
+      display: flex;
+      align-items: center;
+      margin: $space 0;
+    }
+
+    &__img {
+      width: 50px;
+      height: auto;
+      border-radius: 100%;
+      border: 2px solid $white;
+      margin-right: $space;
+    }
+  }
+
+  &__playlist {
+    width: 100%;
+    padding: 0 $space-xxl;
+  }
+
+  app-loading-equaliser {
+    position: absolute;
+    width: 100vw;
+    top: calc(0px - 87px);
+  }
+}

@@ -1,0 +1,19 @@
+<div class="login">
+  <div class="login__group">
+    <div class="login__container">
+      <img
+        class="login__logo"
+        [lazyLoad]="'assets/img/white-cc.png'"
+        [useSrcset]="true"
+        alt="ccdesign logo"
+        (load)="onImageLoad()"
+      />
+      <p>
+        Log in with your Spotify account to gain access to many useful tools for your music needs.
+      </p>
+      <a class="login__cta" (click)="onClick()">Login with Spotify</a>
+    </div>
+  </div>
+</div>
+
+<app-loading-equaliser [show]="loading"></app-loading-equaliser>

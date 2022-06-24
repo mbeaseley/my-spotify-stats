@@ -1,0 +1,80 @@
+<div class="profile">
+  <div class="profile__banner">
+    <img
+      class="profile__image"
+      [lazyLoad]="user?.image"
+      [alt]="user?.name"
+      loading="lazy"
+      (load)="onUserLoad()"
+    />
+    <div class="profile__content">
+      <div class="profile__sub-header">Welcome</div>
+      <div class="profile__name">{{ user?.name }}</div>
+      <div class="profile__sub-header-info">
+        <span>{{ publicPaylists?.length }} Public Playlists • </span>
+        <span>{{ user?.followers }} Followers • </span>
+        <span>{{ userFollowings?.length }} Following</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile__section profile__section-main">
+    <div class="profile__top-artists">
+      <div class="profile__section">
+        <div class="top-list__header">Top Artists of All Time</div>
+        <a class="top-list__show-more" routerLink="/top-artists">Show more</a>
+      </div>
+      <div class="top-list__list" *ngFor="let artist of userTopArtists">
+        <div class="top-list__row">
+          <img
+            class="top-list__img"
+            loading="lazy"
+            [lazyLoad]="artist?.artistImage"
+            [alt]="artist?.artistName"
+          />
+          <div class="top-list__name">{{ artist?.artistName }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="profile__top-tracks">
+      <div class="profile__section">
+        <div class="top-list__header">Top Tracks of All Time</div>
+        <a class="top-list__show-more" routerLink="/top-tracks">Show more</a>
+      </div>
+      <div class="top-list__list" *ngFor="let track of userTopTracks; let i = index">
+        <div class="top-list__row">
+          <img
+            class="top-list__img"
+            loading="lazy"
+            [lazyLoad]="track?.trackImage"
+            [alt]="track?.trackName"
+            (loadeddata)="track?.length - 1 === i && onUserLoad()"
+          />
+          <div class="top-list__name">{{ track?.trackName }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="profile__section">
+    <div class="profile__playlist">
+      <div class="profile__section">
+        <div class="top-list__header">Public Playlist</div>
+        <a class="top-list__show-more" routerLink="/playlists">Show more</a>
+      </div>
+      <div class="playlist__list">
+        <div class="playlist__row" *ngFor="let playlist of publicPaylists">
+          <img
+            class="playlist__img"
+            loading="lazy"
+            [lazyLoad]="playlist?.image"
+            [alt]="playlist?.name"
+          />
+          <div class="playlist__name">{{ playlist?.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+  <app-loading-equaliser [show]="loading"></app-loading-equaliser>
+</div>

@@ -4,16 +4,29 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadImageModule, ScrollHooks, LAZYLOAD_IMAGE_HOOKS } from 'ng-lazyload-image';
 
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'Shared/shared.module';
 import { RecentlyPlayedComponent } from './components/recently-played/recently-played.component';
 import { TopTracksComponent } from './components/top-tracks/top-tracks.component';
-import { TopArtistsComponent } from './components/top-artists/top-artists.component';
+import { TopArtistsComponent } from './top-artists/top-artists.component';
 import { RemoveDuplicatesComponent } from './components/remove-duplicates/remove-duplicates.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'callback', redirectTo: '' },
+  {
+    path: '',
+    component: DashboardComponent,
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./profile/profile.component').then((c) => c.ProfileComponent),
+      },
+      {
+        path: 'top-artists',
+        loadComponent: () =>
+          import('./top-artists/top-artists.component').then((c) => c.TopArtistsComponent),
+      },
+    ],
+  },
   { path: 'top-tracks', component: TopTracksComponent, pathMatch: 'full' },
   { path: 'top-artists', component: TopArtistsComponent, pathMatch: 'full' },
   {
@@ -33,7 +46,6 @@ const routes: Routes = [
   declarations: [
     RecentlyPlayedComponent,
     TopTracksComponent,
-    TopArtistsComponent,
     RemoveDuplicatesComponent,
     DashboardComponent,
   ],
@@ -47,12 +59,5 @@ const routes: Routes = [
   ],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   exports: [RouterModule],
-  entryComponents: [
-    DashboardComponent,
-    RecentlyPlayedComponent,
-    TopTracksComponent,
-    TopArtistsComponent,
-    RemoveDuplicatesComponent,
-  ],
 })
 export class ContentModule {}
