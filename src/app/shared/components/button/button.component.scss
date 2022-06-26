@@ -1,0 +1,72 @@
+@import '_variables';
+
+%buttonReset {
+  border: 0;
+  text-decoration: none !important;
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cc-button {
+  display: contents;
+
+  a,
+  button {
+    @extend %buttonReset;
+    @include ui-body-font-10();
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    border-radius: 999rem;
+    text-decoration: none;
+
+    /* ---------------------
+    Style
+    --------------------- */
+    &.cc-button--style-primary {
+      color: $white;
+      background-color: $green;
+      border: none;
+
+      &:hover {
+        background-color: $light-green;
+      }
+    }
+
+    &.cc-button--style-secondary {
+      color: $white;
+      background-color: $grey6;
+      border: 2px solid $white;
+
+      &:hover {
+        background-color: $white;
+        color: $black;
+      }
+    }
+
+    /* ---------------------
+    Size
+    --------------------- */
+    &.cc-button--size-small {
+      padding: $space-s $space-m;
+    }
+
+    &.cc-button--size-medium {
+      padding: $space-sm $space-ml;
+    }
+
+    &.cc-button--size-large {
+      @include ui-body-font-9();
+      padding: $space-s $space-m;
+    }
+  }
+}

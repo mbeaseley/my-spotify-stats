@@ -1,0 +1,30 @@
+<div class="cc-button">
+  <ng-template #content>
+    <ng-content></ng-content>
+  </ng-template>
+
+  <a
+    *ngIf="button.href"
+    role="button"
+    tabindex="0"
+    [ngClass]="button.displayClasses"
+    [routerLink]="button.href"
+    [attr.aria-label]="button.description || null"
+    [attr.title]="button.description || null"
+    [attr.target]="target || null"
+  >
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+
+  <button
+    *ngIf="!button.href"
+    type="button"
+    [ngClass]="button.displayClasses"
+    (click)="onClick()"
+    [attr.disabled]="button.state === 'disabled' || null"
+    [attr.aria-label]="description || null"
+    [attr.title]="description || null"
+  >
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </button>
+</div>
