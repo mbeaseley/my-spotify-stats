@@ -1,5 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { TopListsService } from 'src/app/shared/services/top-lists.service';
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
+import { SharedModule } from 'Shared/shared.module';
+// import { TopListsService } from 'src/app/shared/services/top-lists.service';
 import { Artist } from 'src/app/shared/classes/artist';
 import { ErrorService } from 'src/app/shared/services/error.service';
 import { Error } from 'Shared/classes/error';
@@ -7,16 +11,18 @@ import { AttributeService } from 'Shared/services/attribute.service';
 import { UserService } from 'Shared/services/user.service';
 import { TopListTimeRange } from 'Shared/classes/api-typings/user';
 import { StorageService } from 'Shared/services/storage.service';
+import { LoadingService } from 'Shared/services/loading.service';
 
 @Component({
   selector: 'app-top-artists',
   templateUrl: './top-artists.component.html',
   standalone: true,
+  imports: [CommonModule, SharedModule, LazyLoadImageModule],
   styleUrls: ['./top-artists.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class TopArtistsComponent implements OnInit {
-  tabSelected: string;
+  tabSelected: TopListTimeRange;
   artists: Artist[] = [];
   loading: boolean = false;
 
@@ -25,34 +31,8 @@ export class TopArtistsComponent implements OnInit {
     private attributeService: AttributeService,
     private userService: UserService,
     private storageService: StorageService,
+    private loadingService: LoadingService,
   ) {}
-
-  // /**
-  //  * changes selection of tab and data
-  //  * @param term
-  //  * @param id
-  //  */
-  // onClick(term: string): void {
-  // // // remove current active tab
-  // // const currentActive = document.querySelector('.top-artists__tab-item--active');
-  // // currentActive.classList.remove('top-artists__tab-item--active');
-  // // // add current active tab to new element
-  // // const element = document.querySelector(`#${id}`);
-  // // element.classList.add('top-artists__tab-item--active');
-  // // this.tabSelected = element.innerHTML;
-
-  // this.loading = true;
-  // return this.topListsService
-  //   .topLists('artists', term)
-  //   .then((artists: Artist[]) => {
-  //     this.artists = artists;
-  //     this.loading = false;
-  //   })
-  //   .catch(() => {
-  //     // const error = new Error('Access Token Error', 'Access token expired, new token is needed.');
-  //     // this.errorService.callError('', error);
-  //   });
-  // }
 
   /**
    * on click - open spotify uri link
@@ -68,16 +48,22 @@ export class TopArtistsComponent implements OnInit {
    * @returns Promise<void>
    */
   onGettingArtists(timeRange: TopListTimeRange): Promise<void> {
+    this.loadingService.toggle(true);
+
     return this.userService
       .getTopArtists(timeRange, 50)
       .then((res) => {
         this.artists = res;
+        this.tabSelected = timeRange;
+        setTimeout(() => {
+          this.loadingService.toggle(false);
+        }, 500);
       })
       .catch(() => {
         this.storageService.removeLocalStorageItem();
         this.storageService.removeLocalStorageItem('access-token-date');
         setTimeout(() => {
-          this.loading = false;
+          this.loadingService.toggle(false);
           const error = new Error(
             'Access Token Error',
             'Access token expired, new token is needed.',

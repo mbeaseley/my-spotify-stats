@@ -17,13 +17,17 @@ const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: '',
+        path: 'profile',
         loadComponent: () => import('./profile/profile.component').then((c) => c.ProfileComponent),
       },
       {
         path: 'top-artists',
         loadComponent: () =>
           import('./top-artists/top-artists.component').then((c) => c.TopArtistsComponent),
+      },
+      {
+        path: '**',
+        redirectTo: 'profile',
       },
     ],
   },

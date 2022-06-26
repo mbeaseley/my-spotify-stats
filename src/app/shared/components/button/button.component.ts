@@ -17,9 +17,11 @@ import { ButtonSize, ButtonState, ButtonStyle, CCButton } from './button';
 })
 export class ButtonComponent implements OnInit, OnChanges {
   @Input() href: string;
+  @Input() skipLocationChange: boolean = false;
   @Input() size: ButtonSize = 'medium';
   @Input() buttonStyle: ButtonStyle = 'primary';
   @Input() state: ButtonState = 'default';
+
   @Input() description: string;
   @Input() target: string;
 

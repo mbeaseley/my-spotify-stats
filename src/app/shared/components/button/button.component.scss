@@ -26,8 +26,6 @@
     align-items: center;
     position: relative;
     cursor: pointer;
-    border-radius: 999rem;
-    text-decoration: none;
 
     /* ---------------------
     Style
@@ -36,6 +34,7 @@
       color: $white;
       background-color: $green;
       border: none;
+      border-radius: 999rem;
 
       &:hover {
         background-color: $light-green;
@@ -46,10 +45,46 @@
       color: $white;
       background-color: $grey6;
       border: 2px solid $white;
+      border-radius: 999rem;
 
       &:hover {
         background-color: $white;
         color: $black;
+      }
+    }
+
+    &.cc-button--style-text-link {
+      border: none;
+      color: $grey1;
+      background-color: transparent;
+
+      &:hover {
+        color: $white;
+        border-bottom: 2px solid $white;
+      }
+
+      &.cc-button--size-large {
+        @include ui-body-font-9();
+        padding: $space-s $space-xxs $space-xxs;
+        margin: 0 $space-xs;
+      }
+    }
+
+    &.cc-button--style-text-link-active {
+      border: none;
+      color: $grey1;
+      background-color: transparent;
+      border-bottom: 2px solid $grey1;
+
+      &:hover {
+        color: $white;
+        border-bottom-color: $white;
+      }
+
+      &.cc-button--size-large {
+        @include ui-body-font-9();
+        padding: $space-s $space-xxs $space-xxs;
+        margin: 0 $space-xs;
       }
     }
 

@@ -2,7 +2,7 @@ import { EventEmitter } from '@angular/core';
 
 export type ButtonSize = 'small' | 'medium' | 'large' | 'xlarge';
 
-export type ButtonStyle = 'primary' | 'secondary' | 'text-link';
+export type ButtonStyle = 'primary' | 'secondary' | 'text-link' | 'text-link-active';
 
 export type ButtonState = 'default' | 'disabled';
 

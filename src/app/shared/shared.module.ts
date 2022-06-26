@@ -13,6 +13,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { StatFactComponent } from './components/stat-fact/stat-fact.component';
 import { NoSansitizePipe } from './pipes/no-sansitize.pipe';
 import { LoadingEqualiserComponent } from './components/loading-equaliser/loading-equaliser.component';
+import { ButtonComponent } from './components/button/button.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LoadingEqualiserComponent } from './components/loading-equaliser/loadin
     StatFactComponent,
     NoSansitizePipe,
     LoadingEqualiserComponent,
+    ButtonComponent,
   ],
   imports: [CommonModule, RouterModule, LazyLoadImageModule],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
@@ -40,6 +42,7 @@ import { LoadingEqualiserComponent } from './components/loading-equaliser/loadin
     StatFactComponent,
     NoSansitizePipe,
     LoadingEqualiserComponent,
+    ButtonComponent,
   ],
 })
 export class SharedModule {}

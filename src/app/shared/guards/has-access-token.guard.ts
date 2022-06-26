@@ -14,8 +14,8 @@ export class HasAccessTokenGuard implements CanActivate {
 
     if (!check) {
       return this.router.navigate(['']);
-    } else {
-      return true;
     }
+
+    return true;
   }
 }

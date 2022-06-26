@@ -7,6 +7,7 @@ import { SharedModule } from 'Shared/shared.module';
 import * as dayjs from 'dayjs';
 import { NavigationStart, Router } from '@angular/router';
 import { AttributeService } from 'Shared/services/attribute.service';
+import { LoadingService } from 'Shared/services/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -16,20 +17,19 @@ import { AttributeService } from 'Shared/services/attribute.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  loading: boolean = true;
-
   constructor(
     private authoriseService: AuthoriseService,
     private storageService: StorageService,
     private router: Router,
     private attributeService: AttributeService,
+    private loadingService: LoadingService,
   ) {}
 
   /**
    * on click
    */
   onClick(): void {
-    this.loading = true;
+    this.loadingService.toggle(true);
     window.location.href = this.authoriseService.logIn();
   }
 
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
   onImageLoad(): void {
     setTimeout(() => {
-      this.loading = false;
+      this.loadingService.toggle(false);
     }, 2000);
   }
 

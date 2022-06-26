@@ -19,7 +19,6 @@
         width: 100px;
         background-color: $black;
         text-align: center;
-        z-index: 99;
       }
 
       &__logo {
@@ -77,19 +76,6 @@
           &:hover {
             opacity: 1;
           }
-        }
-      }
-
-      &__logout {
-        @include ui-body-font-9;
-        border: 2px solid $white;
-        border-radius: 999rem;
-        padding: $space-s $space-m;
-        cursor: pointer;
-
-        &:hover {
-          background-color: $white;
-          color: $black;
         }
       }
     }

@@ -23,22 +23,4 @@
     max-width: 224px;
     padding: $space-sm;
   }
-
-  &__cta {
-    @include ui-body-font-10;
-    display: inline-block;
-    border-radius: 999rem;
-    padding: $space-sm $space-ml;
-    background-color: $green;
-    border: none;
-    color: $white;
-    outline: none;
-    margin: $space-sm;
-    text-decoration: none;
-    cursor: pointer;
-
-    &:hover {
-      background-color: $light-green;
-    }
-  }
 }

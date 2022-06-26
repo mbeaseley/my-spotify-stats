@@ -3,13 +3,44 @@
     <div class="top-artists__heading">Top Artists</div>
 
     <div class="top-artists__terms">
-      <button (click)="onGettingArtists('long_term')">All time</button>
-      <button (click)="onGettingArtists('medium_term')">Last 6 Months</button>
-      <button (click)="onGettingArtists('short_term')">Last 4 Weeks</button>
+      <app-button
+        [buttonStyle]="tabSelected === 'long_term' ? 'text-link-active' : 'text-link'"
+        size="large"
+        (clicked)="onGettingArtists('long_term')"
+      >
+        All time
+      </app-button>
+      <app-button
+        [buttonStyle]="tabSelected === 'medium_term' ? 'text-link-active' : 'text-link'"
+        size="large"
+        (clicked)="onGettingArtists('medium_term')"
+      >
+        Last 6 Months
+      </app-button>
+      <app-button
+        [buttonStyle]="tabSelected === 'short_term' ? 'text-link-active' : 'text-link'"
+        size="large"
+        (clicked)="onGettingArtists('short_term')"
+      >
+        Last 4 Weeks
+      </app-button>
+    </div>
+  </div>
+
+  <div class="top-artists__grid">
+    <div *ngIf="!artists.length" class="top-artists__no-artists">
+      <div class="no-artists__heading">Sorry, there was no artists found!</div>
+      <div class="no-artists__label">Please wait a minute and refresh to try again!</div>
+    </div>
+
+    <div *ngIf="artists.length" class="top-artists__artists">
+      <div class="top-artists__item" *ngFor="let artist of artists">
+        <img [src]="artist?.artistImage" [alt]="artist?.artistName" loading="lazy" />
+        <div class="top-artists__item-label">{{ artist?.artistName }}</div>
+      </div>
     </div>
   </div>
 </div>
-
 
 <!-- <h1>Top Artists ({{tabSelected}})</h1>
   <div class="top-artists__tabs">

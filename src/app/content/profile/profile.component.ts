@@ -9,6 +9,7 @@ import { Artist, Track, User, UserFollowings, UserPlaylist } from 'Shared/classe
 import { ErrorService } from 'Shared/services/error.service';
 import { Error } from 'Shared/classes/error';
 import { AttributeService } from 'Shared/services/attribute.service';
+import { LoadingService } from 'Shared/services/loading.service';
 
 @Component({
   selector: 'app-profile',
@@ -31,10 +32,13 @@ export class ProfileComponent implements OnInit {
     private userService: UserService,
     private errorService: ErrorService,
     private attributeService: AttributeService,
+    private loadingService: LoadingService,
   ) {}
 
   onUserLoad(): void {
-    this.loading = false;
+    setTimeout(() => {
+      this.loadingService.toggle(false);
+    }, 1000);
   }
 
   /**
@@ -63,7 +67,7 @@ export class ProfileComponent implements OnInit {
         this.storageService.removeLocalStorageItem();
         this.storageService.removeLocalStorageItem('access-token-date');
         setTimeout(() => {
-          this.loading = false;
+          this.loadingService.toggle(false);
           const error = new Error(
             'Access Token Error',
             'Access token expired, new token is needed.',

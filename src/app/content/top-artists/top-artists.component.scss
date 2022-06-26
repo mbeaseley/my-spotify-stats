@@ -1,6 +1,50 @@
 @import '_variables';
 
 .top-artists {
+  margin: $space $space-xxl;
+  // padding: 0 $space-xxl;
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__heading {
+    @include ui-body-font-6;
+  }
+
+  &__grid {
+    margin-top: $space;
+  }
+
+  &__no-artists {
+    text-align: center;
+
+    .no-artists {
+      &__heading {
+        @include ui-body-font-4('bold');
+      }
+
+      &__label {
+        @include ui-body-font-10(light);
+      }
+    }
+  }
+
+  &__artists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+  }
+
+  &__item {
+    img {
+      border-radius: 100%;
+      width: 100%;
+    }
+  }
 }
 
 // .top-artists {

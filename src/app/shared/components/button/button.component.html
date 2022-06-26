@@ -12,6 +12,7 @@
     [attr.aria-label]="button.description || null"
     [attr.title]="button.description || null"
     [attr.target]="target || null"
+    [skipLocationChange]="skipLocationChange"
   >
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </a>
