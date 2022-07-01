@@ -36,8 +36,8 @@ export class UserPlaylist {
 
 export class Artist {
   id: string;
-  artistName: string;
-  artistImage: string;
+  name: string;
+  image: string;
   externalLink: string;
   order: number;
 
@@ -50,9 +50,9 @@ export class Artist {
 
 export class Track {
   id: string;
-  trackName: string;
-  trackDuration: number;
-  trackImage: string;
+  name: string;
+  duration: number;
+  image: string;
   artists: Artist[];
   played: dayjs.Dayjs;
   uri: string;
@@ -61,5 +61,13 @@ export class Track {
 
   clone(): Track {
     return clone(this);
+  }
+
+  /**
+   * Get all artists in one string
+   * @returns string
+   */
+  getAllArtists(): string {
+    return this.artists.map((a) => a.name).join(' ');
   }
 }

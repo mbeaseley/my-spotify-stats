@@ -35,10 +35,10 @@
           <img
             class="top-list__img"
             loading="lazy"
-            [src]="artist?.artistImage"
-            [alt]="artist?.artistName"
+            [src]="artist?.image"
+            [alt]="artist?.name"
           />
-          <div class="top-list__name">{{ artist?.artistName }}</div>
+          <div class="top-list__name">{{ artist?.name }}</div>
         </div>
       </div>
     </div>
@@ -58,11 +58,11 @@
           <img
             class="top-list__img"
             loading="lazy"
-            [src]="track?.trackImage"
-            [alt]="track?.trackName"
+            [src]="track?.image"
+            [alt]="track?.name"
             (loadeddata)="track?.length - 1 === i && onUserLoad()"
           />
-          <div class="top-list__name">{{ track?.trackName }}</div>
+          <div class="top-list__name">{{ track?.name }}</div>
         </div>
       </div>
     </div>

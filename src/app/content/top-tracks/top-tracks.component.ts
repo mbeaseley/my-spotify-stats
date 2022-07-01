@@ -10,19 +10,19 @@ import { UserService } from 'Shared/services/user.service';
 import { TopListTimeRange } from 'Shared/classes/api-typings/user';
 import { StorageService } from 'Shared/services/storage.service';
 import { LoadingService } from 'Shared/services/loading.service';
-import { Artist } from 'Shared/classes/user';
+import { Track } from 'Shared/classes/user';
 
 @Component({
-  selector: 'app-top-artists',
-  templateUrl: './top-artists.component.html',
+  selector: 'app-top-tracks',
+  templateUrl: './top-tracks.component.html',
   standalone: true,
   imports: [CommonModule, SharedModule, LazyLoadImageModule],
-  styleUrls: ['./top-artists.component.scss'],
+  styleUrls: ['./top-tracks.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class TopArtistsComponent implements OnInit {
+export class TopTracksComponent implements OnInit {
   tabSelected: TopListTimeRange;
-  artists: Artist[] = [];
+  tracks: Track[] = [];
 
   constructor(
     private errorService: ErrorService,
@@ -41,9 +41,9 @@ export class TopArtistsComponent implements OnInit {
     this.loadingService.toggle(true);
 
     return this.userService
-      .getTopArtists(timeRange, 50)
+      .getTopTracks(timeRange, 50)
       .then((res) => {
-        this.artists = res;
+        this.tracks = res;
         this.tabSelected = timeRange;
         setTimeout(() => {
           this.loadingService.toggle(false);
@@ -67,7 +67,7 @@ export class TopArtistsComponent implements OnInit {
    * On init
    */
   ngOnInit(): Promise<void> {
-    this.attributeService.updatePageState('top-artists');
+    this.attributeService.updatePageState('top-tracks');
     return this.onGettingArtists('long_term');
   }
 }

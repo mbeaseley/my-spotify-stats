@@ -1,0 +1,49 @@
+<div class="top-tracks">
+  <div class="top-tracks__header">
+    <div class="top-tracks__heading">Top tracks</div>
+
+    <div class="top-tracks__terms">
+      <app-button
+        [buttonStyle]="tabSelected === 'long_term' ? 'text-link-active' : 'text-link'"
+        size="large"
+        (clicked)="onGettingArtists('long_term')"
+      >
+        All time
+      </app-button>
+      <app-button
+        [buttonStyle]="tabSelected === 'medium_term' ? 'text-link-active' : 'text-link'"
+        size="large"
+        (clicked)="onGettingArtists('medium_term')"
+      >
+        Last 6 Months
+      </app-button>
+      <app-button
+        [buttonStyle]="tabSelected === 'short_term' ? 'text-link-active' : 'text-link'"
+        size="large"
+        (clicked)="onGettingArtists('short_term')"
+      >
+        Last 4 Weeks
+      </app-button>
+    </div>
+  </div>
+
+  <div class="top-tracks__grid">
+    <div *ngIf="!tracks.length" class="top-tracks__no-tracks">
+      <div class="no-tracks__heading">Sorry, there was no tracks found!</div>
+      <div class="no-tracks__label">Please wait a minute and refresh to try again!</div>
+    </div>
+
+    <ul *ngIf="tracks.length" class="top-tracks__tracks">
+      <li class="top-tracks__item" *ngFor="let track of tracks">
+        <div class="tracks__image">
+          <img [src]="track?.image" [alt]="track?.name" loading="lazy" />
+        </div>
+        <div class="tracks__details">
+          <div class="tracks__name">{{ track.name }}</div>
+          <div class="tracks__artists">{{ track.getAllArtists() }}</div>
+        </div>
+        <div class="tracks__duration">{{ track?.duration | localeDate: 'mm:ss' }}</div>
+      </li>
+    </ul>
+  </div>
+</div>

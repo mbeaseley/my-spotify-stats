@@ -6,7 +6,6 @@ import { LazyLoadImageModule, ScrollHooks, LAZYLOAD_IMAGE_HOOKS } from 'ng-lazyl
 
 import { SharedModule } from 'Shared/shared.module';
 import { RecentlyPlayedComponent } from './components/recently-played/recently-played.component';
-import { TopTracksComponent } from './components/top-tracks/top-tracks.component';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
 import { RemoveDuplicatesComponent } from './components/remove-duplicates/remove-duplicates.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -26,33 +25,21 @@ const routes: Routes = [
           import('./top-artists/top-artists.component').then((c) => c.TopArtistsComponent),
       },
       {
+        path: 'top-tracks',
+        loadComponent: () =>
+          import('./top-tracks/top-tracks.component').then((c) => c.TopTracksComponent),
+      },
+      {
         path: '**',
         redirectTo: 'profile',
       },
     ],
   },
-  { path: 'top-tracks', component: TopTracksComponent, pathMatch: 'full' },
-  { path: 'top-artists', component: TopArtistsComponent, pathMatch: 'full' },
-  {
-    path: 'recently-played',
-    component: RecentlyPlayedComponent,
-    pathMatch: 'full',
-  },
-  {
-    path: 'remove-duplicates',
-    component: RemoveDuplicatesComponent,
-    pathMatch: 'full',
-  },
-  { path: '**', component: DashboardComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
-  declarations: [
-    RecentlyPlayedComponent,
-    TopTracksComponent,
-    RemoveDuplicatesComponent,
-    DashboardComponent,
-  ],
+  declarations: [RecentlyPlayedComponent, RemoveDuplicatesComponent, DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

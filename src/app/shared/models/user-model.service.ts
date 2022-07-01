@@ -129,8 +129,8 @@ export class UserModelService {
     return res.items.map((x, i) => {
       const artist = new Artist();
       artist.id = x.id;
-      artist.artistName = x.name;
-      artist.artistImage = x.images?.[0].url;
+      artist.name = x.name;
+      artist.image = x.images?.[0].url;
       artist.externalLink = x.uri;
       artist.order = i + 1;
       return artist;
@@ -166,12 +166,13 @@ export class UserModelService {
     return res.items.map((x, i) => {
       const track = new Track();
       track.id = x.id;
-      track.trackName = x.name;
-      track.trackImage = x.album?.images?.[0].url;
+      track.name = x.name;
+      track.image = x.album?.images?.[0].url;
+      track.duration = x.duration_ms;
       track.artists = x.artists.map((a) => {
         const artistObj = new Artist();
         artistObj.id = a.id;
-        artistObj.artistName = a.name;
+        artistObj.name = a.name;
         artistObj.externalLink = a.external_urls.spotify;
         return artistObj;
       });

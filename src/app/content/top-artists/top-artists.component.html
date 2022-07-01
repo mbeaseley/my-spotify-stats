@@ -35,24 +35,9 @@
 
     <div *ngIf="artists.length" class="top-artists__artists">
       <div class="top-artists__item" *ngFor="let artist of artists">
-        <img [src]="artist?.artistImage" [alt]="artist?.artistName" loading="lazy" />
-        <div class="top-artists__item-label">{{ artist?.artistName }}</div>
+        <img [src]="artist?.image" [alt]="artist?.name" loading="lazy" />
+        <div class="top-artists__item-label">{{ artist?.name }}</div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- <h1>Top Artists ({{tabSelected}})</h1>
-  <div class="top-artists__tabs">
-    <button id="top-artists-short" class="top-artists__tab-item top-artists__tab-item--active" (click)="onClick('short_term', 'top-artists-short')">Last 4 Weeks</button>
-    <button id="top-artists-mid" class="top-artists__tab-item" (click)="onClick('medium_term', 'top-artists-mid')">Last 6 Months</button>
-    <button id="top-artists-long" class="top-artists__tab-item" (click)="onClick('long_term', 'top-artists-long')">All Time</button>
-  </div>
-  <div class="top-artists__leaderboard">
-    <a *ngFor="let artist of artists" class="top-artists__leaderboard-item" (click)="onArtistClick(artist.externalLink)">
-      <img [lazyLoad]="artist.artistImage" [alt]="artist.artistName">
-      <p>{{artist.order}}.{{artist.artistName}}</p>
-    </a>
-  </div>
-</div>
-<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner> -->
