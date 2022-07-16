@@ -1,0 +1,55 @@
+@import '_variables';
+
+.recently-played {
+  margin: $space $space-xxl;
+
+  &__grid {
+    margin-top: $space;
+  }
+
+  &__no-tracks {
+    text-align: center;
+
+    .no-tracks {
+      &__heading {
+        @include ui-body-font-4('bold');
+      }
+
+      &__label {
+        @include ui-body-font-10(light);
+      }
+    }
+  }
+
+  &__tracks {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .tracks {
+      &__image img {
+        width: 50px;
+        margin-right: $space;
+      }
+
+      &__details {
+        width: 100%;
+      }
+
+      &__name {
+        @include ui-body-font-8;
+      }
+
+      &__artists,
+      &__duration {
+        @include ui-body-font-10(light);
+        color: $grey1;
+      }
+    }
+  }
+}

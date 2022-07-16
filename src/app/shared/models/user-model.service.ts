@@ -7,11 +7,10 @@ import {
   FollowingsApi,
   MeApi,
   PlaylistsApi,
+  RecentlyPlayedTracksApi,
   TopListTimeRange,
   TracksApi,
 } from 'Shared/classes/api-typings/user';
-import { Country } from 'Shared/classes/country';
-import { CountryService } from 'Shared/services/country.service';
 import { firstValueFrom } from 'rxjs';
 
 @Injectable({
@@ -91,7 +90,7 @@ export class UserModelService {
    * @param res
    * @returns UserPlaylist[]
    */
-  fromPlaylistPayload(res: PlaylistsApi): UserPlaylist[] {
+  private fromPlaylistPayload(res: PlaylistsApi): UserPlaylist[] {
     return res.items.map((i) => {
       const p = new UserPlaylist();
       p.id = i.id;
@@ -125,7 +124,7 @@ export class UserModelService {
    * @param res
    * @returns Artist[]
    */
-  fromArtistPayload(res: ArtistsApi): Artist[] {
+  private fromArtistPayload(res: ArtistsApi): Artist[] {
     return res.items.map((x, i) => {
       const artist = new Artist();
       artist.id = x.id;
@@ -162,23 +161,22 @@ export class UserModelService {
    * @param res
    * @returns Track[]
    */
-  fromTracksPayload(res: TracksApi): Track[] {
-    return res.items.map((x, i) => {
-      const track = new Track();
-      track.id = x.id;
-      track.name = x.name;
-      track.image = x.album?.images?.[0].url;
-      track.duration = x.duration_ms;
-      track.artists = x.artists.map((a) => {
-        const artistObj = new Artist();
-        artistObj.id = a.id;
-        artistObj.name = a.name;
-        artistObj.externalLink = a.external_urls.spotify;
-        return artistObj;
-      });
-      track.uri = x.uri;
-      return track;
+  private fromTracksPayload(res: TracksApi['items'][number]): Track {
+    console.log(res);
+    const track = new Track();
+    track.id = res?.id;
+    track.name = res?.name;
+    track.image = res.album?.images?.[0].url;
+    track.duration = res?.duration_ms;
+    track.artists = res?.artists.map((a) => {
+      const artistObj = new Artist();
+      artistObj.id = a.id;
+      artistObj.name = a.name;
+      artistObj.externalLink = a.external_urls.spotify;
+      return artistObj;
     });
+    track.uri = res.uri;
+    return track;
   }
 
   /**
@@ -198,6 +196,33 @@ export class UserModelService {
           limit,
         },
       }),
-    ).then((res) => this.fromTracksPayload(res));
+    ).then((res) => res?.items?.map((i) => this.fromTracksPayload(i)) || []);
+  }
+
+  /**
+   * Get recently played tracks in format
+   * @param res
+   * @returns Tracks[]
+   */
+  private fromRecentlyPlayedPayload(res: RecentlyPlayedTracksApi): Track[] {
+    return res.items.map((i) => this.fromTracksPayload(i.track));
+  }
+
+  /**
+   * Get user recently played tracks
+   * @param limit
+   * @returns track[]
+   */
+  public getRecentlyPlayedTracks(limit = 50): Promise<Track[]> {
+    return firstValueFrom(
+      this.http.get<RecentlyPlayedTracksApi>(`${this.spotifyUrl}/player/recently-played`, {
+        headers: {
+          Authorization: `Bearer ` + this.storageService.getLocalStorageItem(),
+        },
+        params: {
+          limit,
+        },
+      }),
+    ).then((res) => this.fromRecentlyPlayedPayload(res));
   }
 }

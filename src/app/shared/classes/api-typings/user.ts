@@ -111,4 +111,18 @@ export type TracksApi = BaseDataApi & {
   items: TrackItemApi[];
 };
 
+export type RecentlyPlayedTracksApi = BaseDataApi & {
+  items: {
+    context: {
+      external_urls: { spotify: string };
+      spotify: string;
+      href: string;
+      type: string;
+      uri: string;
+    };
+    played_at: string;
+    track: TrackItemApi;
+  }[];
+};
+
 export type TopListTimeRange = 'short_term' | 'medium_term' | 'long_term';

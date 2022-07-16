@@ -5,9 +5,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadImageModule, ScrollHooks, LAZYLOAD_IMAGE_HOOKS } from 'ng-lazyload-image';
 
 import { SharedModule } from 'Shared/shared.module';
-import { RecentlyPlayedComponent } from './components/recently-played/recently-played.component';
-import { TopArtistsComponent } from './top-artists/top-artists.component';
-import { RemoveDuplicatesComponent } from './components/remove-duplicates/remove-duplicates.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -30,6 +27,13 @@ const routes: Routes = [
           import('./top-tracks/top-tracks.component').then((c) => c.TopTracksComponent),
       },
       {
+        path: 'recently-played',
+        loadComponent: () =>
+          import('./recently-played/recently-played.component').then(
+            (c) => c.RecentlyPlayedComponent,
+          ),
+      },
+      {
         path: '**',
         redirectTo: 'profile',
       },
@@ -39,7 +43,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [RecentlyPlayedComponent, RemoveDuplicatesComponent, DashboardComponent],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

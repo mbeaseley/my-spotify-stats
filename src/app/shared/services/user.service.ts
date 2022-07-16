@@ -44,4 +44,8 @@ export class UserService {
   public getTopTracks(timeRange: TopListTimeRange, limit?: number): Promise<Track[]> {
     return this.userModelService.getUserTopTracks(timeRange, limit);
   }
+
+  public getRecentlyPlayedTracks(limit?: number): Promise<Track[]> {
+    return this.userModelService.getRecentlyPlayedTracks(limit);
+  }
 }
