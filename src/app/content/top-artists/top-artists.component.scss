@@ -3,6 +3,10 @@
 .top-artists {
   margin: $space $space-xxl;
 
+  @include to(md) {
+    padding: 80px 0 0;
+  }
+
   &__header {
     display: flex;
     align-items: baseline;

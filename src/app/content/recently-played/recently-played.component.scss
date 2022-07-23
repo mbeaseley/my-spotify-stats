@@ -3,8 +3,16 @@
 .recently-played {
   margin: $space $space-xxl;
 
+  @include to(md) {
+    padding: 80px 0 0;
+  }
+
   &__grid {
     margin-top: $space;
+  }
+
+  &__heading {
+    @include ui-body-font-6;
   }
 
   &__no-tracks {

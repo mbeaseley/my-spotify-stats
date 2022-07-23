@@ -1,6 +1,49 @@
 @import '_variables';
 
 .profile {
+  @include to(md) {
+    padding: 80px 0 0;
+
+    .profile {
+      &__content {
+        text-align: center;
+      }
+
+      &__banner {
+        flex-direction: column;
+      }
+
+      &__image {
+        max-width: 100px;
+      }
+
+      &__name {
+        @include ui-body-font-9(bold);
+      }
+
+      &__section-main {
+        max-width: 1400px;
+        padding: 0 $space;
+        flex-direction: column;
+      }
+
+      &__top-artists,
+      &__top-tracks {
+        padding: 0;
+      }
+
+      .top-list {
+        &__list {
+          padding: 0 $space;
+        }
+
+        &__name {
+          @include ui-body-font-10;
+        }
+      }
+    }
+  }
+
   &__banner {
     display: flex;
     align-items: center;
@@ -91,7 +134,7 @@
 
   app-loading-equaliser {
     position: absolute;
-    width: 100vw;
-    top: calc(0px - 87px);
+    height: 100vh;
+    z-index: 100;
   }
 }

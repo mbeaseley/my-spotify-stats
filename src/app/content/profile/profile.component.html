@@ -7,9 +7,19 @@
       loading="lazy"
       (load)="onUserLoad()"
     />
-    <div class="profile__content">
+    <div class="profile__content hidden-xs hidden-sm">
       <div class="profile__sub-header">Welcome</div>
       <div class="profile__name">{{ user?.name }}</div>
+      <div class="profile__sub-header-info">
+        <span>{{ publicPaylists?.length }} Public Playlists • </span>
+        <span>{{ user?.followers }} Followers • </span>
+        <span>{{ userFollowings?.length }} Following</span>
+      </div>
+    </div>
+
+    <div class="profile__content hidden-md hidden-lg hidden-xl hidden-xxl">
+      <span class="profile__sub-header">Welcome &nbsp;</span>
+      <span class="profile__name">{{ user?.name }}</span>
       <div class="profile__sub-header-info">
         <span>{{ publicPaylists?.length }} Public Playlists • </span>
         <span>{{ user?.followers }} Followers • </span>
@@ -32,12 +42,7 @@
       </div>
       <div class="top-list__list" *ngFor="let artist of userTopArtists">
         <div class="top-list__row">
-          <img
-            class="top-list__img"
-            loading="lazy"
-            [src]="artist?.image"
-            [alt]="artist?.name"
-          />
+          <img class="top-list__img" loading="lazy" [src]="artist?.image" [alt]="artist?.name" />
           <div class="top-list__name">{{ artist?.name }}</div>
         </div>
       </div>

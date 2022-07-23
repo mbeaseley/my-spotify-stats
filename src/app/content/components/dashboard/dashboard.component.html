@@ -1,38 +1,57 @@
-<div class="dashboard">
-  <div class="dashboard__nav">
-    <div class="nav__side-nav">
-      <img
-        class="nav__logo"
-        src="https://localhost:4200/assets/img/white-cc.png"
-        alt="ccdesign logo"
-      />
+<ng-template #logo>
+  <img class="nav__logo" src="https://localhost:4200/assets/img/white-cc.png" alt="ccdesign logo" />
+</ng-template>
 
-      <ul class="nav__link">
-        <li class="nav__link-item">
-          <a routerLink="profile" routerLinkActive="active" skipLocationChange>
-            <img src="assets/img/person.svg" alt="Profile page" />
-            <span>Profile</span>
-          </a>
-        </li>
-        <li class="nav__link-item">
-          <a routerLink="top-artists" routerLinkActive="active" skipLocationChange>
-            <img src="assets/img/mic.svg" alt="Top Artists page" />
-            <span>Top Artists</span>
-          </a>
-        </li>
-        <li class="nav__link-item">
-          <a routerLink="top-tracks" routerLinkActive="active" skipLocationChange>
-            <img src="assets/img/track.svg" alt="Top tracks page" />
-            <span>Top tracks</span>
-          </a>
-        </li>
-        <li class="nav__link-item">
-          <a routerLink="recently-played" routerLinkActive="active" skipLocationChange>
-            <img src="assets/img/cd.svg" alt="Recently played page" />
-            <span>Recently played</span>
-          </a>
-        </li>
-      </ul>
+<ng-template #logout>
+  <app-button buttonStyle="secondary" size="small" (clicked)="onLogout()">Logout</app-button>
+</ng-template>
+
+<ng-template #navLinks>
+  <ul class="nav__link">
+    <li class="nav__link-item">
+      <a routerLink="profile" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/person.svg" alt="Profile page" />
+        <span>Profile</span>
+      </a>
+    </li>
+    <li class="nav__link-item">
+      <a routerLink="top-artists" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/mic.svg" alt="Top Artists page" />
+        <span>Top Artists</span>
+      </a>
+    </li>
+    <li class="nav__link-item">
+      <a routerLink="top-tracks" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/track.svg" alt="Top tracks page" />
+        <span>Top tracks</span>
+      </a>
+    </li>
+    <li class="nav__link-item">
+      <a routerLink="recently-played" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/cd.svg" alt="Recently played page" />
+        <span>Recent</span>
+      </a>
+    </li>
+  </ul>
+</ng-template>
+
+<div class="dashboard">
+  <!-- Mobile -->
+  <div class="dashboard__nav hidden-md hidden-lg hidden-xl hidden-xxl">
+    <div class="nav__top">
+      <ng-container *ngTemplateOutlet="logo"></ng-container>
+      <ng-container *ngTemplateOutlet="logout"></ng-container>
+    </div>
+
+    <div class="nav__bottom"><ng-container *ngTemplateOutlet="navLinks"></ng-container></div>
+  </div>
+
+  <!-- Desktop / tablet -->
+  <div class="dashboard__nav dashboard__nav--desktop hidden-xs hidden-sm">
+    <div class="nav__side">
+      <ng-container *ngTemplateOutlet="logo"></ng-container>
+
+      <ng-container *ngTemplateOutlet="navLinks"></ng-container>
 
       <div class="nav__github">
         <a href="https://github.com/mbeaseley">
@@ -40,11 +59,12 @@
         </a>
       </div>
     </div>
-    <app-button buttonStyle="secondary" size="small" (clicked)="onLogout()">Logout</app-button>
+    <ng-container *ngTemplateOutlet="logout"></ng-container>
   </div>
 
   <!-- dashboard main content/routes -->
   <div class="dashboard__main">
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </div>
 </div>

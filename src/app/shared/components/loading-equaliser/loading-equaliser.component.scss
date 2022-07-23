@@ -117,18 +117,20 @@
 $loading-eq-height: 100vh;
 $loading-eq-container-height: 100px;
 $loading-eq-container-transform: rotate(180deg);
-$loading-eq-z-index: 1;
+$loading-eq-z-index: 10;
+$loading-eq-width: 100%;
 
 $loading-eq-bar-height: 20px;
 $loading-eq-bar-width: 10px;
 $loading-eq-bar-delay: 0.2s;
 
 .loading-equaliser {
-  position: relative;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
   height: $loading-eq-height;
+  width: $loading-eq-width;
   background-color: $grey6;
   z-index: $loading-eq-z-index;
 

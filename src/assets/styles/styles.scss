@@ -1,6 +1,7 @@
 @import '_variables.scss';
 
 @import './includes/mixin';
+@import './includes/responsive';
 
 body {
   @extend %base;
