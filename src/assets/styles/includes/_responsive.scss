@@ -1,0 +1,23 @@
+@include from(xxl) {
+  @include responsive-invisible('.hidden-xxl');
+}
+
+@include between(xl, xxl) {
+  @include responsive-invisible('.hidden-xl');
+}
+
+@include between(lg, xl) {
+  @include responsive-invisible('.hidden-lg');
+}
+
+@include between(md, lg) {
+  @include responsive-invisible('.hidden-md');
+}
+
+@include between(sm, md) {
+  @include responsive-invisible('.hidden-sm');
+}
+
+@include to(sm) {
+  @include responsive-invisible('.hidden-xs');
+}

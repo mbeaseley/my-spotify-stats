@@ -1,127 +1,160 @@
 @import '_variables';
 
-body[ui-state="login"] .dashboard__login {
-  height: 90vh;
-}
-
 .dashboard {
-  &__login {
-    background-color: $black;
-    width: 100vw;
-    height: 97vh;
-  }
+  &__nav {
+    .nav {
+      /*--------------------------
+      NAV MOBILE STYLING
+      ---------------------------*/
+      &__top,
+      &__bottom {
+        position: fixed;
+        z-index: 1;
 
-  &__login-group {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 500px;
-  }
+        & > * {
+          margin: $space;
+        }
+      }
 
-  &__login-container {
-    padding: $space;
-    border: 2px solid $white;
-    color: $white;
-    text-align: center;
-  }
+      &__top {
+        display: flex;
+        top: 0;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        background: $grey6;
 
-  &__login-logo {
-    max-width: 200px; 
-    max-height: 200px;
-    padding: $space-sm;
-  }
+        .nav__logo {
+          max-width: 50px;
+          max-height: 50px;
+        }
+      }
 
-  &__login-cta {
-    display: inline-block;
-    border-radius: 999rem;
-    padding: $space-sm 30px;
-    background-color: $green;
-    border: none;
-    color: $white;
-    font-size: 14px;
-    outline: none;
-    margin: $space-sm;
-    text-decoration: none;
-    cursor: pointer;
+      &__bottom {
+        background: $black;
+        bottom: 0;
+        width: 100%;
+      }
 
-    &:hover {
-      background-color: $light-green;
-    }
-  }
+      /*--------------------------
+      NAV DESKTOP/TABLET STYLING
+      ---------------------------*/
+      &__side {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        width: 100px;
+        height: 100vh;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        background-color: $black;
+        text-align: center;
+        z-index: 1;
 
-  &__login-tooltip {
-    margin-top: $space-sm;
-    padding: 0 $space;
-    background-color: $grey2;
-    border: 2px solid $white;
+        .nav__logo {
+          width: 100%;
+          padding: $space-sm $space;
+          box-sizing: border-box;
+        }
+      }
 
-    @media (max-width: $small-breakpoint) {
-      display: none;
-    }
-  }
+      /*--------------------------
+      General nav styling
+      ---------------------------*/
+      &__link {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
 
-  &__menu {
-    min-height: 84vh;
-    max-width: 1000px;
-    margin: 80px auto 40px;
-  }
+        @include from(md) {
+          flex-direction: column;
+        }
 
-  &__menu-content-box {
-    margin: $space;
+        &-item {
+          display: flex;
 
-    & > h1 {
-      font-size: 36px;
+          @include to(md) {
+            width: 100%;
+          }
+        }
 
-      @media (max-width: $small-breakpoint) {
-        font-size: 32px;
+        a {
+          @include ui-body-font-9(light);
+          display: flex;
+          cursor: pointer;
+          width: 100%;
+          min-height: 70px;
+          padding: $space-s 0;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          border-bottom: 4px solid transparent;
+          color: $white;
+          text-decoration: none;
+          opacity: 0.7;
+
+          @include from(md) {
+            border-left: 4px solid transparent;
+          }
+
+          @include to(md) {
+            border-bottom: 4px solid transparent;
+          }
+
+          img {
+            width: 30px;
+            height: 30px;
+            margin: $space-xs $space-s;
+          }
+
+          &.active,
+          &:hover {
+            background-color: $grey5;
+            opacity: 1;
+
+            @include from(md) {
+              border-left-color: $green;
+            }
+
+            @include to(md) {
+              border-bottom-color: $green;
+            }
+          }
+        }
+      }
+
+      &__github {
+        a {
+          opacity: 0.7;
+          cursor: pointer;
+
+          &:hover {
+            opacity: 1;
+          }
+        }
       }
     }
-  }
 
-  &__container {
-    display: grid;
-    grid-gap: $space-ml;
-    grid-template-columns: 1fr 1fr;
-
-    @media (max-width: $small-breakpoint) {
-      grid-template-columns: 1fr;
+    &--desktop {
+      display: flex;
+      flex-direction: row;
     }
   }
 
-  &__menu-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-gap: $space-sm;
-  }
+  &__main {
+    position: relative;
 
-  &__menu-grid-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: $green;
-    color: $white;
-    padding: $space-m;
-    height: 200px;
-    text-decoration: none;
-
-    &:hover {
-      background: $light-green;
+    @include from(md) {
+      min-height: 87vh;
+      margin: 0 0 0 100px;
     }
 
-    & > &-header {
-      @extend %heading;
-      font-size: 32px;
-      font-weight: 700;
-
-      @media (max-width: $small-breakpoint) {
-        font-size: 28px;
-      }
-    }
-
-    & > &-description {
-      @extend %base;
-      min-height: 72px;
+    @include to(md) {
+      margin-bottom: 80px;
     }
   }
 }

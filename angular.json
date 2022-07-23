@@ -97,22 +97,21 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         }
       }
     }
   },
-  "defaultProject": "my-spotify-stats",
   "cli": {
-    "analytics": "2fb382b9-b269-4c9a-ade8-9b93064f31b6"
+    "analytics": "2fb382b9-b269-4c9a-ade8-9b93064f31b6",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

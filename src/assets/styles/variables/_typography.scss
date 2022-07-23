@@ -1,9 +1,9 @@
 %base {
-    font-family: Arial, Helvetica, sans-serif
+  font-family: 'Signika', sans-serif;
 }
 
 %heading {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Signika', sans-serif;
 }
 
 $font-size--large: 21px;
@@ -12,6 +12,96 @@ $font-size--medium: 16px;
 $font-size--small: 14px;
 $font-size--extra-small: 12px;
 
-$font-weight: 400; // normal
-$font-weight--medium: 500; // medium
+$font-weight: 300; // normal
+$font-weight--medium: 400; // medium
 $font-weight--bold: 700; // bold
+
+/* =====================================
+NEW
+===================================== */
+
+$ui-font-family: 'Signika', sans-serif !default;
+
+$ui-font-weight--light: 300;
+$ui-font-weight--normal: 400;
+$ui-font-weight--bold: 700;
+
+$ui-font-size-1: 72px !default;
+$ui-font-size-2: 64px !default;
+$ui-font-size-3: 48px !default;
+$ui-font-size-4: 36px !default;
+$ui-font-size-5: 32px !default;
+$ui-font-size-6: 28px !default;
+$ui-font-size-7: 20px !default;
+$ui-font-size-8: 18px !default;
+$ui-font-size-9: 16px !default;
+$ui-font-size-10: 14px !default;
+$ui-font-size-11: 12px !default;
+
+@mixin ui-body-font-1($weight: false) {
+  @include build-brand-font($ui-font-size-1, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-2($weight: false) {
+  @include build-brand-font($ui-font-size-2, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-3($weight: false) {
+  @include build-brand-font($ui-font-size-3, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-4($weight: false) {
+  @include build-brand-font($ui-font-size-4, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-5($weight: false) {
+  @include build-brand-font($ui-font-size-5, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-6($weight: false) {
+  @include build-brand-font($ui-font-size-6, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-7($weight: false) {
+  @include build-brand-font($ui-font-size-7, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-8($weight: false) {
+  @include build-brand-font($ui-font-size-8, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-9($weight: false) {
+  @include build-brand-font($ui-font-size-9, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-10($weight: false) {
+  @include build-brand-font($ui-font-size-10, $ui-font-family, $weight);
+}
+
+@mixin ui-body-font-11($weight: false) {
+  @include build-brand-font($ui-font-size-11, $ui-font-family, $weight);
+}
+
+@mixin build-brand-font($font-size, $font-family, $weight) {
+  font-family: $font-family;
+  font-size: $font-size;
+  @include build-brand-weight($weight);
+}
+
+@mixin build-brand-weight($weight) {
+  font-weight: $ui-font-weight--normal;
+
+  @if $weight {
+    @if $weight== 'bold' {
+      font-weight: $ui-font-weight--bold;
+    }
+
+    @if $weight== 'light' {
+      font-weight: $ui-font-weight--light;
+    }
+
+    @if $weight== 'normal' {
+      font-weight: $ui-font-weight--normal;
+    }
+  }
+}

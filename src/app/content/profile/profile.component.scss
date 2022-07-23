@@ -1,0 +1,140 @@
+@import '_variables';
+
+.profile {
+  @include to(md) {
+    padding: 80px 0 0;
+
+    .profile {
+      &__content {
+        text-align: center;
+      }
+
+      &__banner {
+        flex-direction: column;
+      }
+
+      &__image {
+        max-width: 100px;
+      }
+
+      &__name {
+        @include ui-body-font-9(bold);
+      }
+
+      &__section-main {
+        max-width: 1400px;
+        padding: 0 $space;
+        flex-direction: column;
+      }
+
+      &__top-artists,
+      &__top-tracks {
+        padding: 0;
+      }
+
+      .top-list {
+        &__list {
+          padding: 0 $space;
+        }
+
+        &__name {
+          @include ui-body-font-10;
+        }
+      }
+    }
+  }
+
+  &__banner {
+    display: flex;
+    align-items: center;
+  }
+
+  &__image {
+    margin: $space $space-l;
+    border-radius: 100%;
+    max-width: 250px;
+  }
+
+  &__sub-header,
+  &__sub-header-info {
+    @include ui-body-font-10(light);
+    color: $grey1;
+  }
+
+  &__sub-header {
+    text-transform: uppercase;
+  }
+
+  &__name {
+    @include ui-body-font-1(bold);
+  }
+
+  &__section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: $space-m 0;
+
+    &-main {
+      max-width: 1400px;
+      margin: 0 auto;
+      align-items: baseline;
+    }
+  }
+
+  &__top-artists,
+  &__top-tracks {
+    width: 100%;
+    padding: 0 $space-xxl;
+  }
+
+  .top-list {
+    &__show-more {
+      @include ui-body-font-9;
+      border: 2px solid $white;
+      border-radius: 999rem;
+      padding: $space-s $space-m;
+      color: $white;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $white;
+        color: $black;
+      }
+    }
+
+    &__header {
+      @include ui-body-font-8(bold);
+    }
+
+    &__name {
+      @include ui-body-font-9;
+    }
+
+    &__row {
+      display: flex;
+      align-items: center;
+      margin: $space 0;
+    }
+
+    &__img {
+      width: 50px;
+      height: auto;
+      border-radius: 100%;
+      border: 2px solid $white;
+      margin-right: $space;
+    }
+  }
+
+  &__playlist {
+    width: 100%;
+    padding: 0 $space-xxl;
+  }
+
+  app-loading-equaliser {
+    position: absolute;
+    height: 100vh;
+    z-index: 100;
+  }
+}

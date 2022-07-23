@@ -1,4 +1,4 @@
-// tslint:disable-next-line:no-import-side-effect
+// eslint-disable-next-line import/no-unassigned-import
 import 'jest-preset-angular';
 
 Object.defineProperty(window, 'CSS', { value: undefined });

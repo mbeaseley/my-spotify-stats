@@ -4,39 +4,46 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadImageModule, ScrollHooks, LAZYLOAD_IMAGE_HOOKS } from 'ng-lazyload-image';
 
-import { SharedModule } from '../shared/shared.module';
-import { RecentlyPlayedComponent } from './components/recently-played/recently-played.component';
-import { TopTracksComponent } from './components/top-tracks/top-tracks.component';
-import { TopArtistsComponent } from './components/top-artists/top-artists.component';
-import { RemoveDuplicatesComponent } from './components/remove-duplicates/remove-duplicates.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SharedModule } from 'Shared/shared.module';
+import { DashboardComponent } from 'Content/components/dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent },
-  { path: 'callback', redirectTo: '' },
-  { path: 'top-tracks', component: TopTracksComponent, pathMatch: 'full' },
-  { path: 'top-artists', component: TopArtistsComponent, pathMatch: 'full' },
   {
-    path: 'recently-played',
-    component: RecentlyPlayedComponent,
-    pathMatch: 'full',
+    path: '',
+    component: DashboardComponent,
+    children: [
+      {
+        path: 'profile',
+        loadComponent: () => import('./profile/profile.component').then((c) => c.ProfileComponent),
+      },
+      {
+        path: 'top-artists',
+        loadComponent: () =>
+          import('./top-artists/top-artists.component').then((c) => c.TopArtistsComponent),
+      },
+      {
+        path: 'top-tracks',
+        loadComponent: () =>
+          import('./top-tracks/top-tracks.component').then((c) => c.TopTracksComponent),
+      },
+      {
+        path: 'recently-played',
+        loadComponent: () =>
+          import('./recently-played/recently-played.component').then(
+            (c) => c.RecentlyPlayedComponent,
+          ),
+      },
+      {
+        path: '**',
+        redirectTo: 'profile',
+      },
+    ],
   },
-  {
-    path: 'remove-duplicates',
-    component: RemoveDuplicatesComponent,
-    pathMatch: 'full',
-  },
-  { path: '**', component: DashboardComponent },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({
-  declarations: [
-    RecentlyPlayedComponent,
-    TopTracksComponent,
-    TopArtistsComponent,
-    RemoveDuplicatesComponent,
-    DashboardComponent,
-  ],
+  declarations: [DashboardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
@@ -47,12 +54,5 @@ const routes: Routes = [
   ],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
   exports: [RouterModule],
-  entryComponents: [
-    DashboardComponent,
-    RecentlyPlayedComponent,
-    TopTracksComponent,
-    TopArtistsComponent,
-    RemoveDuplicatesComponent,
-  ],
 })
 export class ContentModule {}
