@@ -1,0 +1,75 @@
+<div class="profile">
+  <div class="profile__banner">
+    <img
+      class="profile__image"
+      [src]="user?.image"
+      [alt]="user?.name"
+      loading="lazy"
+      (load)="onUserLoad()"
+    />
+    <div class="profile__content hidden-xs hidden-sm">
+      <div class="profile__sub-header">Welcome</div>
+      <div class="profile__name">{{ user?.name }}</div>
+      <div class="profile__sub-header-info">
+        <span>{{ publicPaylists?.length }} Public Playlists • </span>
+        <span>{{ user?.followers }} Followers • </span>
+        <span>{{ userFollowings?.length }} Following</span>
+      </div>
+    </div>
+
+    <div class="profile__content hidden-md hidden-lg hidden-xl hidden-xxl">
+      <span class="profile__sub-header">Welcome &nbsp;</span>
+      <span class="profile__name">{{ user?.name }}</span>
+      <div class="profile__sub-header-info">
+        <span>{{ publicPaylists?.length }} Public Playlists • </span>
+        <span>{{ user?.followers }} Followers • </span>
+        <span>{{ userFollowings?.length }} Following</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="profile__section profile__section-main">
+    <div class="profile__top-artists">
+      <div class="profile__section">
+        <div class="top-list__header">Top Artists of All Time</div>
+        <app-button
+          buttonStyle="secondary"
+          size="large"
+          href="top-artists"
+          [skipLocationChange]="true"
+          >Show more</app-button
+        >
+      </div>
+      <div class="top-list__list" *ngFor="let artist of userTopArtists">
+        <div class="top-list__row">
+          <img class="top-list__img" loading="lazy" [src]="artist?.image" [alt]="artist?.name" />
+          <div class="top-list__name">{{ artist?.name }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="profile__top-tracks">
+      <div class="profile__section">
+        <div class="top-list__header">Top Tracks of All Time</div>
+        <app-button
+          buttonStyle="secondary"
+          size="large"
+          href="top-tracks"
+          [skipLocationChange]="true"
+          >Show more</app-button
+        >
+      </div>
+      <div class="top-list__list" *ngFor="let track of userTopTracks; let i = index">
+        <div class="top-list__row">
+          <img
+            class="top-list__img"
+            loading="lazy"
+            [src]="track?.image"
+            [alt]="track?.name"
+            (loadeddata)="track?.length - 1 === i && onUserLoad()"
+          />
+          <div class="top-list__name">{{ track?.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

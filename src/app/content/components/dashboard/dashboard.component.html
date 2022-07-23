@@ -1,48 +1,70 @@
+<ng-template #logo>
+  <img class="nav__logo" src="https://localhost:4200/assets/img/white-cc.png" alt="ccdesign logo" />
+</ng-template>
+
+<ng-template #logout>
+  <app-button buttonStyle="secondary" size="small" (clicked)="onLogout()">Logout</app-button>
+</ng-template>
+
+<ng-template #navLinks>
+  <ul class="nav__link">
+    <li class="nav__link-item">
+      <a routerLink="profile" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/person.svg" alt="Profile page" />
+        <span>Profile</span>
+      </a>
+    </li>
+    <li class="nav__link-item">
+      <a routerLink="top-artists" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/mic.svg" alt="Top Artists page" />
+        <span>Top Artists</span>
+      </a>
+    </li>
+    <li class="nav__link-item">
+      <a routerLink="top-tracks" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/track.svg" alt="Top tracks page" />
+        <span>Top tracks</span>
+      </a>
+    </li>
+    <li class="nav__link-item">
+      <a routerLink="recently-played" routerLinkActive="active" skipLocationChange>
+        <img src="assets/img/cd.svg" alt="Recently played page" />
+        <span>Recent</span>
+      </a>
+    </li>
+  </ul>
+</ng-template>
+
 <div class="dashboard">
-  <!-- Login Container -->
-  <div *ngIf="!login" class="dashboard__login">
-    <div class="dashboard__login-group">
-      <div class="dashboard__login-container">
-        <img class="dashboard__login-logo" [lazyLoad]="logo" alt="ccdesign logo">
-        <p>Log in with your Spotify account to gain access to many useful tools for your music needs.</p>
-        <a class="dashboard__login-cta" (click)="onClick()">Login</a>
-      </div>
-      <div class="dashboard__login-tooltip">
-        <p>You may need to clear cache on your browser to successful login into tool. You can open an Incognito window.</p>
-      </div>
+  <!-- Mobile -->
+  <div class="dashboard__nav hidden-md hidden-lg hidden-xl hidden-xxl">
+    <div class="nav__top">
+      <ng-container *ngTemplateOutlet="logo"></ng-container>
+      <ng-container *ngTemplateOutlet="logout"></ng-container>
     </div>
+
+    <div class="nav__bottom"><ng-container *ngTemplateOutlet="navLinks"></ng-container></div>
   </div>
 
-  <div *ngIf="login" class="dashboard__menu">
-    <div class="dashboard__menu-content-box">
-      <h1>Welcome, {{user?.name}}</h1>
-      <div class="dashboard__container">
-        <div class="dashboard__profile">
-          <app-profile [user]="user"></app-profile>
-          <app-stat-fact></app-stat-fact>
-        </div>
-        <div class="dashboard__menu-grid">
-          <a class="dashboard__menu-grid-item" routerLink="/top-tracks">
-            <div class="dashboard__menu-grid-item-header">Top Tracks</div>
-            <div class="dashboard__menu-grid-item-description">
-              View your most listened tracks and switch between 3 different time periods. Your data is updated approximately everyday.
-            </div>
-          </a>
-          <a class="dashboard__menu-grid-item" routerLink="/top-artists">
-            <div class="dashboard__menu-grid-item-header">Top Artists</div>
-            <div class="dashboard__menu-grid-item-description">
-              View your most listened Artists and switch between 3 different time periods. Your data is updated approximately everyday.
-            </div>
-          </a>
-          <a class="dashboard__menu-grid-item" routerLink="/recently-played">
-            <div class="dashboard__menu-grid-item-header">Recently Played</div>
-            <div class="dashboard__menu-grid-item-description">
-              Check out your recently played tracks with timestamps.
-            </div>
-          </a>
-        </div>
+  <!-- Desktop / tablet -->
+  <div class="dashboard__nav dashboard__nav--desktop hidden-xs hidden-sm">
+    <div class="nav__side">
+      <ng-container *ngTemplateOutlet="logo"></ng-container>
+
+      <ng-container *ngTemplateOutlet="navLinks"></ng-container>
+
+      <div class="nav__github">
+        <a href="https://github.com/mbeaseley">
+          <img class="nav__logo" src="assets/img/github.svg" alt="ccdesign logo" />
+        </a>
       </div>
     </div>
+    <ng-container *ngTemplateOutlet="logout"></ng-container>
+  </div>
+
+  <!-- dashboard main content/routes -->
+  <div class="dashboard__main">
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </div>
 </div>
-<app-loading-spinner *ngIf="loading" fullscreen="true"></app-loading-spinner>

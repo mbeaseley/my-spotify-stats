@@ -1,22 +1,16 @@
 @import '_variables';
 
-body[ui-state="login"] .footer {
+body[ui-state='login'] .footer {
   position: absolute;
   bottom: 0;
 }
 
 .footer {
+  @include ui-body-font-11;
   position: relative;
   width: 100%;
   left: 0;
   right: 0;
   padding: $space-s 0 $space-s 0;
   text-align: center;
-  font-size: $font-size--extra-small;
-  background-color: $grey4;
-  border-top: 1px solid $white;
-
-  & > p {
-      margin: 0;
-  }
 }

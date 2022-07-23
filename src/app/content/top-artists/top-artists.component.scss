@@ -1,0 +1,127 @@
+@import '_variables';
+
+.top-artists {
+  margin: $space $space-xxl;
+
+  @include to(md) {
+    padding: 80px 0 0;
+  }
+
+  &__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  &__heading {
+    @include ui-body-font-6;
+  }
+
+  &__grid {
+    margin-top: $space;
+  }
+
+  &__no-artists {
+    text-align: center;
+
+    .no-artists {
+      &__heading {
+        @include ui-body-font-4('bold');
+      }
+
+      &__label {
+        @include ui-body-font-10(light);
+      }
+    }
+  }
+
+  &__artists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+  }
+
+  &__item {
+    img {
+      border-radius: 100%;
+      width: 100%;
+    }
+  }
+}
+
+// .top-artists {
+//   min-height: 86vh;
+//   max-width: 1140px;
+//   margin: 80px auto $space;
+//   text-align: center;
+
+//   @media (max-width: $medium-breakpoint) {
+//     max-width: 800px;
+//   }
+
+//   &__tabs {
+//     display: flex;
+//     justify-content: space-around;
+//     overflow: hidden;
+//   }
+
+//   &__tab-item {
+//     background: transparent;
+//     width: 100%;
+//     padding: 12px 0;
+//     font-size: 18px;
+//     color: $grey1;
+//     border: none;
+//     border-bottom: 1px solid $grey1;
+//     cursor: pointer;
+
+//     &:focus {
+//       outline: none;
+//     }
+
+//     &:hover {
+//       color: $white;
+//       border: 1px solid $grey1;
+//       border-bottom: none;
+//     }
+
+//     &--active {
+//       color: $white;
+//       border-left: 1px solid $grey1;
+//       border-right: 1px solid $grey1;
+//       border-top: 1px solid $grey1;
+//       border-bottom: none;
+//     }
+//   }
+
+//   &__leaderboard {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr;
+//     grid-gap: $space-sm;
+//     margin-top: $space;
+//     width: 100%;
+
+//     @media (max-width: $small-breakpoint) {
+//       grid-template-columns: 1fr 1fr;
+//     }
+//   }
+
+//   &__leaderboard-item {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: flex-end;
+//     width: 100%;
+//     min-height: 250px;
+//     background-color: $grey4;
+//     cursor: pointer;
+
+//     &:hover {
+//       background: $grey3;
+//     }
+
+//     & > img {
+//       width: 100%;
+//     }
+//   }
+// }

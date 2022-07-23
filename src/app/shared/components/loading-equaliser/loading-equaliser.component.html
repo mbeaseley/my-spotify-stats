@@ -1,0 +1,7 @@
+<div *ngIf="show" class="loading-equaliser" @fadeAnimation>
+  <div class="loading-equaliser__container">
+    <ng-container *ngFor="let _ of bars; let i = index">
+      <div class="bar__{{ i }}"></div>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+@import '_variables';
+
+@keyframes bounce-1 {
+  0% {
+    height: 1px;
+  }
+  16.7% {
+    height: 60px;
+  }
+  33.4% {
+    height: 60px;
+  }
+  100% {
+    height: 1px;
+  }
+}
+@keyframes bounce-2 {
+  0% {
+    height: 1px;
+  }
+  16.7% {
+    height: 1px;
+  }
+  33.4% {
+    height: 70px;
+  }
+  50% {
+    height: 70px;
+  }
+  100% {
+    height: 1px;
+  }
+}
+@keyframes bounce-3 {
+  0% {
+    height: 1px;
+  }
+  33.4% {
+    height: 1px;
+  }
+  50% {
+    height: 80px;
+  }
+  66.7% {
+    height: 80px;
+  }
+  100% {
+    height: 1px;
+  }
+}
+@keyframes bounce-4 {
+  0% {
+    height: 1px;
+  }
+  16.7% {
+    height: 70px;
+  }
+  33.4% {
+    height: 70px;
+  }
+  100% {
+    height: 1px;
+  }
+}
+@keyframes bounce-5 {
+  0% {
+    height: 1px;
+  }
+  16.7% {
+    height: 1px;
+  }
+  33.4% {
+    height: 90px;
+  }
+  50% {
+    height: 90px;
+  }
+  100% {
+    height: 1px;
+  }
+}
+@keyframes bounce-6 {
+  0% {
+    height: 1px;
+  }
+  33.4% {
+    height: 1px;
+  }
+  50% {
+    height: 70px;
+  }
+  66.7% {
+    height: 70px;
+  }
+  100% {
+    height: 1px;
+  }
+}
+@keyframes bounce-7 {
+  0% {
+    height: 1px;
+  }
+  33.4% {
+    height: 1px;
+  }
+  50% {
+    height: 60px;
+  }
+  66.7% {
+    height: 60px;
+  }
+  100% {
+    height: 1px;
+  }
+}
+
+$loading-eq-height: 100vh;
+$loading-eq-container-height: 100px;
+$loading-eq-container-transform: rotate(180deg);
+$loading-eq-z-index: 10;
+$loading-eq-width: 100%;
+
+$loading-eq-bar-height: 20px;
+$loading-eq-bar-width: 10px;
+$loading-eq-bar-delay: 0.2s;
+
+.loading-equaliser {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $loading-eq-height;
+  width: $loading-eq-width;
+  background-color: $grey6;
+  z-index: $loading-eq-z-index;
+
+  &__container {
+    display: flex;
+    height: $loading-eq-container-height;
+    transform: $loading-eq-container-transform;
+  }
+
+  .bar {
+    @for $i from 1 through 7 {
+      &__#{$i} {
+        background-color: $green;
+        height: 20px;
+        width: 10px;
+        margin: $space-xs;
+        animation: bounce-#{$i} 1s infinite linear;
+        animation-delay: $loading-eq-bar-delay * $i;
+      }
+    }
+  }
+}

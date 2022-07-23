@@ -1,0 +1,25 @@
+<div class="recently-played">
+  <div class="recently-played__header">
+    <div class="recently-played__heading">Top tracks</div>
+  </div>
+
+  <div class="recently-played__grid">
+    <div *ngIf="!tracks.length" class="recently-played__no-tracks">
+      <div class="no-tracks__heading">Sorry, there was no tracks found!</div>
+      <div class="no-tracks__label">Please wait a minute and refresh to try again!</div>
+    </div>
+
+    <ul *ngIf="tracks.length" class="recently-played__tracks">
+      <li class="recently-played__item" *ngFor="let track of tracks">
+        <div class="tracks__image">
+          <img [src]="track?.image" [alt]="track?.name" loading="lazy" />
+        </div>
+        <div class="tracks__details">
+          <div class="tracks__name">{{ track.name }}</div>
+          <div class="tracks__artists">{{ track.getAllArtists() }}</div>
+        </div>
+        <div class="tracks__duration">{{ track?.duration | localeDate: 'mm:ss' }}</div>
+      </li>
+    </ul>
+  </div>
+</div>
