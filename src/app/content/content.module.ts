@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LazyLoadImageModule, ScrollHooks, LAZYLOAD_IMAGE_HOOKS } from 'ng-lazyload-image';
 
 import { SharedModule } from 'Shared/shared.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardComponent } from 'Content/components/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
