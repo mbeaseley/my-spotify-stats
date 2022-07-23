@@ -1,6 +1,50 @@
+// todo: deprecated variables
 $small-breakpoint: 766px;
 $extra-small-breakpoint: $small-breakpoint;
 $extra-extra-small-breakpoint: 454px;
 $medium-breakpoint: 992px;
 $large-breakpoint: 1200px;
 $extra-large-breakpoint: 1440px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px,
+);
+
+@mixin to($higher) {
+  @each $breakpoint, $value in $grid-breakpoints {
+    @if $breakpoint == $higher {
+      @media only screen and (max-width: calc($value - 1px)) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin from($lower) {
+  @each $breakpoint, $value in $grid-breakpoints {
+    @if $breakpoint == $lower {
+      @media only screen and (min-width: $value) {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin between($lower, $higher) {
+  @each $lowerBreakpoint, $lowerValue in $grid-breakpoints {
+    @if $lowerBreakpoint == $lower {
+      @each $higherBreakpoint, $higherValue in $grid-breakpoints {
+        @if $higherBreakpoint == $higher {
+          @media (min-width: $lowerValue) and (max-width: $higherValue) {
+            @content;
+          }
+        }
+      }
+    }
+  }
+}
